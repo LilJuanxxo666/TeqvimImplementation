@@ -36,6 +36,7 @@ public final class EstudianteDTO {
 		setNumeroTelefonico(UtilText.EMPTY);
 		setCorreo(UtilText.EMPTY);
 		setContraseña(UtilText.EMPTY);
+		setFechaNacimiento(UtilDate.DEFAULT_DATE);
 		setTipoDocumento(TipoDocumentoDTO.create());
 		setNumeroDocumento(UtilText.EMPTY);
 		setConfirmacionCorreo(RespuestaDTO.create());
@@ -45,7 +46,7 @@ public final class EstudianteDTO {
 	}
 
 	public EstudianteDTO(UUID identificador, String primerNombre, String segundoNombre, String primerApellido,
-			String segudoApellido, String numeroTelefonico, String correo, String contraseña,
+			String segudoApellido, String numeroTelefonico, String correo, String contraseña, LocalDate fechaNacimiento,
 			TipoDocumentoDTO tipoDocumento, String numeroDocumento, RespuestaDTO confirmacionCorreo,
 			TipoPeriodoAcademicoDTO tipoPeriodoAcademico, PaisDTO pais, EstadoEstudianteDTO estado) {
 		super();
@@ -57,6 +58,7 @@ public final class EstudianteDTO {
 		setNumeroTelefonico(numeroTelefonico);
 		setCorreo(correo);
 		setContraseña(contraseña);
+		setFechaNacimiento(fechaNacimiento);
 		setTipoDocumento(tipoDocumento);
 		setNumeroDocumento(numeroDocumento);
 		setConfirmacionCorreo(confirmacionCorreo);
@@ -203,5 +205,6 @@ public final class EstudianteDTO {
 		this.estado = UtilObject.getDefault(estado, EstadoEstudianteDTO.create());
 		return this;
 	}
+	
 
 }

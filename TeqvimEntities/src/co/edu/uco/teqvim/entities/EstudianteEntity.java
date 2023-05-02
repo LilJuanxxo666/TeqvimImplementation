@@ -1,7 +1,9 @@
 package co.edu.uco.teqvim.entities;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
+import co.edu.uco.teqvim.crosscutting.utils.UtilDate;
 import co.edu.uco.teqvim.crosscutting.utils.UtilObject;
 import co.edu.uco.teqvim.crosscutting.utils.UtilText;
 import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
@@ -17,6 +19,7 @@ public final class EstudianteEntity {
 	private String numeroTelefonico;
 	private String correo;
 	private String contraseña;
+	private LocalDate fechaNacimiento;
 	private TipoDocumentoEntity tipoDocumento;
 	private String numeroDocumento;
 	private RespuestaEntity confirmacionCorreo;
@@ -34,6 +37,7 @@ public final class EstudianteEntity {
 		setNumeroTelefonico(UtilText.EMPTY);
 		setCorreo(UtilText.EMPTY);
 		setContraseña(UtilText.EMPTY);
+		setFechaNacimiento(UtilDate.DEFAULT_DATE);
 		setTipoDocumento(TipoDocumentoEntity.getDefaultObject());
 		setNumeroDocumento(UtilText.EMPTY);
 		setConfirmacionCorreo(RespuestaEntity.getDefaultObject());
@@ -43,7 +47,7 @@ public final class EstudianteEntity {
 	}
 
 	public EstudianteEntity(UUID identificador, String primerNombre, String segundoNombre, String primerApellido,
-			String segudoApellido, String numeroTelefonico, String correo, String contraseña,
+			String segudoApellido, String numeroTelefonico, String correo, String contraseña, LocalDate fechaNacimiento,
 			TipoDocumentoEntity tipoDocumento, String numeroDocumento, RespuestaEntity confirmacionCorreo,
 			TipoPeriodoAcademicoEntity tipoPeriodoAcademico, PaisEntity pais, EstadoEstudianteEntity estado) {
 		super();
@@ -55,6 +59,7 @@ public final class EstudianteEntity {
 		setNumeroTelefonico(numeroTelefonico);
 		setCorreo(correo);
 		setContraseña(contraseña);
+		setFechaNacimiento(fechaNacimiento);
 		setTipoDocumento(tipoDocumento);
 		setNumeroDocumento(numeroDocumento);
 		setConfirmacionCorreo(confirmacionCorreo);
@@ -178,5 +183,14 @@ public final class EstudianteEntity {
 	private final void setEstado(final EstadoEstudianteEntity estado) {
 		this.estado = UtilObject.getDefault(estado, EstadoEstudianteEntity.getDefaultObject());
 	}
+	
+	public LocalDate getFechaNacimiento() {
+		return fechaNacimiento;
+	}
+
+	private void setFechaNacimiento(LocalDate fechaNacimiento) {
+		this.fechaNacimiento = UtilDate.getDefault(fechaNacimiento);
+	}
+	
 
 }

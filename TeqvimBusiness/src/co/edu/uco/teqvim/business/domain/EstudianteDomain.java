@@ -1,7 +1,9 @@
 package co.edu.uco.teqvim.business.domain;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
+import co.edu.uco.teqvim.crosscutting.utils.UtilDate;
 import co.edu.uco.teqvim.crosscutting.utils.UtilObject;
 import co.edu.uco.teqvim.crosscutting.utils.UtilText;
 import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
@@ -17,6 +19,7 @@ public final class EstudianteDomain {
 	private String numeroTelefonico;
 	private String correo;
 	private String contraseña;
+	private LocalDate fechaNacimiento;
 	private TipoDocumentoDomain tipoDocumento;
 	private String numeroDocumento;
 	private RespuestaDomain confirmacionCorreo;
@@ -34,6 +37,7 @@ public final class EstudianteDomain {
 		setNumeroTelefonico(UtilText.EMPTY);
 		setCorreo(UtilText.EMPTY);
 		setContraseña(UtilText.EMPTY);
+		setFechaNacimiento(UtilDate.DEFAULT_DATE);
 		setTipoDocumento(TipoDocumentoDomain.getDefaultObject());
 		setNumeroDocumento(UtilText.EMPTY);
 		setConfirmacionCorreo(RespuestaDomain.getDefaultObject());
@@ -43,7 +47,7 @@ public final class EstudianteDomain {
 	}
 
 	public EstudianteDomain(UUID identificador, String primerNombre, String segundoNombre, String primerApellido,
-			String segudoApellido, String numeroTelefonico, String correo, String contraseña,
+			String segudoApellido, String numeroTelefonico, String correo, String contraseña, LocalDate fechaNaciemiento,
 			TipoDocumentoDomain tipoDocumento, String numeroDocumento, RespuestaDomain confirmacionCorreo,
 			TipoPeriodoAcademicoDomain tipoPeriodoAcademico, PaisDomain pais, EstadoEstudianteDomain estado) {
 		super();
@@ -55,6 +59,7 @@ public final class EstudianteDomain {
 		setNumeroTelefonico(numeroTelefonico);
 		setCorreo(correo);
 		setContraseña(contraseña);
+		setFechaNacimiento(fechaNaciemiento);
 		setTipoDocumento(tipoDocumento);
 		setNumeroDocumento(numeroDocumento);
 		setConfirmacionCorreo(confirmacionCorreo);
@@ -179,5 +184,14 @@ public final class EstudianteDomain {
 	private final void setEstado(final EstadoEstudianteDomain estado) {
 		this.estado = UtilObject.getDefault(estado, EstadoEstudianteDomain.getDefaultObject());
 	}
+
+	public LocalDate getFechaNacimiento() {
+		return fechaNacimiento;
+	}
+
+	private void setFechaNacimiento(LocalDate fechaNacimiento) {
+		this.fechaNacimiento = UtilDate.getDefault(fechaNacimiento);
+	}
+	
 
 }
