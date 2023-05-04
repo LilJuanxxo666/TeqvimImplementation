@@ -1,6 +1,7 @@
 package co.edu.uco.teqvim.dto;
 
 import java.util.UUID;
+import java.util.List;
 
 import co.edu.uco.teqvim.crosscutting.utils.UtilNumber;
 import co.edu.uco.teqvim.crosscutting.utils.UtilObject;
@@ -13,6 +14,7 @@ public class MateriaDTO {
 	private String nombre;
 	private int creditos;
 	private PeriodoAcademicoDTO periodoAcademico;
+	private List<NotaDTO> notas;
 
 	public MateriaDTO() {
 		super();
@@ -22,12 +24,13 @@ public class MateriaDTO {
 		setPeriodoAcademico(PeriodoAcademicoDTO.create());
 	}
 
-	public MateriaDTO(UUID identificador, String nombre, int creditos, PeriodoAcademicoDTO periodoAcademico) {
+	public MateriaDTO(UUID identificador, String nombre, int creditos, PeriodoAcademicoDTO periodoAcademico, List<NotaDTO> notas) {
 		super();
 		setIdentificador(identificador);
 		setNombre(nombre);
 		setCreditos(creditos);
 		setPeriodoAcademico(periodoAcademico);
+		setNotas(notas);
 	}
 	
 	public static MateriaDTO create() {
@@ -70,4 +73,12 @@ public class MateriaDTO {
 		return this;
 	}
 
+	public final List<NotaDTO> getNotas() {
+		return notas;
+	}
+
+	public final MateriaDTO setNotas(List<NotaDTO> notas) {
+		this.notas = notas;
+		return this;
+	}
 }

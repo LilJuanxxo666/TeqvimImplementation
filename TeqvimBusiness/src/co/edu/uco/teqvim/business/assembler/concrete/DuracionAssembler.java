@@ -23,7 +23,7 @@ public class DuracionAssembler implements Assembler<DuracionDomain, DuracionDTO,
 		return DuracionDTO.create().setIdentificador(domain.getIdentificador()).setCantidadTiempo(domain.getCantidadTiempo()).
 				setUnidadTiempo(UnidadTiempoAssembler.getInstance().toDtoFromDomain(domain.getUnidadTiempo()));
 	}
-
+	
 	@Override
 	public DuracionDomain toDomainFromDto(DuracionDTO dto) {
 		return new DuracionDomain(dto.getIdentificador(), dto.getCantidadTiempo(), UnidadTiempoAssembler.getInstance().toDomainFromDto(dto.getUnidadTiempo()));
