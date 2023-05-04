@@ -19,8 +19,8 @@ public class EstadoPeriodoAcademicoAssembler
 
 	@Override
 	public EstadoPeriodoAcademicoDTO toDtoFromDomain(EstadoPeriodoAcademicoDomain domain) {
-		return EstadoPeriodoAcademicoDTO.create().setIdentificador(domain.getIdentificador()).setNombre(domain.getNombre()).
-				setDescripcion(domain.getDescripcion());
+		return EstadoPeriodoAcademicoDTO.create().setIdentificador(domain.getIdentificador())
+				.setNombre(domain.getNombre()).setDescripcion(domain.getDescripcion());
 	}
 
 	@Override

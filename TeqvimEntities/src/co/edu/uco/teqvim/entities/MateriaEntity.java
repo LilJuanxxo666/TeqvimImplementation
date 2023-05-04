@@ -8,7 +8,7 @@ import co.edu.uco.teqvim.crosscutting.utils.UtilText;
 import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
 
 public class MateriaEntity {
-	
+
 	private static final MateriaEntity DEFAULT_OBJECT = new MateriaEntity();
 	private UUID identificador;
 	private String nombre;
@@ -29,8 +29,9 @@ public class MateriaEntity {
 		setNombre(nombre);
 		setCreditos(creditos);
 		setPeriodoAcademico(periodoAcademico);
+
 	}
-	
+
 	public static MateriaEntity getDefaultObject() {
 		return DEFAULT_OBJECT;
 	}
@@ -39,7 +40,7 @@ public class MateriaEntity {
 		return identificador;
 	}
 
-	private final void setIdentificador(UUID identificador) {
+	private final void setIdentificador(final UUID identificador) {
 		this.identificador = UtilUUID.getDefault(identificador);
 	}
 
@@ -47,15 +48,16 @@ public class MateriaEntity {
 		return nombre;
 	}
 
-	private final void setNombre(String nombre) {
+	private final void setNombre(final String nombre) {
 		this.nombre = UtilText.getUtilText().applyTrim(nombre);
+
 	}
 
 	public final int getCreditos() {
 		return creditos;
 	}
 
-	private final void setCreditos(int creditos) {
+	private final void setCreditos(final int creditos) {
 		this.creditos = creditos;
 	}
 
@@ -63,7 +65,7 @@ public class MateriaEntity {
 		return periodoAcademico;
 	}
 
-	private final void setPeriodoAcademico(PeriodoAcademicoEntity periodoAcademico) {
+	private final void setPeriodoAcademico(final PeriodoAcademicoEntity periodoAcademico) {
 		this.periodoAcademico = UtilObject.getDefault(periodoAcademico, PeriodoAcademicoEntity.getDefaultObject());
 	}
 

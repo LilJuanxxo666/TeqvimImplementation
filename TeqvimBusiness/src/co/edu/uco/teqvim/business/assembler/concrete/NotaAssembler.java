@@ -6,7 +6,7 @@ import co.edu.uco.teqvim.dto.NotaDTO;
 import co.edu.uco.teqvim.entities.NotaEntity;
 
 public class NotaAssembler implements Assembler<NotaDomain, NotaDTO, NotaEntity> {
-	
+
 	private static final Assembler<NotaDomain, NotaDTO, NotaEntity> INSTANCE = new NotaAssembler();
 
 	private NotaAssembler() {
@@ -19,9 +19,10 @@ public class NotaAssembler implements Assembler<NotaDomain, NotaDTO, NotaEntity>
 
 	@Override
 	public NotaDTO toDtoFromDomain(NotaDomain domain) {
-		return NotaDTO.create().setIdentificador(domain.getIdentificador()).setDescripcion(domain.getDescripcion())
-				.setCalificacion(domain.getCalificacion())
-				.setTipoNota(TipoNotaAssembler.getInstance().toDtoFromDomain(domain.getTipoNota()));
+		return NotaDTO.create().setIdentificador(domain.getIdentificador())
+				.setTipoNota(TipoNotaAssembler.getInstance().toDtoFromDomain(domain.getTipoNota()))
+				.setCalificacion(domain.getCalificacion()).setDescripcion(domain.getDescripcion())
+				.setMateria(MateriaAssembler.getInstance().toDtoFromDomain(domain.getMateria()));
 	}
 
 	@Override

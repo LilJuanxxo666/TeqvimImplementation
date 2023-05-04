@@ -2,7 +2,6 @@ package co.edu.uco.teqvim.business.domain;
 
 import java.util.UUID;
 
-
 import co.edu.uco.teqvim.crosscutting.utils.UtilNumber;
 import co.edu.uco.teqvim.crosscutting.utils.UtilObject;
 import co.edu.uco.teqvim.crosscutting.utils.UtilText;
@@ -15,13 +14,15 @@ public final class NotaDomain {
 	private TipoNotaDomain tipoNota;
 	private double calificacion;
 	private String descripcion;
-	
+	private MateriaDomain materia;
+
 	private NotaDomain() {
 		super();
 		setIdentificador(UtilUUID.DEFAULT_UUID);
 		setTipoNota(TipoNotaDomain.getDefaultObject());
 		setCalificacion(UtilNumber.ZERO_DOUBLE);
 		setDescripcion(UtilText.EMPTY);
+		setMateria(MateriaDomain.getDefaultObject());
 	}
 
 	public NotaDomain(UUID identificador, TipoNotaDomain tipoNota, double calificacion, String descripcion) {
@@ -30,8 +31,9 @@ public final class NotaDomain {
 		setTipoNota(tipoNota);
 		setCalificacion(calificacion);
 		setDescripcion(descripcion);
+		setMateria(materia);
 	}
-	
+
 	public static NotaDomain getDefaultObject() {
 		return DEFAULT_OBJECT;
 	}
@@ -66,6 +68,15 @@ public final class NotaDomain {
 
 	private final void setDescripcion(final String descripcion) {
 		this.descripcion = UtilText.getUtilText().applyTrim(descripcion);
+	}
+
+	public final MateriaDomain getMateria() {
+		return materia;
+	}
+
+	public final NotaDomain setMateria(final MateriaDomain materia) {
+		this.materia = UtilObject.getDefault(materia, MateriaDomain.getDefaultObject());
+		return this;
 	}
 
 }

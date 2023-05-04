@@ -8,19 +8,21 @@ import co.edu.uco.teqvim.crosscutting.utils.UtilText;
 import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
 
 public final class NotaEntity {
-	
+
 	private static final NotaEntity DEFAULT_OBJECT = new NotaEntity();
 	private UUID identificador;
 	private TipoNotaEntity tipoNota;
 	private double calificacion;
 	private String descripcion;
-	
+	private MateriaEntity materia;
+
 	private NotaEntity() {
 		super();
 		setIdentificador(UtilUUID.DEFAULT_UUID);
 		setTipoNota(TipoNotaEntity.getDefaultObject());
 		setCalificacion(UtilNumber.ZERO_DOUBLE);
 		setDescripcion(UtilText.EMPTY);
+		setMateria(MateriaEntity.getDefaultObject());
 	}
 
 	public NotaEntity(UUID identificador, TipoNotaEntity tipoNota, double calificacion, String descripcion) {
@@ -29,8 +31,9 @@ public final class NotaEntity {
 		setTipoNota(tipoNota);
 		setCalificacion(calificacion);
 		setDescripcion(descripcion);
+		setMateria(materia);
 	}
-	
+
 	public static NotaEntity getDefaultObject() {
 		return DEFAULT_OBJECT;
 	}
@@ -65,6 +68,15 @@ public final class NotaEntity {
 
 	private final void setDescripcion(final String descripcion) {
 		this.descripcion = UtilText.getUtilText().applyTrim(descripcion);
+	}
+
+	public final MateriaEntity getMateria() {
+		return materia;
+	}
+
+	public final NotaEntity setMateria(final MateriaEntity materia) {
+		this.materia = UtilObject.getDefault(materia, MateriaEntity.getDefaultObject());
+		return this;
 	}
 
 }

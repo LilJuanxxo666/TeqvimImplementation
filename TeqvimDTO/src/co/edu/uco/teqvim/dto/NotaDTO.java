@@ -13,13 +13,15 @@ public final class NotaDTO {
 	private TipoNotaDTO tipoNota;
 	private double calificacion;
 	private String descripcion;
-	
+	private MateriaDTO materia;
+
 	public NotaDTO() {
 		super();
 		setIdentificador(UtilUUID.DEFAULT_UUID);
 		setTipoNota(TipoNotaDTO.create());
 		setCalificacion(UtilNumber.ZERO_DOUBLE);
 		setDescripcion(UtilText.EMPTY);
+		setMateria(MateriaDTO.create());
 	}
 
 	public NotaDTO(UUID identificador, TipoNotaDTO tipoNota, double calificacion, String descripcion) {
@@ -28,8 +30,9 @@ public final class NotaDTO {
 		setTipoNota(tipoNota);
 		setCalificacion(calificacion);
 		setDescripcion(descripcion);
+		setMateria(materia);
 	}
-	
+
 	public static NotaDTO create() {
 		return new NotaDTO();
 	}
@@ -67,6 +70,15 @@ public final class NotaDTO {
 
 	public final NotaDTO setDescripcion(final String descripcion) {
 		this.descripcion = UtilText.getUtilText().applyTrim(descripcion);
+		return this;
+	}
+
+	public final MateriaDTO getMateria() {
+		return materia;
+	}
+
+	public final NotaDTO setMateria(final MateriaDTO materia) {
+		this.materia = UtilObject.getDefault(materia, MateriaDTO.create());
 		return this;
 	}
 
