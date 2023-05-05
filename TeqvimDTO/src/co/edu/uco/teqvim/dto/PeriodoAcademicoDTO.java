@@ -37,7 +37,7 @@ public class PeriodoAcademicoDTO {
 		setTipoPeriodo(tipoPeriodo);
 		setEstado(estado);
 	}
-	
+
 	public static PeriodoAcademicoDTO create() {
 		return new PeriodoAcademicoDTO();
 	}
