@@ -1,12 +1,14 @@
 package co.edu.uco.teqvim.business.assembler.concrete;
 
+import java.util.List;
+
 import co.edu.uco.teqvim.business.assembler.Assembler;
 import co.edu.uco.teqvim.business.domain.EventoDomain;
 import co.edu.uco.teqvim.dto.EventoDTO;
 import co.edu.uco.teqvim.entities.EventoEntity;
 
 public final class EventoAssembler implements Assembler<EventoDomain, EventoDTO, EventoEntity> {
-	
+
 	private static final Assembler<EventoDomain, EventoDTO, EventoEntity> INSTANCE = new EventoAssembler();
 
 	private EventoAssembler() {
@@ -40,8 +42,9 @@ public final class EventoAssembler implements Assembler<EventoDomain, EventoDTO,
 
 	@Override
 	public EventoEntity toEntityFromDomain(EventoDomain domain) {
-		return new EventoEntity(domain.getIdentificador(), domain.getTitulo(), domain.getDescripcion(), domain.getFechaInicio(),
-				domain.getFechaFin(), TipoDuracionEventoAssembler.getInstance().toEntityFromDomain(domain.getDuracionEvento()),
+		return new EventoEntity(domain.getIdentificador(), domain.getTitulo(), domain.getDescripcion(),
+				domain.getFechaInicio(), domain.getFechaFin(),
+				TipoDuracionEventoAssembler.getInstance().toEntityFromDomain(domain.getDuracionEvento()),
 				EstadoEventoAssembler.getInstance().toEntityFromDomain(domain.getEstado()),
 				TipoEventoAssembler.getInstance().toEntityFromDomain(domain.getTipoEvento()),
 				EstudianteAssembler.getInstance().toEntityFromDomain(domain.getEstudiante()));
@@ -49,11 +52,22 @@ public final class EventoAssembler implements Assembler<EventoDomain, EventoDTO,
 
 	@Override
 	public EventoDomain toDomainFromEntity(EventoEntity entity) {
-		return new EventoDomain(entity.getIdentificador(), entity.getTitulo(), entity.getDescripcion(), entity.getFechaInicio(),
-				entity.getFechaFin(), TipoDuracionEventoAssembler.getInstance().toDomainFromEntity(entity.getDuracionEvento()),
+		return new EventoDomain(entity.getIdentificador(), entity.getTitulo(), entity.getDescripcion(),
+				entity.getFechaInicio(), entity.getFechaFin(),
+				TipoDuracionEventoAssembler.getInstance().toDomainFromEntity(entity.getDuracionEvento()),
 				EstadoEventoAssembler.getInstance().toDomainFromEntity(entity.getEstado()),
 				TipoEventoAssembler.getInstance().toDomainFromEntity(entity.getTipoEvento()),
 				EstudianteAssembler.getInstance().toDomainFromEntity(entity.getEstudiante()));
+	}
+
+	@Override
+	public List<EventoDomain> toDomainListFromEntityList(List<EventoEntity> entityList) {
+		return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+	}
+
+	@Override
+	public List<EventoDTO> toDTOListFromDomainList(List<EventoDomain> domainList) {
+		return domainList.stream().map(domain -> toDtoFromDomain(domain)).toList();
 	}
 
 }

@@ -51,15 +51,15 @@ public abstract class DAOFactory {
 		return daoFactory;
 	}
 
-	protected abstract void abrirConexion();
+	protected abstract void openConection();
 
-	public abstract void cerrarConexion();
+	public abstract void closeConection();
 
-	public abstract void iniciarTransaccion();
+	public abstract void initTransaction();
 
-	public abstract void confirmarTransaccion();
+	public abstract void commitTransaction();
 
-	public abstract void cancelarTransaccion();
+	public abstract void cancelTransaction();
 
 	public abstract DuracionDAO getDuracionDAO();
 

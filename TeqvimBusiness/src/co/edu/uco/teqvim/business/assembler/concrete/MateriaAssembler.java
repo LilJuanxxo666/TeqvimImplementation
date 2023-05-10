@@ -1,5 +1,7 @@
 package co.edu.uco.teqvim.business.assembler.concrete;
 
+import java.util.List;
+
 import co.edu.uco.teqvim.business.assembler.Assembler;
 import co.edu.uco.teqvim.business.domain.MateriaDomain;
 import co.edu.uco.teqvim.dto.MateriaDTO;
@@ -41,6 +43,16 @@ public class MateriaAssembler implements Assembler<MateriaDomain, MateriaDTO, Ma
 	public MateriaDomain toDomainFromEntity(MateriaEntity entity) {
 		return new MateriaDomain(entity.getIdentificador(), entity.getNombre(), entity.getCreditos(),
 				PeriodoAcademicoAssembler.getInstance().toDomainFromEntity(entity.getPeriodoAcademico()));
+	}
+
+	@Override
+	public List<MateriaDomain> toDomainListFromEntityList(List<MateriaEntity> entityList) {
+		return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+	}
+
+	@Override
+	public List<MateriaDTO> toDTOListFromDomainList(List<MateriaDomain> domainList) {
+		return domainList.stream().map(domain -> toDtoFromDomain(domain)).toList();
 	}
 
 }

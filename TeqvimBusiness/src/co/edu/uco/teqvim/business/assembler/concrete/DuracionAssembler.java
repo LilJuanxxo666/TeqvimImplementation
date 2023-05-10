@@ -1,5 +1,7 @@
 package co.edu.uco.teqvim.business.assembler.concrete;
 
+import java.util.List;
+
 import co.edu.uco.teqvim.business.assembler.Assembler;
 
 import co.edu.uco.teqvim.business.domain.DuracionDomain;
@@ -37,6 +39,16 @@ public class DuracionAssembler implements Assembler<DuracionDomain, DuracionDTO,
 	@Override
 	public DuracionDomain toDomainFromEntity(DuracionEntity entity) {
 		return new DuracionDomain(entity.getIdentificador(), entity.getCantidadTiempo(), UnidadTiempoAssembler.getInstance().toDomainFromEntity(entity.getUnidadTiempo()));
+	}
+
+	@Override
+	public List<DuracionDomain> toDomainListFromEntityList(List<DuracionEntity> entityList) {
+		return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+	}
+
+	@Override
+	public List<DuracionDTO> toDTOListFromDomainList(List<DuracionDomain> domainList) {
+		return domainList.stream().map(domain -> toDtoFromDomain(domain)).toList();
 	}
 
 }

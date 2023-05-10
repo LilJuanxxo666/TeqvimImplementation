@@ -13,25 +13,25 @@ public final class DuracionSqlServerDAO implements DuracionDAO {
 	}
 
 	@Override
-	public void create(DuracionEntity entity) {
+	public void create(final DuracionEntity entity) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public List<DuracionEntity> read(DuracionEntity entity) {
+	public List<DuracionEntity> read(final DuracionEntity entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void update(DuracionEntity entity) {
+	public void update(final DuracionEntity entity) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void delete(DuracionEntity entity) {
+	public void delete(final DuracionEntity entity) {
 		// TODO Auto-generated method stub
 
 	}

@@ -1,5 +1,7 @@
 package co.edu.uco.teqvim.business.assembler.concrete;
 
+import java.util.List;
+
 import co.edu.uco.teqvim.business.assembler.Assembler;
 import co.edu.uco.teqvim.business.domain.EstudianteDomain;
 import co.edu.uco.teqvim.dto.EstudianteDTO;
@@ -35,31 +37,49 @@ public class EstudianteAssembler implements Assembler<EstudianteDomain, Estudian
 	@Override
 	public EstudianteDomain toDomainFromDto(EstudianteDTO dto) {
 		return new EstudianteDomain(dto.getIdentificador(), dto.getPrimerNombre(), dto.getSegundoNombre(),
-				dto.getPrimerApellido(), dto.getSegudoApellido(), dto.getNumeroTelefonico(), dto.getCorreo(), dto.getContraseña(),
-				dto.getFechaNacimiento(), TipoDocumentoAssembler.getInstance().toDomainFromDto(dto.getTipoDocumento()),
-				dto.getNumeroDocumento(), RespuestaAssembler.getInstance().toDomainFromDto(dto.getConfirmacionCorreo()),
-				TipoPeriodoAcademicoAssembler.getInstance().toDomainFromDto(dto.getTipoPeriodoAcademico()), PaisAssembler.getInstance().toDomainFromDto(dto.getPais()), 
+				dto.getPrimerApellido(), dto.getSegudoApellido(), dto.getNumeroTelefonico(), dto.getCorreo(),
+				dto.getContraseña(), dto.getFechaNacimiento(),
+				TipoDocumentoAssembler.getInstance().toDomainFromDto(dto.getTipoDocumento()), dto.getNumeroDocumento(),
+				RespuestaAssembler.getInstance().toDomainFromDto(dto.getConfirmacionCorreo()),
+				TipoPeriodoAcademicoAssembler.getInstance().toDomainFromDto(dto.getTipoPeriodoAcademico()),
+				PaisAssembler.getInstance().toDomainFromDto(dto.getPais()),
 				EstadoEstudianteAssembler.getInstance().toDomainFromDto(dto.getEstado()));
 	}
 
 	@Override
 	public EstudianteEntity toEntityFromDomain(EstudianteDomain domain) {
 		return new EstudianteEntity(domain.getIdentificador(), domain.getPrimerNombre(), domain.getSegundoNombre(),
-				domain.getPrimerApellido(), domain.getSegudoApellido(), domain.getNumeroTelefonico(), domain.getCorreo(), domain.getContraseña(),
-				domain.getFechaNacimiento(), TipoDocumentoAssembler.getInstance().toEntityFromDomain(domain.getTipoDocumento()),
-				domain.getNumeroDocumento(), RespuestaAssembler.getInstance().toEntityFromDomain(domain.getConfirmacionCorreo()),
-				TipoPeriodoAcademicoAssembler.getInstance().toEntityFromDomain(domain.getTipoPeriodoAcademico()), PaisAssembler.getInstance().toEntityFromDomain(domain.getPais()), 
+				domain.getPrimerApellido(), domain.getSegudoApellido(), domain.getNumeroTelefonico(),
+				domain.getCorreo(), domain.getContraseña(), domain.getFechaNacimiento(),
+				TipoDocumentoAssembler.getInstance().toEntityFromDomain(domain.getTipoDocumento()),
+				domain.getNumeroDocumento(),
+				RespuestaAssembler.getInstance().toEntityFromDomain(domain.getConfirmacionCorreo()),
+				TipoPeriodoAcademicoAssembler.getInstance().toEntityFromDomain(domain.getTipoPeriodoAcademico()),
+				PaisAssembler.getInstance().toEntityFromDomain(domain.getPais()),
 				EstadoEstudianteAssembler.getInstance().toEntityFromDomain(domain.getEstado()));
 	}
 
 	@Override
 	public EstudianteDomain toDomainFromEntity(EstudianteEntity entity) {
 		return new EstudianteDomain(entity.getIdentificador(), entity.getPrimerNombre(), entity.getSegundoNombre(),
-				entity.getPrimerApellido(), entity.getSegudoApellido(), entity.getNumeroTelefonico(), entity.getCorreo(), entity.getContraseña(),
-				entity.getFechaNacimiento(), TipoDocumentoAssembler.getInstance().toDomainFromEntity(entity.getTipoDocumento()),
-				entity.getNumeroDocumento(), RespuestaAssembler.getInstance().toDomainFromEntity(entity.getConfirmacionCorreo()),
-				TipoPeriodoAcademicoAssembler.getInstance().toDomainFromEntity(entity.getTipoPeriodoAcademico()), PaisAssembler.getInstance().toDomainFromEntity(entity.getPais()), 
+				entity.getPrimerApellido(), entity.getSegudoApellido(), entity.getNumeroTelefonico(),
+				entity.getCorreo(), entity.getContraseña(), entity.getFechaNacimiento(),
+				TipoDocumentoAssembler.getInstance().toDomainFromEntity(entity.getTipoDocumento()),
+				entity.getNumeroDocumento(),
+				RespuestaAssembler.getInstance().toDomainFromEntity(entity.getConfirmacionCorreo()),
+				TipoPeriodoAcademicoAssembler.getInstance().toDomainFromEntity(entity.getTipoPeriodoAcademico()),
+				PaisAssembler.getInstance().toDomainFromEntity(entity.getPais()),
 				EstadoEstudianteAssembler.getInstance().toDomainFromEntity(entity.getEstado()));
+	}
+
+	@Override
+	public List<EstudianteDomain> toDomainListFromEntityList(List<EstudianteEntity> entityList) {
+		return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+	}
+
+	@Override
+	public List<EstudianteDTO> toDTOListFromDomainList(List<EstudianteDomain> domainList) {
+		return domainList.stream().map(domain -> toDtoFromDomain(domain)).toList();
 	}
 
 }

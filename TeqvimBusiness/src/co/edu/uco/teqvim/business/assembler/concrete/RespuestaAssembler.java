@@ -1,12 +1,14 @@
 package co.edu.uco.teqvim.business.assembler.concrete;
 
+import java.util.List;
+
 import co.edu.uco.teqvim.business.assembler.Assembler;
 import co.edu.uco.teqvim.business.domain.RespuestaDomain;
 import co.edu.uco.teqvim.dto.RespuestaDTO;
 import co.edu.uco.teqvim.entities.RespuestaEntity;
 
-public class RespuestaAssembler implements Assembler<RespuestaDomain, RespuestaDTO, RespuestaEntity>{
-	
+public class RespuestaAssembler implements Assembler<RespuestaDomain, RespuestaDTO, RespuestaEntity> {
+
 	private static final Assembler<RespuestaDomain, RespuestaDTO, RespuestaEntity> INSTANCE = new RespuestaAssembler();
 
 	private RespuestaAssembler() {
@@ -19,8 +21,8 @@ public class RespuestaAssembler implements Assembler<RespuestaDomain, RespuestaD
 
 	@Override
 	public RespuestaDTO toDtoFromDomain(RespuestaDomain domain) {
-		return RespuestaDTO.create().setIdentificador(domain.getIdentificador()).setNombre(domain.getNombre()).
-				setDescripcion(domain.getDescripcion());
+		return RespuestaDTO.create().setIdentificador(domain.getIdentificador()).setNombre(domain.getNombre())
+				.setDescripcion(domain.getDescripcion());
 	}
 
 	@Override
@@ -36,6 +38,16 @@ public class RespuestaAssembler implements Assembler<RespuestaDomain, RespuestaD
 	@Override
 	public RespuestaDomain toDomainFromEntity(RespuestaEntity entity) {
 		return new RespuestaDomain(entity.getIdentificador(), entity.getNombre(), entity.getDescripcion());
+	}
+
+	@Override
+	public List<RespuestaDomain> toDomainListFromEntityList(List<RespuestaEntity> entityList) {
+		return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+	}
+
+	@Override
+	public List<RespuestaDTO> toDTOListFromDomainList(List<RespuestaDomain> domainList) {
+		return domainList.stream().map(domain -> toDtoFromDomain(domain)).toList();
 	}
 
 }

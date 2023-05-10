@@ -1,12 +1,14 @@
 package co.edu.uco.teqvim.business.assembler.concrete;
 
+import java.util.List;
+
 import co.edu.uco.teqvim.business.assembler.Assembler;
 import co.edu.uco.teqvim.business.domain.EstadoEventoDomain;
 import co.edu.uco.teqvim.dto.EstadoEventoDTO;
 import co.edu.uco.teqvim.entities.EstadoEventoEntity;
 
 public class EstadoEventoAssembler implements Assembler<EstadoEventoDomain, EstadoEventoDTO, EstadoEventoEntity> {
-	
+
 	private static final Assembler<EstadoEventoDomain, EstadoEventoDTO, EstadoEventoEntity> INSTANCE = new EstadoEventoAssembler();
 
 	private EstadoEventoAssembler() {
@@ -16,10 +18,11 @@ public class EstadoEventoAssembler implements Assembler<EstadoEventoDomain, Esta
 	public static Assembler<EstadoEventoDomain, EstadoEventoDTO, EstadoEventoEntity> getInstance() {
 		return INSTANCE;
 	}
+
 	@Override
 	public EstadoEventoDTO toDtoFromDomain(EstadoEventoDomain domain) {
-		return EstadoEventoDTO.create().setIdentificador(domain.getIdentificador()).setNombre(domain.getNombre()).
-				setDescripcion(domain.getDescripcion());
+		return EstadoEventoDTO.create().setIdentificador(domain.getIdentificador()).setNombre(domain.getNombre())
+				.setDescripcion(domain.getDescripcion());
 	}
 
 	@Override
@@ -35,6 +38,16 @@ public class EstadoEventoAssembler implements Assembler<EstadoEventoDomain, Esta
 	@Override
 	public EstadoEventoDomain toDomainFromEntity(EstadoEventoEntity entity) {
 		return new EstadoEventoDomain(entity.getIdentificador(), entity.getNombre(), entity.getDescripcion());
+	}
+
+	@Override
+	public List<EstadoEventoDomain> toDomainListFromEntityList(List<EstadoEventoEntity> entityList) {
+		return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+	}
+
+	@Override
+	public List<EstadoEventoDTO> toDTOListFromDomainList(List<EstadoEventoDomain> domainList) {
+		return domainList.stream().map(domain -> toDtoFromDomain(domain)).toList();
 	}
 
 }

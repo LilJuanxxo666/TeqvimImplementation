@@ -1,5 +1,7 @@
 package co.edu.uco.teqvim.business.assembler.concrete;
 
+import java.util.List;
+
 import co.edu.uco.teqvim.business.assembler.Assembler;
 import co.edu.uco.teqvim.business.domain.PeriodoAcademicoDomain;
 import co.edu.uco.teqvim.dto.PeriodoAcademicoDTO;
@@ -47,6 +49,16 @@ public class PeriodoAcademicoAssembler
 				entity.getFechaFin(),
 				TipoPeriodoAcademicoAssembler.getInstance().toDomainFromEntity(entity.getTipoPeriodo()),
 				EstadoPeriodoAcademicoAssembler.getInstance().toDomainFromEntity(entity.getEstado()));
+	}
+
+	@Override
+	public List<PeriodoAcademicoDomain> toDomainListFromEntityList(List<PeriodoAcademicoEntity> entityList) {
+		return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+	}
+
+	@Override
+	public List<PeriodoAcademicoDTO> toDTOListFromDomainList(List<PeriodoAcademicoDomain> domainList) {
+		return domainList.stream().map(domain -> toDtoFromDomain(domain)).toList();
 	}
 
 }

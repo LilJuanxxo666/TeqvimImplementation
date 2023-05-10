@@ -1,12 +1,14 @@
 package co.edu.uco.teqvim.business.assembler.concrete;
 
+import java.util.List;
+
 import co.edu.uco.teqvim.business.assembler.Assembler;
 import co.edu.uco.teqvim.business.domain.NotificacionDomain;
 import co.edu.uco.teqvim.dto.NotificacionDTO;
 import co.edu.uco.teqvim.entities.NotificacionEntity;
 
 public class NotificacionAssembler implements Assembler<NotificacionDomain, NotificacionDTO, NotificacionEntity> {
-	
+
 	private static final Assembler<NotificacionDomain, NotificacionDTO, NotificacionEntity> INSTANCE = new NotificacionAssembler();
 
 	private NotificacionAssembler() {
@@ -53,6 +55,16 @@ public class NotificacionAssembler implements Assembler<NotificacionDomain, Noti
 				UnidadTiempoAssembler.getInstance().toDomainFromEntity(entity.getUnidadTiempo()),
 				TipoNotificacionAssembler.getInstance().toDomainFromEntity(entity.getTipoNotificacion()),
 				EstadoNotificacionAssembler.getInstance().toDomainFromEntity(entity.getEstado()));
+	}
+
+	@Override
+	public List<NotificacionDomain> toDomainListFromEntityList(List<NotificacionEntity> entityList) {
+		return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+	}
+
+	@Override
+	public List<NotificacionDTO> toDTOListFromDomainList(List<NotificacionDomain> domainList) {
+		return domainList.stream().map(domain -> toDtoFromDomain(domain)).toList();
 	}
 
 }

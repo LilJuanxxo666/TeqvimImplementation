@@ -1,12 +1,14 @@
 package co.edu.uco.teqvim.business.assembler.concrete;
 
+import java.util.List;
+
 import co.edu.uco.teqvim.business.assembler.Assembler;
 import co.edu.uco.teqvim.business.domain.FrecuenciaDomain;
 import co.edu.uco.teqvim.dto.FrecuenciaDTO;
 import co.edu.uco.teqvim.entities.FrecuenciaEntity;
 
 public final class FrecuenciaAssembler implements Assembler<FrecuenciaDomain, FrecuenciaDTO, FrecuenciaEntity> {
-	
+
 	private static final Assembler<FrecuenciaDomain, FrecuenciaDTO, FrecuenciaEntity> INSTANCE = new FrecuenciaAssembler();
 
 	private FrecuenciaAssembler() {
@@ -39,6 +41,16 @@ public final class FrecuenciaAssembler implements Assembler<FrecuenciaDomain, Fr
 	public FrecuenciaDomain toDomainFromEntity(FrecuenciaEntity entity) {
 		return new FrecuenciaDomain(entity.getIdentificador(), entity.getIntervalo(),
 				TipoFrecuenciaAssembler.getInstance().toDomainFromEntity(entity.getTipoFrecuencia()));
+	}
+
+	@Override
+	public List<FrecuenciaDomain> toDomainListFromEntityList(List<FrecuenciaEntity> entityList) {
+		return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+	}
+
+	@Override
+	public List<FrecuenciaDTO> toDTOListFromDomainList(List<FrecuenciaDomain> domainList) {
+		return domainList.stream().map(domain -> toDtoFromDomain(domain)).toList();
 	}
 
 }

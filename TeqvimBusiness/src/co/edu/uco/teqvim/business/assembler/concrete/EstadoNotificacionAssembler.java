@@ -1,5 +1,7 @@
 package co.edu.uco.teqvim.business.assembler.concrete;
 
+import java.util.List;
+
 import co.edu.uco.teqvim.business.assembler.Assembler;
 import co.edu.uco.teqvim.business.domain.EstadoNotificacionDomain;
 import co.edu.uco.teqvim.dto.EstadoNotificacionDTO;
@@ -36,6 +38,16 @@ public class EstadoNotificacionAssembler
 	@Override
 	public EstadoNotificacionDomain toDomainFromEntity(EstadoNotificacionEntity entity) {
 		return new EstadoNotificacionDomain(entity.getIdentificador(), entity.getNombre(), entity.getDescripcion());
+	}
+
+	@Override
+	public List<EstadoNotificacionDomain> toDomainListFromEntityList(List<EstadoNotificacionEntity> entityList) {
+		return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+	}
+
+	@Override
+	public List<EstadoNotificacionDTO> toDTOListFromDomainList(List<EstadoNotificacionDomain> domainList) {
+		return domainList.stream().map(domain -> toDtoFromDomain(domain)).toList();
 	}
 
 }

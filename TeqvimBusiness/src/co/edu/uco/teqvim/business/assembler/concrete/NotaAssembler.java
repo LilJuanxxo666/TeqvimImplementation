@@ -1,5 +1,7 @@
 package co.edu.uco.teqvim.business.assembler.concrete;
 
+import java.util.List;
+
 import co.edu.uco.teqvim.business.assembler.Assembler;
 import co.edu.uco.teqvim.business.domain.NotaDomain;
 import co.edu.uco.teqvim.dto.NotaDTO;
@@ -44,6 +46,16 @@ public class NotaAssembler implements Assembler<NotaDomain, NotaDTO, NotaEntity>
 		return new NotaDomain(entity.getIdentificador(),
 				TipoNotaAssembler.getInstance().toDomainFromEntity(entity.getTipoNota()), entity.getCalificacion(),
 				entity.getDescripcion());
+	}
+
+	@Override
+	public List<NotaDomain> toDomainListFromEntityList(List<NotaEntity> entityList) {
+		return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+	}
+
+	@Override
+	public List<NotaDTO> toDTOListFromDomainList(List<NotaDomain> domainList) {
+		return domainList.stream().map(domain -> toDtoFromDomain(domain)).toList();
 	}
 
 }

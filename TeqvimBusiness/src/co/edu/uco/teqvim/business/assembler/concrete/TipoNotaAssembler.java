@@ -1,12 +1,14 @@
 package co.edu.uco.teqvim.business.assembler.concrete;
 
+import java.util.List;
+
 import co.edu.uco.teqvim.business.assembler.Assembler;
 import co.edu.uco.teqvim.business.domain.TipoNotaDomain;
 import co.edu.uco.teqvim.dto.TipoNotaDTO;
 import co.edu.uco.teqvim.entities.TipoNotaEntity;
 
-public class TipoNotaAssembler implements Assembler<TipoNotaDomain, TipoNotaDTO, TipoNotaEntity>{
-	
+public class TipoNotaAssembler implements Assembler<TipoNotaDomain, TipoNotaDTO, TipoNotaEntity> {
+
 	private static final Assembler<TipoNotaDomain, TipoNotaDTO, TipoNotaEntity> INSTANCE = new TipoNotaAssembler();
 
 	private TipoNotaAssembler() {
@@ -19,8 +21,8 @@ public class TipoNotaAssembler implements Assembler<TipoNotaDomain, TipoNotaDTO,
 
 	@Override
 	public TipoNotaDTO toDtoFromDomain(TipoNotaDomain domain) {
-		return TipoNotaDTO.create().setIdentificador(domain.getIdentificador()).setNombre(domain.getNombre()).
-				setDescripcion(domain.getDescripcion());
+		return TipoNotaDTO.create().setIdentificador(domain.getIdentificador()).setNombre(domain.getNombre())
+				.setDescripcion(domain.getDescripcion());
 	}
 
 	@Override
@@ -37,5 +39,15 @@ public class TipoNotaAssembler implements Assembler<TipoNotaDomain, TipoNotaDTO,
 	public TipoNotaDomain toDomainFromEntity(TipoNotaEntity entity) {
 		return new TipoNotaDomain(entity.getIdentificador(), entity.getNombre(), entity.getDescripcion());
 	}
-	
+
+	@Override
+	public List<TipoNotaDomain> toDomainListFromEntityList(List<TipoNotaEntity> entityList) {
+		return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+	}
+
+	@Override
+	public List<TipoNotaDTO> toDTOListFromDomainList(List<TipoNotaDomain> domainList) {
+		return domainList.stream().map(domain -> toDtoFromDomain(domain)).toList();
+	}
+
 }

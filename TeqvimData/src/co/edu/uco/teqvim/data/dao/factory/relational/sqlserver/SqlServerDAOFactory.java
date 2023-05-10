@@ -60,35 +60,35 @@ public final class SqlServerDAOFactory extends DAOFactory {
 	private Connection connection;
 
 	public SqlServerDAOFactory() {
-		abrirConexion();
+		openConection();
 	}
 
 	@Override
-	protected void abrirConexion() {
+	protected void openConection() {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void cerrarConexion() {
+	public void closeConection() {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void iniciarTransaccion() {
+	public void initTransaction() {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void confirmarTransaccion() {
+	public void commitTransaction() {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void cancelarTransaccion() {
+	public void cancelTransaction() {
 		// TODO Auto-generated method stub
 
 	}

@@ -1,12 +1,14 @@
 package co.edu.uco.teqvim.business.assembler.concrete;
 
+import java.util.List;
+
 import co.edu.uco.teqvim.business.assembler.Assembler;
 import co.edu.uco.teqvim.business.domain.FestivoDomain;
 import co.edu.uco.teqvim.dto.FestivoDTO;
 import co.edu.uco.teqvim.entities.FestivoEntity;
 
 public class FestivoAssembler implements Assembler<FestivoDomain, FestivoDTO, FestivoEntity> {
-	
+
 	private static final Assembler<FestivoDomain, FestivoDTO, FestivoEntity> INSTANCE = new FestivoAssembler();
 
 	private FestivoAssembler() {
@@ -48,6 +50,16 @@ public class FestivoAssembler implements Assembler<FestivoDomain, FestivoDTO, Fe
 				TipoFestivoAssembler.getInstance().toDomainFromEntity(entity.getTipo()),
 				TipoFestivoFijoAssembler.getInstance().toDomainFromEntity(entity.getTipoFijo()), entity.getFecha(),
 				entity.getFestividad(), PaisAssembler.getInstance().toDomainFromEntity(entity.getPaisCelebracion()));
+	}
+
+	@Override
+	public List<FestivoDomain> toDomainListFromEntityList(List<FestivoEntity> entityList) {
+		return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+	}
+
+	@Override
+	public List<FestivoDTO> toDTOListFromDomainList(List<FestivoDomain> domainList) {
+		return domainList.stream().map(domain -> toDtoFromDomain(domain)).toList();
 	}
 
 }

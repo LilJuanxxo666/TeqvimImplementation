@@ -1,7 +1,14 @@
 package co.edu.uco.teqvim.data.dao.factory.relational.postgresql;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
+import co.edu.uco.teqvim.crosscutting.exception.TeqvimCrossCuttingException;
+import co.edu.uco.teqvim.crosscutting.exception.TeqvimDataException;
+import co.edu.uco.teqvim.crosscutting.exception.TeqvimException;
+import co.edu.uco.teqvim.crosscutting.utils.Messages.UtilSqlMessages;
+import co.edu.uco.teqvim.crosscutting.utils.UtilSql;
 import co.edu.uco.teqvim.data.dao.DuracionDAO;
 import co.edu.uco.teqvim.data.dao.EstadoEstudianteDAO;
 import co.edu.uco.teqvim.data.dao.EstadoEventoDAO;
@@ -58,170 +65,224 @@ import co.edu.uco.teqvim.data.dao.relational.postgresql.UnidadTiempoPostgreSqlDA
 
 public final class PostgreSqlDAOFactory extends DAOFactory {
 
-	private Connection connection;
+	private Connection conexion;
 
 	public PostgreSqlDAOFactory() {
-		abrirConexion();
+		openConection();
 	}
 
 	@Override
-	protected void abrirConexion() {
-		// TODO Auto-generated method stub
+	protected final void openConection() {
+		try {
+			conexion = DriverManager.getConnection("jdbc:postgresql://localhost:5432/publiuco", "postgres", "admin123");
+			UtilSql.connectionIsOpen(conexion);
+		} catch (final TeqvimException exception) {
+			throw exception;
+		} catch (IllegalArgumentException exception) {
+			var userMessage = UtilSqlMessages.CONNECTION_IS_OPEN_USER_MESSAGE;
+			var technicalMessage = UtilSqlMessages.CONNECTION_IS_OPEN_TECHNICAL_ILEGAL_ARGUMENT_EXCEPTION;
+
+			throw TeqvimDataException.create(userMessage, technicalMessage, exception);
+		} catch (final NullPointerException exception) {
+			var userMessage = UtilSqlMessages.CONNECTION_IS_OPEN_USER_MESSAGE;
+			var technicalMessage = UtilSqlMessages.CONNECTION_IS_OPEN_TECHNICAL_NULL_POINTER_EXCEPTION;
+
+			throw TeqvimDataException.create(userMessage, technicalMessage, exception);
+		} catch (final Exception exception) {
+			var userMessage = UtilSqlMessages.CONNECTION_IS_OPEN_USER_MESSAGE;
+			var technicalMessage = UtilSqlMessages.CONNECTION_IS_OPEN_TECHNICAL_EXCEPTION;
+
+			throw TeqvimDataException.create(userMessage, technicalMessage, exception);
+		}
 
 	}
 
 	@Override
-	public void cerrarConexion() {
-		// TODO Auto-generated method stub
+	public final void closeConection() {
+		try {
+			UtilSql.closeConnection(conexion);
+		} catch (final TeqvimException exception) {
+			throw exception;
+		}
 
 	}
 
 	@Override
-	public void iniciarTransaccion() {
-		// TODO Auto-generated method stub
+	public final void initTransaction() {
+		try {
+			UtilSql.connectionIsOpen(conexion);
+			conexion.setAutoCommit(false);
+		} catch (final TeqvimException exception) {
+			throw exception;
+		} catch (final SQLException exception) {
+			var userMessage = UtilSqlMessages.COMMIT_IS_STARTING_USER_MESSAGE;
+			var technicalMessage = UtilSqlMessages.COMMIT_TECHNICAL_SQL_EXCEPTION;
+
+			throw TeqvimCrossCuttingException.create(userMessage, technicalMessage, exception);
+		}
 
 	}
 
 	@Override
-	public void confirmarTransaccion() {
-		// TODO Auto-generated method stub
+	public void commitTransaction() {
+		try {
+			UtilSql.initCommitIsReady(conexion);
+			conexion.commit();
+		} catch (TeqvimException exception) {
+			throw exception;
+		} catch (SQLException exception) {
+			var userMessage = UtilSqlMessages.CONFIRM_COMMIT_USER_MESSAGE;
+			var technicalMessage = UtilSqlMessages.COMMIT_TECHNICAL_SQL_EXCEPTION;
+
+			throw TeqvimCrossCuttingException.create(userMessage, technicalMessage, exception);
+		}
 
 	}
 
 	@Override
-	public void cancelarTransaccion() {
-		// TODO Auto-generated method stub
+	public void cancelTransaction() {
+		try {
+			UtilSql.initCommitIsReady(conexion);
+			conexion.rollback();
+		} catch (TeqvimException exception) {
+			throw exception;
+		} catch (SQLException exception) {
+			var userMessage = UtilSqlMessages.CANCEL_COMMIT_USER_MESSAGE;
+			var technicalMessage = UtilSqlMessages.COMMIT_TECHNICAL_SQL_EXCEPTION;
+
+			throw TeqvimCrossCuttingException.create(userMessage, technicalMessage, exception);
+		}
 
 	}
 
 	@Override
 	public DuracionDAO getDuracionDAO() {
-		return new DuracionPostgreSqlDAO(connection);
+		return new DuracionPostgreSqlDAO(conexion);
 	}
 
 	@Override
 	public EstadoEstudianteDAO getEstadoEstudianteDAO() {
-		return new EstadoEstudiantePostgreSqlDAO(connection);
+		return new EstadoEstudiantePostgreSqlDAO(conexion);
 	}
 
 	@Override
 	public EstadoEventoDAO getEstadoEventoDAO() {
-		return new EstadoEventoPostgreSqlDAO(connection);
+		return new EstadoEventoPostgreSqlDAO(conexion);
 	}
 
 	@Override
 	public EstadoNotificacionDAO getEstadoNotificacionDAO() {
-		return new EstadoNotificacionPostgreSqlDAO(connection);
+		return new EstadoNotificacionPostgreSqlDAO(conexion);
 	}
 
 	@Override
 	public EstadoPeriodoAcademicoDAO getEstadoPeriodoAcademicoDAO() {
-		return new EstadoPeriodoAcademicoPostgreSqlDAO(connection);
+		return new EstadoPeriodoAcademicoPostgreSqlDAO(conexion);
 	}
 
 	@Override
 	public EstudianteDAO getEstudianteDAO() {
-		return new EstudiantePostgreSqlDAO(connection);
+		return new EstudiantePostgreSqlDAO(conexion);
 	}
 
 	@Override
 	public EventoDAO getEventoDAO() {
-		return new EventoPostgreSqlDAO(connection);
+		return new EventoPostgreSqlDAO(conexion);
 	}
 
 	@Override
 	public FestivoDAO getFestivoDAO() {
-		return new FestivoPostgreSqlDAO(connection);
+		return new FestivoPostgreSqlDAO(conexion);
 	}
 
 	@Override
 	public FrecuenciaDAO getFrecuenciaDAO() {
-		return new FrecuenciaPostgreSqlDAO(connection);
+		return new FrecuenciaPostgreSqlDAO(conexion);
 	}
 
 	@Override
 	public MateriaDAO getMateriaDAO() {
-		return new MateriaPostgreSqlDAO(connection);
+		return new MateriaPostgreSqlDAO(conexion);
 	}
 
 	@Override
 	public NotaDAO getNotaDAO() {
-		return new NotaPostgreSqlDAO(connection);
+		return new NotaPostgreSqlDAO(conexion);
 	}
 
 	@Override
 	public NotificacionDAO getNotificacionDAO() {
-		return new NotificacionPostgreSqlDAO(connection);
+		return new NotificacionPostgreSqlDAO(conexion);
 	}
 
 	@Override
 	public PaisDAO getPaisDAO() {
-		return new PaisPostgreSqlDAO(connection);
+		return new PaisPostgreSqlDAO(conexion);
 	}
 
 	@Override
 	public PeriodoAcademicoDAO getPeriodoAcademicoDAO() {
-		return new PeriodoAcademicoPostgreSqlDAO(connection);
+		return new PeriodoAcademicoPostgreSqlDAO(conexion);
 	}
 
 	@Override
 	public RepeticionDAO getRepeticionDAO() {
-		return new RepeticionPostgreSqlDAO(connection);
+		return new RepeticionPostgreSqlDAO(conexion);
 	}
 
 	@Override
 	public RespuestaDAO getRespuestaDAO() {
-		return new RespuestaPostgreSqlDAO(connection);
+		return new RespuestaPostgreSqlDAO(conexion);
 	}
 
 	@Override
 	public TipoDocumentoDAO getTipoDocumentoDAO() {
-		return new TipoDocumentoPostgreSqlDAO(connection);
+		return new TipoDocumentoPostgreSqlDAO(conexion);
 	}
 
 	@Override
 	public TipoDuracionEventoDAO getTipoDuracionEventoDAO() {
-		return new TipoDuracionEventoPostgreSqlDAO(connection);
+		return new TipoDuracionEventoPostgreSqlDAO(conexion);
 	}
 
 	@Override
 	public TipoEventoDAO getTipoEventoDAO() {
-		return new TipoEventoPostgreSqlDAO(connection);
+		return new TipoEventoPostgreSqlDAO(conexion);
 	}
 
 	@Override
 	public TipoFestivoDAO getTipoFestivoDAO() {
-		return new TipoFestivoPostgreSqlDAO(connection);
+		return new TipoFestivoPostgreSqlDAO(conexion);
 	}
 
 	@Override
 	public TipoFestivoFijoDAO getTipoFestivoFijoDAO() {
-		return new TipoFestivoFijoPostgreSqlDAO(connection);
+		return new TipoFestivoFijoPostgreSqlDAO(conexion);
 	}
 
 	@Override
 	public TipoFrecuenciaDAO getTipoFrecuenciaDAO() {
-		return new TipoFrecuenciaPostgreSqlDAO(connection);
+		return new TipoFrecuenciaPostgreSqlDAO(conexion);
 	}
 
 	@Override
 	public TipoNotaDAO getTipoNotaDAO() {
-		return new TipoNotaPostgreSqlDAO(connection);
+		return new TipoNotaPostgreSqlDAO(conexion);
 	}
 
 	@Override
 	public TipoNotificacionDAO getTipoNotificacionDAO() {
-		return new TipoNotificacionPostgreSqlDAO(connection);
+		return new TipoNotificacionPostgreSqlDAO(conexion);
 	}
 
 	@Override
 	public TipoPeriodoAcademicoDAO getTipoPeriodoAcademicoDAO() {
-		return new TipoPeriodoAcademicoPostgreSqlDAO(connection);
+		return new TipoPeriodoAcademicoPostgreSqlDAO(conexion);
 	}
 
 	@Override
 	public UnidadTiempoDAO getUnidadTiempoDAO() {
-		return new UnidadTiempoPostgreSqlDAO(connection);
+		return new UnidadTiempoPostgreSqlDAO(conexion);
 	}
 
 }

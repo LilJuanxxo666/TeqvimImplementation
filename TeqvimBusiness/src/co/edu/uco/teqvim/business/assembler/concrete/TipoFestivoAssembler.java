@@ -1,12 +1,14 @@
 package co.edu.uco.teqvim.business.assembler.concrete;
 
+import java.util.List;
+
 import co.edu.uco.teqvim.business.assembler.Assembler;
 import co.edu.uco.teqvim.business.domain.TipoFestivoDomain;
 import co.edu.uco.teqvim.dto.TipoFestivoDTO;
 import co.edu.uco.teqvim.entities.TipoFestivoEntity;
 
-public class TipoFestivoAssembler implements Assembler<TipoFestivoDomain, TipoFestivoDTO, TipoFestivoEntity>{
-	
+public class TipoFestivoAssembler implements Assembler<TipoFestivoDomain, TipoFestivoDTO, TipoFestivoEntity> {
+
 	private static final Assembler<TipoFestivoDomain, TipoFestivoDTO, TipoFestivoEntity> INSTANCE = new TipoFestivoAssembler();
 
 	private TipoFestivoAssembler() {
@@ -19,8 +21,8 @@ public class TipoFestivoAssembler implements Assembler<TipoFestivoDomain, TipoFe
 
 	@Override
 	public TipoFestivoDTO toDtoFromDomain(TipoFestivoDomain domain) {
-		return TipoFestivoDTO.create().setIdentificador(domain.getIdentificador()).setNombre(domain.getNombre()).
-				setDescripcion(domain.getDescripcion());
+		return TipoFestivoDTO.create().setIdentificador(domain.getIdentificador()).setNombre(domain.getNombre())
+				.setDescripcion(domain.getDescripcion());
 	}
 
 	@Override
@@ -37,6 +39,15 @@ public class TipoFestivoAssembler implements Assembler<TipoFestivoDomain, TipoFe
 	public TipoFestivoDomain toDomainFromEntity(TipoFestivoEntity entity) {
 		return new TipoFestivoDomain(entity.getIdentificador(), entity.getNombre(), entity.getDescripcion());
 	}
-	
+
+	@Override
+	public List<TipoFestivoDomain> toDomainListFromEntityList(List<TipoFestivoEntity> entityList) {
+		return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+	}
+
+	@Override
+	public List<TipoFestivoDTO> toDTOListFromDomainList(List<TipoFestivoDomain> domainList) {
+		return domainList.stream().map(domain -> toDtoFromDomain(domain)).toList();
+	}
 
 }

@@ -1,12 +1,14 @@
 package co.edu.uco.teqvim.business.assembler.concrete;
 
+import java.util.List;
+
 import co.edu.uco.teqvim.business.assembler.Assembler;
 import co.edu.uco.teqvim.business.domain.RepeticionDomain;
 import co.edu.uco.teqvim.dto.RepeticionDTO;
 import co.edu.uco.teqvim.entities.RepeticionEntity;
 
 public final class RepeticionAssembler implements Assembler<RepeticionDomain, RepeticionDTO, RepeticionEntity> {
-	
+
 	private static final Assembler<RepeticionDomain, RepeticionDTO, RepeticionEntity> INSTANCE = new RepeticionAssembler();
 
 	private RepeticionAssembler() {
@@ -48,6 +50,16 @@ public final class RepeticionAssembler implements Assembler<RepeticionDomain, Re
 				EventoAssembler.getInstance().toDomainFromEntity(entity.getEvento()),
 				DuracionAssembler.getInstance().toDomainFromEntity(entity.getDuracion()),
 				FrecuenciaAssembler.getInstance().toDomainFromEntity(entity.getFrecuencia()), entity.getDiaSemana());
+	}
+
+	@Override
+	public List<RepeticionDomain> toDomainListFromEntityList(List<RepeticionEntity> entityList) {
+		return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+	}
+
+	@Override
+	public List<RepeticionDTO> toDTOListFromDomainList(List<RepeticionDomain> domainList) {
+		return domainList.stream().map(domain -> toDtoFromDomain(domain)).toList();
 	}
 
 }
