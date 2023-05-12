@@ -5,8 +5,6 @@ import co.edu.uco.teqvim.dto.EstadoPeriodoAcademicoDTO;
 
 public interface EstadoPeriodoAcademicoFacade {
 
-	void register(EstadoPeriodoAcademicoDTO dto);
-
 	List<EstadoPeriodoAcademicoDTO> list(EstadoPeriodoAcademicoDTO dto);
 
 }

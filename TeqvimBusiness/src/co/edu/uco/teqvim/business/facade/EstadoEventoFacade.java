@@ -5,8 +5,6 @@ import co.edu.uco.teqvim.dto.EstadoEventoDTO;
 
 public interface EstadoEventoFacade {
 
-	void register(EstadoEventoDTO dto);
-
 	List<EstadoEventoDTO> list(EstadoEventoDTO dto);
 
 }

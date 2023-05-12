@@ -15,7 +15,7 @@ import co.edu.uco.teqvim.dto.DuracionDTO;
 
 public final class DuracionFacadeImpl implements DuracionFacade {
 
-	private final DAOFactory daoFactory;;
+	private final DAOFactory daoFactory;
 	private final DuracionBusiness business;
 
 	public DuracionFacadeImpl() {

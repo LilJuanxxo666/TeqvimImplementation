@@ -5,8 +5,6 @@ import co.edu.uco.teqvim.dto.TipoPeriodoAcademicoDTO;
 
 public interface TipoPeriodoAcademicoFacade {
 
-	void register(TipoPeriodoAcademicoDTO dto);
-
 	List<TipoPeriodoAcademicoDTO> list(TipoPeriodoAcademicoDTO dto);
 
 }

@@ -5,8 +5,6 @@ import co.edu.uco.teqvim.dto.TipoNotaDTO;
 
 public interface TipoNotaFacade {
 
-	void register(TipoNotaDTO dto);
-
 	List<TipoNotaDTO> list(TipoNotaDTO dto);
 
 }

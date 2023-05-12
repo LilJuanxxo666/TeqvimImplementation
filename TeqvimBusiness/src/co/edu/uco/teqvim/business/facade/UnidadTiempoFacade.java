@@ -5,8 +5,6 @@ import co.edu.uco.teqvim.dto.UnidadTiempoDTO;
 
 public interface UnidadTiempoFacade {
 
-	void register(UnidadTiempoDTO dto);
-
 	List<UnidadTiempoDTO> list(UnidadTiempoDTO dto);
 
 }

@@ -74,8 +74,10 @@ public final class PostgreSqlDAOFactory extends DAOFactory {
 	@Override
 	protected final void openConection() {
 		try {
-			conexion = DriverManager.getConnection("jdbc:postgresql://localhost:5432/publiuco", "postgres", "admin123");
+			Class.forName("org.postgresql.Driver");
+			conexion = DriverManager.getConnection("postgres://rrqjiyyt:L-G7WHZNqj50laWZH3KTt0OFIpieh3X2@mahmud.db.elephantsql.com/rrqjiyyt", "rrqjiyyt", "L-G7WHZNqj50laWZH3KTt0OFIpieh3X2");
 			UtilSql.connectionIsOpen(conexion);
+			System.out.println("Se acaba de ingresar a la base de datos");
 		} catch (final TeqvimException exception) {
 			throw exception;
 		} catch (IllegalArgumentException exception) {
@@ -153,6 +155,10 @@ public final class PostgreSqlDAOFactory extends DAOFactory {
 			throw TeqvimCrossCuttingException.create(userMessage, technicalMessage, exception);
 		}
 
+	}
+	
+	public static void main(String[] args) {
+		PostgreSqlDAOFactory base = new PostgreSqlDAOFactory();
 	}
 
 	@Override

@@ -5,8 +5,6 @@ import co.edu.uco.teqvim.dto.EstadoNotificacionDTO;
 
 public interface EstadoNotificacionFacade {
 
-	void register(EstadoNotificacionDTO dto);
-
 	List<EstadoNotificacionDTO> list(EstadoNotificacionDTO dto);
 
 }

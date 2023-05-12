@@ -6,7 +6,6 @@ import co.edu.uco.teqvim.crosscutting.utils.UtilText;
 public class TeqvimException extends RuntimeException {
 
 	private static final long serialVersionUID = 6575335625711312099L;
-
 	private ExceptionType type;
 	private String userMessage;
 

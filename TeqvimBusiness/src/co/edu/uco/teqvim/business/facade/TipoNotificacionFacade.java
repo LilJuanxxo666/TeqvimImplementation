@@ -5,8 +5,6 @@ import co.edu.uco.teqvim.dto.TipoNotificacionDTO;
 
 public interface TipoNotificacionFacade {
 
-	void register(TipoNotificacionDTO dto);
-
 	List<TipoNotificacionDTO> list(TipoNotificacionDTO dto);
 
 }

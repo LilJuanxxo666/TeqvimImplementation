@@ -5,8 +5,6 @@ import co.edu.uco.teqvim.dto.TipoFestivoDTO;
 
 public interface TipoFestivoFacade {
 
-	void register(TipoFestivoDTO dto);
-
 	List<TipoFestivoDTO> list(TipoFestivoDTO dto);
 
 }
