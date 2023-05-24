@@ -45,8 +45,14 @@ nav .list li{
 
 nav .list a{
     display: block;
-    text-transform: lowercase;
-    padding: 18px;
+    margin: 5px;
+    margin-right: 20px;
+    padding: 10px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
 }
 
 nav .list img{
@@ -149,6 +155,14 @@ nav .logo{
         margin-left: 10px;
     }
 
+    nav .logo2{
+        float:left;
+        width: auto;
+        justify-content: left;
+        font-size: 22px;
+        margin-left: -40px;
+    }
+
 
 .side-bar{
     margin-bottom: 10px;
@@ -186,7 +200,7 @@ nav .logo{
 
 ul li:hover a{
   font-size: 25px;
-  background-color: #897ce6;
+  background-color: #560bad;
   transition: .8s;
   color: #ffffff;
   -webkit-transition: 0.6s;
@@ -196,12 +210,14 @@ ul li:hover a{
 }
 
 .side-bar ul li img{
-   display: block;
+   position: top;
+   display: flex;
    width: 22px;
    line-height: 65px;
    color: #252525;
    padding-left: 0px;
    padding-top: 30px;
+   margin: 0;
 }
 
 .side-bar img {
@@ -254,8 +270,8 @@ ul li:hover a{
 }
 
 input:checked + .slider {
-  background-color: #6558cb;
-  border: 1px solid #6558cb;
+  background-color: #560bad;
+  border: 1px solid #560bad;
 }
 
 input:focus + .slider {
@@ -479,13 +495,17 @@ form button{
     margin-top: -20px;
 }
 
+
+
 div select{
     display: block;
     margin-left: 180px;
     margin-top: -50px;
     height: 20px;
-    width: 100px;
+    width: 280px;
     border-top: none;
+    border-right: none;
+    border-left: none;
     background: #ffff;
 }
 
@@ -524,12 +544,56 @@ div select{
     display: block;
     margin-left: 220px;
     margin-top: 5px;
-    margin: 20px;
 }
 
 .button2{
     display: block;
-    margin-left: 120px;
-    margin: 20px;
-    margin-top: 5px;
+    margin-left: 410px;
+    margin-top: -61px;
 }
+
+button {
+    --color: #560bad;
+    font-family: inherit;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--color);
+    transition: color .5s;
+    z-index: 1;
+    font-size: 17px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: var(--color);
+   }
+
+   button:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--color);
+    height: 150px;
+    width: 200px;
+    border-radius: 50%;
+   }
+
+   button:hover {
+    color: #fff;
+   }
+
+   button:before {
+    top: 100%;
+    left: 100%;
+    transition: all .7s;
+   }
+
+   button:hover:before {
+    top: -30px;
+    left: -30px;
+   }
+
+   button:active:before {
+    background: #3a0ca3;
+    transition: background 0s;
+   }
+
