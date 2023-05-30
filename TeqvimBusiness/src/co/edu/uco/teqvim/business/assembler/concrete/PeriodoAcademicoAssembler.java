@@ -25,14 +25,16 @@ public class PeriodoAcademicoAssembler
 		return PeriodoAcademicoDTO.create().setIdentificador(domain.getIdentificador()).setNombre(domain.getNombre())
 				.setFechaInicio(domain.getFechaInicio()).setFechaFin(domain.getFechaFin())
 				.setTipoPeriodo(TipoPeriodoAcademicoAssembler.getInstance().toDtoFromDomain(domain.getTipoPeriodo()))
-				.setEstado(EstadoPeriodoAcademicoAssembler.getInstance().toDtoFromDomain(domain.getEstado()));
+				.setEstado(EstadoPeriodoAcademicoAssembler.getInstance().toDtoFromDomain(domain.getEstado()))
+				.setEstudiante(EstudianteAssembler.getInstance().toDtoFromDomain(domain.getEstudiante()));
 	}
 
 	@Override
 	public PeriodoAcademicoDomain toDomainFromDto(PeriodoAcademicoDTO dto) {
 		return new PeriodoAcademicoDomain(dto.getIdentificador(), dto.getNombre(), dto.getFechaInicio(),
 				dto.getFechaFin(), TipoPeriodoAcademicoAssembler.getInstance().toDomainFromDto(dto.getTipoPeriodo()),
-				EstadoPeriodoAcademicoAssembler.getInstance().toDomainFromDto(dto.getEstado()));
+				EstadoPeriodoAcademicoAssembler.getInstance().toDomainFromDto(dto.getEstado()),
+				EstudianteAssembler.getInstance().toDomainFromDto(dto.getEstudiante()));
 	}
 
 	@Override
@@ -40,7 +42,8 @@ public class PeriodoAcademicoAssembler
 		return new PeriodoAcademicoEntity(domain.getIdentificador(), domain.getNombre(), domain.getFechaInicio(),
 				domain.getFechaFin(),
 				TipoPeriodoAcademicoAssembler.getInstance().toEntityFromDomain(domain.getTipoPeriodo()),
-				EstadoPeriodoAcademicoAssembler.getInstance().toEntityFromDomain(domain.getEstado()));
+				EstadoPeriodoAcademicoAssembler.getInstance().toEntityFromDomain(domain.getEstado()),
+				EstudianteAssembler.getInstance().toEntityFromDomain(domain.getEstudiante()));
 	}
 
 	@Override
@@ -48,7 +51,8 @@ public class PeriodoAcademicoAssembler
 		return new PeriodoAcademicoDomain(entity.getIdentificador(), entity.getNombre(), entity.getFechaInicio(),
 				entity.getFechaFin(),
 				TipoPeriodoAcademicoAssembler.getInstance().toDomainFromEntity(entity.getTipoPeriodo()),
-				EstadoPeriodoAcademicoAssembler.getInstance().toDomainFromEntity(entity.getEstado()));
+				EstadoPeriodoAcademicoAssembler.getInstance().toDomainFromEntity(entity.getEstado()),
+				EstudianteAssembler.getInstance().toDomainFromEntity(entity.getEstudiante()));
 	}
 
 	@Override

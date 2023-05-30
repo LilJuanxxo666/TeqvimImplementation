@@ -5,8 +5,6 @@ import co.edu.uco.teqvim.business.domain.TipoFestivoDomain;
 
 public interface TipoFestivoBusiness {
 
-	void register(TipoFestivoDomain domain);
-
 	List<TipoFestivoDomain> list(TipoFestivoDomain domain);
 
 }

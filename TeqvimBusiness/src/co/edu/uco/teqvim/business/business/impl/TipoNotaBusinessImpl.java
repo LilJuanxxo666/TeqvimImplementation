@@ -17,13 +17,6 @@ public final class TipoNotaBusinessImpl implements TipoNotaBusiness {
 	}
 
 	@Override
-	public void register(final TipoNotaDomain domain) {
-		final TipoNotaEntity entity = TipoNotaAssembler.getInstance().toEntityFromDomain(domain);
-		daoFactory.getTipoNotaDAO().create(entity);
-
-	}
-
-	@Override
 	public List<TipoNotaDomain> list(final TipoNotaDomain domain) {
 		final TipoNotaEntity entity = TipoNotaAssembler.getInstance().toEntityFromDomain(domain);
 

@@ -15,7 +15,7 @@ public final class DuracionDTO {
 	public DuracionDTO() {
 		super();
 		setIdentificador(UtilUUID.DEFAULT_UUID);
-		setCantidadTiempo(UtilNumber.ZERO_INT);
+		setCantidadTiempo(UtilNumber.ZERO.hashCode());
 		setUnidadTiempo(UnidadTiempoDTO.create());
 	}
 
@@ -44,7 +44,7 @@ public final class DuracionDTO {
 	}
 
 	public final DuracionDTO setCantidadTiempo(final int cantidadTiempo) {
-		this.cantidadTiempo = cantidadTiempo;
+		this.cantidadTiempo = UtilNumber.getUtilNumber().getDefault(cantidadTiempo).intValue();
 		return this;
 	}
 

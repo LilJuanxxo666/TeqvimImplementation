@@ -13,14 +13,7 @@ public final class TipoEventoSqlServerDAO implements TipoEventoDAO {
 	}
 
 	@Override
-	public void create(TipoEventoEntity entity) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public List<TipoEventoEntity> read(TipoEventoEntity entity) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

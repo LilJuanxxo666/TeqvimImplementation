@@ -13,14 +13,7 @@ public final class TipoFestivoFijoPostgreSqlDAO implements TipoFestivoFijoDAO {
 	}
 
 	@Override
-	public void create(TipoFestivoFijoEntity entity) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public List<TipoFestivoFijoEntity> read(TipoFestivoFijoEntity entity) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

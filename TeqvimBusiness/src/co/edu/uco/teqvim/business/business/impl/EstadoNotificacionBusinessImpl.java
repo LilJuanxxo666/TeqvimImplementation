@@ -17,13 +17,6 @@ public final class EstadoNotificacionBusinessImpl implements EstadoNotificacionB
 	}
 
 	@Override
-	public void register(final EstadoNotificacionDomain domain) {
-		final EstadoNotificacionEntity entity = EstadoNotificacionAssembler.getInstance().toEntityFromDomain(domain);
-		daoFactory.getEstadoNotificacionDAO().create(entity);
-
-	}
-
-	@Override
 	public List<EstadoNotificacionDomain> list(final EstadoNotificacionDomain domain) {
 		final EstadoNotificacionEntity entity = EstadoNotificacionAssembler.getInstance().toEntityFromDomain(domain);
 

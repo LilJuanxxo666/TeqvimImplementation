@@ -6,8 +6,6 @@ import co.edu.uco.teqvim.entities.TipoNotificacionEntity;
 
 public interface TipoNotificacionDAO {
 
-	void create(TipoNotificacionEntity entity);
-
 	List<TipoNotificacionEntity> read(TipoNotificacionEntity entity);
 
 }

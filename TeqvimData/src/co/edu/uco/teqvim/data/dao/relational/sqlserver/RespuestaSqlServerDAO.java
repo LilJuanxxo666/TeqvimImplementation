@@ -13,14 +13,7 @@ public final class RespuestaSqlServerDAO implements RespuestaDAO {
 	}
 
 	@Override
-	public void create(RespuestaEntity entity) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public List<RespuestaEntity> read(RespuestaEntity entity) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

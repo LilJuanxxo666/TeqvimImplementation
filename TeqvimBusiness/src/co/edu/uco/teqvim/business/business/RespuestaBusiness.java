@@ -5,8 +5,6 @@ import co.edu.uco.teqvim.business.domain.RespuestaDomain;
 
 public interface RespuestaBusiness {
 
-	void register(RespuestaDomain domain);
-
 	List<RespuestaDomain> list(RespuestaDomain domain);
 
 }

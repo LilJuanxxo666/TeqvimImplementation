@@ -17,13 +17,6 @@ public final class RespuestaBusinessImpl implements RespuestaBusiness {
 	}
 
 	@Override
-	public void register(final RespuestaDomain domain) {
-		final RespuestaEntity entity = RespuestaAssembler.getInstance().toEntityFromDomain(domain);
-		daoFactory.getRespuestaDAO().create(entity);
-
-	}
-
-	@Override
 	public List<RespuestaDomain> list(final RespuestaDomain domain) {
 		final RespuestaEntity entity = RespuestaAssembler.getInstance().toEntityFromDomain(domain);
 

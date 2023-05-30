@@ -1,10 +1,6 @@
 package co.edu.uco.teqvim.entities;
 
-import java.time.DayOfWeek;
-import java.util.List;
 import java.util.UUID;
-
-import co.edu.uco.teqvim.crosscutting.utils.UtilList;
 import co.edu.uco.teqvim.crosscutting.utils.UtilObject;
 import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
 
@@ -16,7 +12,6 @@ public final class RepeticionEntity {
 	private EventoEntity evento;
 	private DuracionEntity duracion;
 	private FrecuenciaEntity frecuencia;
-	private List<DayOfWeek> diaSemana;
 
 	private RepeticionEntity() {
 		super();
@@ -24,17 +19,15 @@ public final class RepeticionEntity {
 		setEvento(EventoEntity.getDefaultObject());
 		setDuracion(DuracionEntity.getDefaultObject());
 		setFrecuencia(FrecuenciaEntity.getDefaultObject());
-		setDiaSemana(UtilList.getDefaultList());
 	}
 
 	public RepeticionEntity(final UUID identificador, final EventoEntity evento, final DuracionEntity duracion,
-			final FrecuenciaEntity frecuencia, List<DayOfWeek> diaSemana) {
+			final FrecuenciaEntity frecuencia) {
 		super();
 		setIdentificador(identificador);
 		setEvento(evento);
 		setDuracion(duracion);
 		setFrecuencia(frecuencia);
-		setDiaSemana(diaSemana);
 	}
 	
 	public static RepeticionEntity getDefaultObject() {
@@ -73,13 +66,4 @@ public final class RepeticionEntity {
 	private final void setFrecuencia(final FrecuenciaEntity frecuencia) {
 		this.frecuencia = UtilObject.getDefault(frecuencia, FrecuenciaEntity.getDefaultObject());
 	}
-
-	public final List<DayOfWeek> getDiaSemana() {
-		return diaSemana;
-	}
-
-	private final void setDiaSemana(List<DayOfWeek> diaSemana) {
-		this.diaSemana = UtilList.getDefault(diaSemana);
-	}
-
 }

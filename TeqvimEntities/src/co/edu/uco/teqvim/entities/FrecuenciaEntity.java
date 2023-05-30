@@ -16,7 +16,7 @@ public class FrecuenciaEntity {
 	private FrecuenciaEntity() {
 		super();
 		setIdentificador(UtilUUID.DEFAULT_UUID);
-		setIntervalo(UtilNumber.ZERO_INT);
+		setIntervalo(UtilNumber.ZERO.intValue());
 		setTipoFrecuencia(TipoFrecuenciaEntity.getDefaultObject());
 	}
 
@@ -44,7 +44,7 @@ public class FrecuenciaEntity {
 	}
 
 	private final void setIntervalo(final int intervalo) {
-		this.intervalo = intervalo;
+		this.intervalo = UtilNumber.getUtilNumber().getDefault(intervalo).intValue();
 	}
 
 	public final TipoFrecuenciaEntity getTipoFrecuencia() {

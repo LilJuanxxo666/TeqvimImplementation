@@ -17,13 +17,6 @@ public final class TipoDocumentoBusinessImpl implements TipoDocumentoBusiness {
 	}
 
 	@Override
-	public void register(final TipoDocumentoDomain domain) {
-		final TipoDocumentoEntity entity = TipoDocumentoAssembler.getInstance().toEntityFromDomain(domain);
-		daoFactory.getTipoDocumentoDAO().create(entity);
-
-	}
-
-	@Override
 	public List<TipoDocumentoDomain> list(final TipoDocumentoDomain domain) {
 		final TipoDocumentoEntity entity = TipoDocumentoAssembler.getInstance().toEntityFromDomain(domain);
 

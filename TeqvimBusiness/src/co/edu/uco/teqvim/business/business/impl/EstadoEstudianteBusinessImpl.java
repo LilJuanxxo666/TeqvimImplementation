@@ -17,13 +17,6 @@ public final class EstadoEstudianteBusinessImpl implements EstadoEstudianteBusin
 	}
 
 	@Override
-	public void register(final EstadoEstudianteDomain domain) {
-		final EstadoEstudianteEntity entity = EstadoEstudianteAssembler.getInstance().toEntityFromDomain(domain);
-		daoFactory.getEstadoEstudianteDAO().create(entity);
-
-	}
-
-	@Override
 	public List<EstadoEstudianteDomain> list(final EstadoEstudianteDomain domain) {
 		final EstadoEstudianteEntity entity = EstadoEstudianteAssembler.getInstance().toEntityFromDomain(domain);
 

@@ -13,14 +13,7 @@ public final class EstadoEventoSqlServerDAO implements EstadoEventoDAO {
 	}
 
 	@Override
-	public void create(EstadoEventoEntity entity) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public List<EstadoEventoEntity> read(EstadoEventoEntity entity) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

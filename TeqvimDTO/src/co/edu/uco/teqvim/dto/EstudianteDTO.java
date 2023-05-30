@@ -17,12 +17,11 @@ public final class EstudianteDTO {
 	private String segudoApellido;
 	private String numeroTelefonico;
 	private String correo;
-	private String contraseña;
+	private String contrasena;
 	private LocalDate fechaNacimiento;
 	private TipoDocumentoDTO tipoDocumento;
 	private String numeroDocumento;
 	private RespuestaDTO confirmacionCorreo;
-	private TipoPeriodoAcademicoDTO tipoPeriodoAcademico;
 	private PaisDTO pais;
 	private EstadoEstudianteDTO estado;
 
@@ -35,20 +34,19 @@ public final class EstudianteDTO {
 		setSegudoApellido(UtilText.EMPTY);
 		setNumeroTelefonico(UtilText.EMPTY);
 		setCorreo(UtilText.EMPTY);
-		setContraseña(UtilText.EMPTY);
+		setContrasena(UtilText.EMPTY);
 		setFechaNacimiento(UtilDate.DEFAULT_DATE);
 		setTipoDocumento(TipoDocumentoDTO.create());
 		setNumeroDocumento(UtilText.EMPTY);
 		setConfirmacionCorreo(RespuestaDTO.create());
-		setTipoPeriodoAcademico(TipoPeriodoAcademicoDTO.create());
 		setPais(PaisDTO.create());
 		setEstado(EstadoEstudianteDTO.create());
 	}
 
 	public EstudianteDTO(UUID identificador, String primerNombre, String segundoNombre, String primerApellido,
-			String segudoApellido, String numeroTelefonico, String correo, String contraseña, LocalDate fechaNacimiento,
+			String segudoApellido, String numeroTelefonico, String correo, String contrasena, LocalDate fechaNacimiento,
 			TipoDocumentoDTO tipoDocumento, String numeroDocumento, RespuestaDTO confirmacionCorreo,
-			TipoPeriodoAcademicoDTO tipoPeriodoAcademico, PaisDTO pais, EstadoEstudianteDTO estado) {
+			PaisDTO pais, EstadoEstudianteDTO estado) {
 		super();
 		setIdentificador(identificador);
 		setPrimerNombre(primerNombre);
@@ -57,12 +55,11 @@ public final class EstudianteDTO {
 		setSegudoApellido(segudoApellido);
 		setNumeroTelefonico(numeroTelefonico);
 		setCorreo(correo);
-		setContraseña(contraseña);
+		setContrasena(contrasena);
 		setFechaNacimiento(fechaNacimiento);
 		setTipoDocumento(tipoDocumento);
 		setNumeroDocumento(numeroDocumento);
 		setConfirmacionCorreo(confirmacionCorreo);
-		setTipoPeriodoAcademico(tipoPeriodoAcademico);
 		setPais(pais);
 		setEstado(estado);
 	}
@@ -143,12 +140,12 @@ public final class EstudianteDTO {
 		return this;
 	}
 	
-	public final String getContraseña() {
-		return contraseña;
+	public final String getContrasena() {
+		return contrasena;
 	}
 
-	public final EstudianteDTO setContraseña(final String contraseña) {
-		this.contraseña = UtilText.getDefaultPassword(contraseña);
+	public final EstudianteDTO setContrasena(final String contrasena) {
+		this.contrasena = UtilText.getDefaultPassword(contrasena);
 		return this;
 	}
 
@@ -179,15 +176,6 @@ public final class EstudianteDTO {
 		return this;
 	}
 
-	public final TipoPeriodoAcademicoDTO getTipoPeriodoAcademico() {
-		return tipoPeriodoAcademico;
-	}
-
-	public final EstudianteDTO setTipoPeriodoAcademico(final TipoPeriodoAcademicoDTO tipoPeriodoAcademico) {
-		this.tipoPeriodoAcademico = UtilObject.getDefault(tipoPeriodoAcademico, TipoPeriodoAcademicoDTO.create());
-		return this;
-	}
-
 	public final PaisDTO getPais() {
 		return pais;
 	}
@@ -205,6 +193,4 @@ public final class EstudianteDTO {
 		this.estado = UtilObject.getDefault(estado, EstadoEstudianteDTO.create());
 		return this;
 	}
-	
-
 }

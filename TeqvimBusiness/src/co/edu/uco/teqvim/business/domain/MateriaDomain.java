@@ -19,7 +19,7 @@ public class MateriaDomain {
 		super();
 		setIdentificador(UtilUUID.DEFAULT_UUID);
 		setNombre(UtilText.EMPTY);
-		setCreditos(UtilNumber.ZERO_INT);
+		setCreditos(UtilNumber.ZERO.intValue());
 		setPeriodoAcademico(PeriodoAcademicoDomain.getDefaultObject());
 	}
 
@@ -58,7 +58,7 @@ public class MateriaDomain {
 	}
 
 	private final void setCreditos(final int creditos) {
-		this.creditos = creditos;
+		this.creditos = UtilNumber.getUtilNumber().getDefault(creditos).intValue();
 	}
 
 	public final PeriodoAcademicoDomain getPeriodoAcademico() {

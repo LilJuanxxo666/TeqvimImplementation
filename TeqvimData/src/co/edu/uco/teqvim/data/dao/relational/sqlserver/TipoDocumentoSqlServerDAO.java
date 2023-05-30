@@ -11,16 +11,9 @@ public final class TipoDocumentoSqlServerDAO implements TipoDocumentoDAO {
 	public TipoDocumentoSqlServerDAO(final Connection connection) {
 
 	}
-
-	@Override
-	public void create(TipoDocumentoEntity entity) {
-		// TODO Auto-generated method stub
-
-	}
-
+	
 	@Override
 	public List<TipoDocumentoEntity> read(TipoDocumentoEntity entity) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

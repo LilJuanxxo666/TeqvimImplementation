@@ -16,6 +16,7 @@ public class PeriodoAcademicoDTO {
 	private LocalDate fechaFin;
 	private TipoPeriodoAcademicoDTO tipoPeriodo;
 	private EstadoPeriodoAcademicoDTO estado;
+	private EstudianteDTO estudiante;
 
 	public PeriodoAcademicoDTO() {
 		super();
@@ -25,10 +26,11 @@ public class PeriodoAcademicoDTO {
 		setFechaFin(UtilDate.DEFAULT_DATE);
 		setTipoPeriodo(TipoPeriodoAcademicoDTO.create());
 		setEstado(EstadoPeriodoAcademicoDTO.create());
+		setEstudiante(EstudianteDTO.create());
 	}
 
 	public PeriodoAcademicoDTO(UUID identificador, String nombre, LocalDate fechaInicio, LocalDate fechaFin,
-			TipoPeriodoAcademicoDTO tipoPeriodo, EstadoPeriodoAcademicoDTO estado) {
+			TipoPeriodoAcademicoDTO tipoPeriodo, EstadoPeriodoAcademicoDTO estado, EstudianteDTO estudiante) {
 		super();
 		setIdentificador(identificador);
 		setNombre(nombre);
@@ -36,6 +38,7 @@ public class PeriodoAcademicoDTO {
 		setFechaFin(fechaFin);
 		setTipoPeriodo(tipoPeriodo);
 		setEstado(estado);
+		setEstudiante(estudiante);
 	}
 
 	public static PeriodoAcademicoDTO create() {
@@ -96,4 +99,12 @@ public class PeriodoAcademicoDTO {
 		return this;
 	}
 
+	public final EstudianteDTO getEstudiante() {
+		return estudiante;
+	}
+
+	public final PeriodoAcademicoDTO setEstudiante(EstudianteDTO estudiante) {
+		this.estudiante = UtilObject.getDefault(estudiante, EstudianteDTO.create());
+		return this;
+	}
 }

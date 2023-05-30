@@ -18,7 +18,7 @@ public class MateriaDTO {
 		super();
 		setIdentificador(UtilUUID.DEFAULT_UUID);
 		setNombre(UtilText.EMPTY);
-		setCreditos(UtilNumber.ZERO_INT);
+		setCreditos(UtilNumber.ZERO.intValue());
 		setPeriodoAcademico(PeriodoAcademicoDTO.create());
 	}
 
@@ -58,7 +58,7 @@ public class MateriaDTO {
 	}
 
 	public final MateriaDTO setCreditos(final int creditos) {
-		this.creditos = creditos;
+		this.creditos = UtilNumber.getUtilNumber().getDefault(creditos).intValue();
 		return this;
 	}
 

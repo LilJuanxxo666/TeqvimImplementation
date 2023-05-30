@@ -17,13 +17,6 @@ public final class PaisBusinessImpl implements PaisBusiness {
 	}
 
 	@Override
-	public void register(final PaisDomain domain) {
-		final PaisEntity entity = PaisAssembler.getInstance().toEntityFromDomain(domain);
-		daoFactory.getPaisDAO().create(entity);
-
-	}
-
-	@Override
 	public List<PaisDomain> list(final PaisDomain domain) {
 		final PaisEntity entity = PaisAssembler.getInstance().toEntityFromDomain(domain);
 

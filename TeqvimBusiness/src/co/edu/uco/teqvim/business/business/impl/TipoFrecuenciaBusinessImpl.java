@@ -17,13 +17,6 @@ public final class TipoFrecuenciaBusinessImpl implements TipoFrecuenciaBusiness 
 	}
 
 	@Override
-	public void register(final TipoFrecuenciaDomain domain) {
-		final TipoFrecuenciaEntity entity = TipoFrecuenciaAssembler.getInstance().toEntityFromDomain(domain);
-		daoFactory.getTipoFrecuenciaDAO().create(entity);
-
-	}
-
-	@Override
 	public List<TipoFrecuenciaDomain> list(final TipoFrecuenciaDomain domain) {
 		final TipoFrecuenciaEntity entity = TipoFrecuenciaAssembler.getInstance().toEntityFromDomain(domain);
 

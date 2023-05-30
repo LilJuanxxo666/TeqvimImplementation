@@ -20,7 +20,7 @@ public final class NotificacionDomain {
 		super();
 		setIdentificador(UtilUUID.DEFAULT_UUID);
 		setEvento(EventoDomain.getDefaultObject());
-		setCantidadTiempo(UtilNumber.ZERO_INT);
+		setCantidadTiempo(UtilNumber.ZERO.intValue());
 		setUnidadTiempo(UnidadTiempoDomain.getDefaultObject());
 		setTipoNotificacion(TipoNotificacionDomain.getDefaultObject());
 		setEstado(EstadoNotificacionDomain.getDefaultObject());
@@ -62,7 +62,7 @@ public final class NotificacionDomain {
 	}
 
 	private final void setCantidadTiempo(final int cantidadTiempo) {
-		this.cantidadTiempo = cantidadTiempo;
+		this.cantidadTiempo = UtilNumber.getUtilNumber().getDefault(cantidadTiempo).intValue();
 	}
 
 	public final UnidadTiempoDomain getUnidadTiempo() {

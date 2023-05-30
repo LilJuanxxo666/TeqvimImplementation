@@ -15,7 +15,7 @@ public class FrecuenciaDTO {
 	public FrecuenciaDTO() {
 		super();
 		setIdentificador(UtilUUID.DEFAULT_UUID);
-		setIntervalo(UtilNumber.ZERO_INT);
+		setIntervalo(UtilNumber.ZERO.intValue());
 		setTipoFrecuencia(TipoFrecuenciaDTO.create());
 	}
 
@@ -44,7 +44,7 @@ public class FrecuenciaDTO {
 	}
 
 	public final FrecuenciaDTO setIntervalo(final int intervalo) {
-		this.intervalo = intervalo;
+		this.intervalo = UtilNumber.getUtilNumber().getDefault(intervalo).intValue();
 		return this;
 	}
 

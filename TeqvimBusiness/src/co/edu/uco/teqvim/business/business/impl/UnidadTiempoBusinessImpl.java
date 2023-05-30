@@ -17,13 +17,6 @@ public final class UnidadTiempoBusinessImpl implements UnidadTiempoBusiness {
 	}
 
 	@Override
-	public void register(final UnidadTiempoDomain domain) {
-		final UnidadTiempoEntity entity = UnidadTiempoAssembler.getInstance().toEntityFromDomain(domain);
-		daoFactory.getUnidadTiempoDAO().create(entity);
-
-	}
-
-	@Override
 	public List<UnidadTiempoDomain> list(final UnidadTiempoDomain domain) {
 		final UnidadTiempoEntity entity = UnidadTiempoAssembler.getInstance().toEntityFromDomain(domain);
 

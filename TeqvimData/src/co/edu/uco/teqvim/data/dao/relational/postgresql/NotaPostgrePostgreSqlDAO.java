@@ -6,9 +6,9 @@ import java.util.List;
 import co.edu.uco.teqvim.data.dao.NotaDAO;
 import co.edu.uco.teqvim.entities.NotaEntity;
 
-public final class NotaPostgreSqlDAO implements NotaDAO {
+public final class NotaPostgrePostgreSqlDAO implements NotaDAO {
 
-	public NotaPostgreSqlDAO(final Connection connection) {
+	public NotaPostgrePostgreSqlDAO(final Connection connection) {
 
 	}
 

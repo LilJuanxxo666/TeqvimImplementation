@@ -13,14 +13,7 @@ public final class TipoPeriodoAcademicoSqlServerDAO implements TipoPeriodoAcadem
 	}
 
 	@Override
-	public void create(TipoPeriodoAcademicoEntity entity) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public List<TipoPeriodoAcademicoEntity> read(TipoPeriodoAcademicoEntity entity) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

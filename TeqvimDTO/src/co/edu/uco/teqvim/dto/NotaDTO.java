@@ -19,7 +19,7 @@ public final class NotaDTO {
 		super();
 		setIdentificador(UtilUUID.DEFAULT_UUID);
 		setTipoNota(TipoNotaDTO.create());
-		setCalificacion(UtilNumber.ZERO_DOUBLE);
+		setCalificacion(UtilNumber.ZERO.doubleValue());
 		setDescripcion(UtilText.EMPTY);
 		setMateria(MateriaDTO.create());
 	}
@@ -60,7 +60,7 @@ public final class NotaDTO {
 	}
 
 	public final NotaDTO setCalificacion(final double calificacion) {
-		this.calificacion = calificacion;
+		this.calificacion = UtilNumber.getUtilNumber().getDefault(calificacion).doubleValue();
 		return this;
 	}
 

@@ -19,7 +19,7 @@ public final class NotificacionDTO {
 		super();
 		setIdentificador(UtilUUID.DEFAULT_UUID);
 		setEvento(EventoDTO.create());
-		setCantidadTiempo(UtilNumber.ZERO_INT);
+		setCantidadTiempo(UtilNumber.ZERO.intValue());
 		setUnidadTiempo(UnidadTiempoDTO.create());
 		setTipoNotificacion(TipoNotificacionDTO.create());
 		setEstado(EstadoNotificacionDTO.create());
@@ -63,7 +63,7 @@ public final class NotificacionDTO {
 	}
 
 	public final NotificacionDTO setCantidadTiempo(final int cantidadTiempo) {
-		this.cantidadTiempo = cantidadTiempo;
+		this.cantidadTiempo = UtilNumber.getUtilNumber().getDefault(cantidadTiempo).intValue();
 		return this;
 	}
 

@@ -19,7 +19,7 @@ public class MateriaEntity {
 		super();
 		setIdentificador(UtilUUID.DEFAULT_UUID);
 		setNombre(UtilText.EMPTY);
-		setCreditos(UtilNumber.ZERO_INT);
+		setCreditos(UtilNumber.ZERO.intValue());
 		setPeriodoAcademico(PeriodoAcademicoEntity.getDefaultObject());
 	}
 
@@ -50,7 +50,6 @@ public class MateriaEntity {
 
 	private final void setNombre(final String nombre) {
 		this.nombre = UtilText.getUtilText().applyTrim(nombre);
-
 	}
 
 	public final int getCreditos() {
@@ -58,7 +57,7 @@ public class MateriaEntity {
 	}
 
 	private final void setCreditos(final int creditos) {
-		this.creditos = creditos;
+		this.creditos = UtilNumber.getUtilNumber().getDefault(creditos).intValue();
 	}
 
 	public final PeriodoAcademicoEntity getPeriodoAcademico() {

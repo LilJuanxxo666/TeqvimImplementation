@@ -17,13 +17,6 @@ public final class TipoDuracionEventoBusinessImpl implements TipoDuracionEventoB
 	}
 
 	@Override
-	public void register(final TipoDuracionEventoDomain domain) {
-		final TipoDuracionEventoEntity entity = TipoDuracionEventoAssembler.getInstance().toEntityFromDomain(domain);
-		daoFactory.getTipoDuracionEventoDAO().create(entity);
-
-	}
-
-	@Override
 	public List<TipoDuracionEventoDomain> list(final TipoDuracionEventoDomain domain) {
 		final TipoDuracionEventoEntity entity = TipoDuracionEventoAssembler.getInstance().toEntityFromDomain(domain);
 

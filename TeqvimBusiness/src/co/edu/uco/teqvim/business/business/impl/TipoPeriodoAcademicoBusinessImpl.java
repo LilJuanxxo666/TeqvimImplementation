@@ -17,14 +17,6 @@ public final class TipoPeriodoAcademicoBusinessImpl implements TipoPeriodoAcadem
 	}
 
 	@Override
-	public void register(final TipoPeriodoAcademicoDomain domain) {
-		final TipoPeriodoAcademicoEntity entity = TipoPeriodoAcademicoAssembler.getInstance()
-				.toEntityFromDomain(domain);
-		daoFactory.getTipoPeriodoAcademicoDAO().create(entity);
-
-	}
-
-	@Override
 	public List<TipoPeriodoAcademicoDomain> list(final TipoPeriodoAcademicoDomain domain) {
 		final TipoPeriodoAcademicoEntity entity = TipoPeriodoAcademicoAssembler.getInstance()
 				.toEntityFromDomain(domain);

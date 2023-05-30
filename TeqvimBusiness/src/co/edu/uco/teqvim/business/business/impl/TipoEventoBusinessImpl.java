@@ -17,13 +17,6 @@ public final class TipoEventoBusinessImpl implements TipoEventoBusiness {
 	}
 
 	@Override
-	public void register(final TipoEventoDomain domain) {
-		final TipoEventoEntity entity = TipoEventoAssembler.getInstance().toEntityFromDomain(domain);
-		daoFactory.getTipoEventoDAO().create(entity);
-
-	}
-
-	@Override
 	public List<TipoEventoDomain> list(final TipoEventoDomain domain) {
 		final TipoEventoEntity entity = TipoEventoAssembler.getInstance().toEntityFromDomain(domain);
 

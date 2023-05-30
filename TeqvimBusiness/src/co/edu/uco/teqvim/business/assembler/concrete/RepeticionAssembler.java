@@ -24,7 +24,6 @@ public final class RepeticionAssembler implements Assembler<RepeticionDomain, Re
 		return RepeticionDTO.create().setIdentificador(domain.getIdentificador())
 				.setFrecuencia(FrecuenciaAssembler.getInstance().toDtoFromDomain(domain.getFrecuencia()))
 				.setEvento(EventoAssembler.getInstance().toDtoFromDomain(domain.getEvento()))
-				.setDiaSemana(domain.getDiaSemana())
 				.setDuracion(DuracionAssembler.getInstance().toDtoFromDomain(domain.getDuracion()));
 	}
 
@@ -33,7 +32,7 @@ public final class RepeticionAssembler implements Assembler<RepeticionDomain, Re
 		return new RepeticionDomain(dto.getIdentificador(),
 				EventoAssembler.getInstance().toDomainFromDto(dto.getEvento()),
 				DuracionAssembler.getInstance().toDomainFromDto(dto.getDuracion()),
-				FrecuenciaAssembler.getInstance().toDomainFromDto(dto.getFrecuencia()), dto.getDiaSemana());
+				FrecuenciaAssembler.getInstance().toDomainFromDto(dto.getFrecuencia()));
 	}
 
 	@Override
@@ -41,7 +40,7 @@ public final class RepeticionAssembler implements Assembler<RepeticionDomain, Re
 		return new RepeticionEntity(domain.getIdentificador(),
 				EventoAssembler.getInstance().toEntityFromDomain(domain.getEvento()),
 				DuracionAssembler.getInstance().toEntityFromDomain(domain.getDuracion()),
-				FrecuenciaAssembler.getInstance().toEntityFromDomain(domain.getFrecuencia()), domain.getDiaSemana());
+				FrecuenciaAssembler.getInstance().toEntityFromDomain(domain.getFrecuencia()));
 	}
 
 	@Override
@@ -49,7 +48,7 @@ public final class RepeticionAssembler implements Assembler<RepeticionDomain, Re
 		return new RepeticionDomain(entity.getIdentificador(),
 				EventoAssembler.getInstance().toDomainFromEntity(entity.getEvento()),
 				DuracionAssembler.getInstance().toDomainFromEntity(entity.getDuracion()),
-				FrecuenciaAssembler.getInstance().toDomainFromEntity(entity.getFrecuencia()), entity.getDiaSemana());
+				FrecuenciaAssembler.getInstance().toDomainFromEntity(entity.getFrecuencia()));
 	}
 
 	@Override

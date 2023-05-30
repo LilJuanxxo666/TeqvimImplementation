@@ -3,12 +3,12 @@ package co.edu.uco.teqvim.data.dao.factory.relational.postgresql;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
 import co.edu.uco.teqvim.crosscutting.exception.TeqvimCrossCuttingException;
 import co.edu.uco.teqvim.crosscutting.exception.TeqvimDataException;
 import co.edu.uco.teqvim.crosscutting.exception.TeqvimException;
 import co.edu.uco.teqvim.crosscutting.utils.Messages.UtilSqlMessages;
 import co.edu.uco.teqvim.crosscutting.utils.UtilSql;
+import co.edu.uco.teqvim.data.dao.DiaSemanaDAO;
 import co.edu.uco.teqvim.data.dao.DuracionDAO;
 import co.edu.uco.teqvim.data.dao.EstadoEstudianteDAO;
 import co.edu.uco.teqvim.data.dao.EstadoEventoDAO;
@@ -19,6 +19,7 @@ import co.edu.uco.teqvim.data.dao.EventoDAO;
 import co.edu.uco.teqvim.data.dao.FestivoDAO;
 import co.edu.uco.teqvim.data.dao.FrecuenciaDAO;
 import co.edu.uco.teqvim.data.dao.MateriaDAO;
+import co.edu.uco.teqvim.data.dao.NombreDiaSemanaDAO;
 import co.edu.uco.teqvim.data.dao.NotaDAO;
 import co.edu.uco.teqvim.data.dao.NotificacionDAO;
 import co.edu.uco.teqvim.data.dao.PaisDAO;
@@ -36,6 +37,7 @@ import co.edu.uco.teqvim.data.dao.TipoNotificacionDAO;
 import co.edu.uco.teqvim.data.dao.TipoPeriodoAcademicoDAO;
 import co.edu.uco.teqvim.data.dao.UnidadTiempoDAO;
 import co.edu.uco.teqvim.data.dao.factory.DAOFactory;
+import co.edu.uco.teqvim.data.dao.relational.postgresql.DiaSemanaPostgreSqlDAO;
 import co.edu.uco.teqvim.data.dao.relational.postgresql.DuracionPostgreSqlDAO;
 import co.edu.uco.teqvim.data.dao.relational.postgresql.EstadoEstudiantePostgreSqlDAO;
 import co.edu.uco.teqvim.data.dao.relational.postgresql.EstadoEventoPostgreSqlDAO;
@@ -46,7 +48,8 @@ import co.edu.uco.teqvim.data.dao.relational.postgresql.EventoPostgreSqlDAO;
 import co.edu.uco.teqvim.data.dao.relational.postgresql.FestivoPostgreSqlDAO;
 import co.edu.uco.teqvim.data.dao.relational.postgresql.FrecuenciaPostgreSqlDAO;
 import co.edu.uco.teqvim.data.dao.relational.postgresql.MateriaPostgreSqlDAO;
-import co.edu.uco.teqvim.data.dao.relational.postgresql.NotaPostgreSqlDAO;
+import co.edu.uco.teqvim.data.dao.relational.postgresql.NombreDiaSemanaPostgreSqlDAO;
+import co.edu.uco.teqvim.data.dao.relational.postgresql.NotaPostgrePostgreSqlDAO;
 import co.edu.uco.teqvim.data.dao.relational.postgresql.NotificacionPostgreSqlDAO;
 import co.edu.uco.teqvim.data.dao.relational.postgresql.PaisPostgreSqlDAO;
 import co.edu.uco.teqvim.data.dao.relational.postgresql.PeriodoAcademicoPostgreSqlDAO;
@@ -65,7 +68,7 @@ import co.edu.uco.teqvim.data.dao.relational.postgresql.UnidadTiempoPostgreSqlDA
 
 public final class PostgreSqlDAOFactory extends DAOFactory {
 
-	private Connection conexion;
+	private static Connection conexion;
 
 	public PostgreSqlDAOFactory() {
 		openConection();
@@ -74,10 +77,8 @@ public final class PostgreSqlDAOFactory extends DAOFactory {
 	@Override
 	protected final void openConection() {
 		try {
-			Class.forName("org.postgresql.Driver");
-			conexion = DriverManager.getConnection("postgres://rrqjiyyt:L-G7WHZNqj50laWZH3KTt0OFIpieh3X2@mahmud.db.elephantsql.com/rrqjiyyt", "rrqjiyyt", "L-G7WHZNqj50laWZH3KTt0OFIpieh3X2");
+			conexion = DriverManager.getConnection("jdbc:postgresql://mahmud.db.elephantsql.com/rrqjiyyt", "rrqjiyyt", "L-G7WHZNqj50laWZH3KTt0OFIpieh3X2");
 			UtilSql.connectionIsOpen(conexion);
-			System.out.println("Se acaba de ingresar a la base de datos");
 		} catch (final TeqvimException exception) {
 			throw exception;
 		} catch (IllegalArgumentException exception) {
@@ -156,10 +157,6 @@ public final class PostgreSqlDAOFactory extends DAOFactory {
 		}
 
 	}
-	
-	public static void main(String[] args) {
-		PostgreSqlDAOFactory base = new PostgreSqlDAOFactory();
-	}
 
 	@Override
 	public DuracionDAO getDuracionDAO() {
@@ -213,7 +210,7 @@ public final class PostgreSqlDAOFactory extends DAOFactory {
 
 	@Override
 	public NotaDAO getNotaDAO() {
-		return new NotaPostgreSqlDAO(conexion);
+		return new NotaPostgrePostgreSqlDAO(conexion);
 	}
 
 	@Override
@@ -291,4 +288,13 @@ public final class PostgreSqlDAOFactory extends DAOFactory {
 		return new UnidadTiempoPostgreSqlDAO(conexion);
 	}
 
+	@Override
+	public NombreDiaSemanaDAO getNombreDiaSemanaDAO() {
+		return new NombreDiaSemanaPostgreSqlDAO(conexion);
+	}
+
+	@Override
+	public DiaSemanaDAO getDiaSemanaDAO() {
+		return new DiaSemanaPostgreSqlDAO(conexion);
+	}
 }

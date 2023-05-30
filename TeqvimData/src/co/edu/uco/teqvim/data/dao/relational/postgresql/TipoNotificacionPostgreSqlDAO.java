@@ -13,12 +13,6 @@ public final class TipoNotificacionPostgreSqlDAO implements TipoNotificacionDAO 
 	}
 
 	@Override
-	public void create(TipoNotificacionEntity entity) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public List<TipoNotificacionEntity> read(TipoNotificacionEntity entity) {
 		// TODO Auto-generated method stub
 		return null;

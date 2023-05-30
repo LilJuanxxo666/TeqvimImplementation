@@ -20,7 +20,7 @@ public final class NotaEntity {
 		super();
 		setIdentificador(UtilUUID.DEFAULT_UUID);
 		setTipoNota(TipoNotaEntity.getDefaultObject());
-		setCalificacion(UtilNumber.ZERO_DOUBLE);
+		setCalificacion(UtilNumber.ZERO.doubleValue());
 		setDescripcion(UtilText.EMPTY);
 		setMateria(MateriaEntity.getDefaultObject());
 	}
@@ -59,7 +59,7 @@ public final class NotaEntity {
 	}
 
 	private final void setCalificacion(final double calificacion) {
-		this.calificacion = calificacion;
+		this.calificacion = UtilNumber.getUtilNumber().getDefault(calificacion).doubleValue();
 	}
 
 	public final String getDescripcion() {
@@ -74,7 +74,7 @@ public final class NotaEntity {
 		return materia;
 	}
 
-	public final NotaEntity setMateria(final MateriaEntity materia) {
+	private final NotaEntity setMateria(final MateriaEntity materia) {
 		this.materia = UtilObject.getDefault(materia, MateriaEntity.getDefaultObject());
 		return this;
 	}

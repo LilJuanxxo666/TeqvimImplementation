@@ -13,14 +13,7 @@ public final class TipoFrecuenciaSqlServerDAO implements TipoFrecuenciaDAO {
 	}
 
 	@Override
-	public void create(TipoFrecuenciaEntity entity) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public List<TipoFrecuenciaEntity> read(TipoFrecuenciaEntity entity) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

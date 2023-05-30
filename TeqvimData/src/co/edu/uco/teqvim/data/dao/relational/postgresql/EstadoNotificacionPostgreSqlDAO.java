@@ -13,14 +13,7 @@ public final class EstadoNotificacionPostgreSqlDAO implements EstadoNotificacion
 	}
 
 	@Override
-	public void create(EstadoNotificacionEntity entity) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public List<EstadoNotificacionEntity> read(EstadoNotificacionEntity entity) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

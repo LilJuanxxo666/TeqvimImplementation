@@ -5,8 +5,6 @@ import co.edu.uco.teqvim.business.domain.UnidadTiempoDomain;
 
 public interface UnidadTiempoBusiness {
 
-	void register(UnidadTiempoDomain domain);
-
 	List<UnidadTiempoDomain> list(UnidadTiempoDomain domain);
 
 }

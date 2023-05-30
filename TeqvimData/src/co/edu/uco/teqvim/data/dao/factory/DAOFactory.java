@@ -1,5 +1,6 @@
 package co.edu.uco.teqvim.data.dao.factory;
 
+import co.edu.uco.teqvim.data.dao.DiaSemanaDAO;
 import co.edu.uco.teqvim.data.dao.DuracionDAO;
 import co.edu.uco.teqvim.data.dao.EstadoEstudianteDAO;
 import co.edu.uco.teqvim.data.dao.EstadoEventoDAO;
@@ -10,6 +11,7 @@ import co.edu.uco.teqvim.data.dao.EventoDAO;
 import co.edu.uco.teqvim.data.dao.FestivoDAO;
 import co.edu.uco.teqvim.data.dao.FrecuenciaDAO;
 import co.edu.uco.teqvim.data.dao.MateriaDAO;
+import co.edu.uco.teqvim.data.dao.NombreDiaSemanaDAO;
 import co.edu.uco.teqvim.data.dao.NotaDAO;
 import co.edu.uco.teqvim.data.dao.NotificacionDAO;
 import co.edu.uco.teqvim.data.dao.PaisDAO;
@@ -112,5 +114,8 @@ public abstract class DAOFactory {
 	public abstract TipoPeriodoAcademicoDAO getTipoPeriodoAcademicoDAO();
 
 	public abstract UnidadTiempoDAO getUnidadTiempoDAO();
-
+	
+	public abstract NombreDiaSemanaDAO getNombreDiaSemanaDAO();
+	
+	public abstract DiaSemanaDAO getDiaSemanaDAO();
 }

@@ -17,13 +17,6 @@ public final class TipoNotificacionBusinessImpl implements TipoNotificacionBusin
 	}
 
 	@Override
-	public void register(final TipoNotificacionDomain domain) {
-		final TipoNotificacionEntity entity = TipoNotificacionAssembler.getInstance().toEntityFromDomain(domain);
-		daoFactory.getTipoNotificacionDAO().create(entity);
-
-	}
-
-	@Override
 	public List<TipoNotificacionDomain> list(final TipoNotificacionDomain domain) {
 		final TipoNotificacionEntity entity = TipoNotificacionAssembler.getInstance().toEntityFromDomain(domain);
 

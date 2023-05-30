@@ -1,6 +1,8 @@
 package co.edu.uco.teqvim.data.dao.factory.relational.sqlserver;
 
 import java.sql.Connection;
+
+import co.edu.uco.teqvim.data.dao.DiaSemanaDAO;
 import co.edu.uco.teqvim.data.dao.DuracionDAO;
 import co.edu.uco.teqvim.data.dao.EstadoEstudianteDAO;
 import co.edu.uco.teqvim.data.dao.EstadoEventoDAO;
@@ -11,6 +13,7 @@ import co.edu.uco.teqvim.data.dao.EventoDAO;
 import co.edu.uco.teqvim.data.dao.FestivoDAO;
 import co.edu.uco.teqvim.data.dao.FrecuenciaDAO;
 import co.edu.uco.teqvim.data.dao.MateriaDAO;
+import co.edu.uco.teqvim.data.dao.NombreDiaSemanaDAO;
 import co.edu.uco.teqvim.data.dao.NotaDAO;
 import co.edu.uco.teqvim.data.dao.NotificacionDAO;
 import co.edu.uco.teqvim.data.dao.PaisDAO;
@@ -28,6 +31,7 @@ import co.edu.uco.teqvim.data.dao.TipoNotificacionDAO;
 import co.edu.uco.teqvim.data.dao.TipoPeriodoAcademicoDAO;
 import co.edu.uco.teqvim.data.dao.UnidadTiempoDAO;
 import co.edu.uco.teqvim.data.dao.factory.DAOFactory;
+import co.edu.uco.teqvim.data.dao.relational.sqlserver.DiaSemanaSqlServerDAO;
 import co.edu.uco.teqvim.data.dao.relational.sqlserver.DuracionSqlServerDAO;
 import co.edu.uco.teqvim.data.dao.relational.sqlserver.EstadoEstudianteSqlServerDAO;
 import co.edu.uco.teqvim.data.dao.relational.sqlserver.EstadoEventoSqlServerDAO;
@@ -38,6 +42,7 @@ import co.edu.uco.teqvim.data.dao.relational.sqlserver.EventoSqlServerDAO;
 import co.edu.uco.teqvim.data.dao.relational.sqlserver.FestivoSqlServerDAO;
 import co.edu.uco.teqvim.data.dao.relational.sqlserver.FrecuenciaSqlServerDAO;
 import co.edu.uco.teqvim.data.dao.relational.sqlserver.MateriaSqlServerDAO;
+import co.edu.uco.teqvim.data.dao.relational.sqlserver.NombreDiaSemanaSqlServerDAO;
 import co.edu.uco.teqvim.data.dao.relational.sqlserver.NotaSqlServerDAO;
 import co.edu.uco.teqvim.data.dao.relational.sqlserver.NotificacionSqlServerDAO;
 import co.edu.uco.teqvim.data.dao.relational.sqlserver.PaisSqlServerDAO;
@@ -222,5 +227,16 @@ public final class SqlServerDAOFactory extends DAOFactory {
 	public UnidadTiempoDAO getUnidadTiempoDAO() {
 		return new UnidadTiempoSqlServerDAO(connection);
 	}
+
+	@Override
+	public NombreDiaSemanaDAO getNombreDiaSemanaDAO() {
+		return new NombreDiaSemanaSqlServerDAO(connection);
+	}
+
+	@Override
+	public DiaSemanaDAO getDiaSemanaDAO() {
+		return new DiaSemanaSqlServerDAO(connection);
+	}
+	
 
 }

@@ -20,7 +20,7 @@ public final class NotificacionEntity {
 		super();
 		setIdentificador(UtilUUID.DEFAULT_UUID);
 		setEvento(EventoEntity.getDefaultObject());
-		setCantidadTiempo(UtilNumber.ZERO_INT);
+		setCantidadTiempo(UtilNumber.ZERO.intValue());
 		setUnidadTiempo(UnidadTiempoEntity.getDefaultObject());
 		setTipoNotificacion(TipoNotificacionEntity.getDefaultObject());
 		setEstado(EstadoNotificacionEntity.getDefaultObject());
@@ -62,7 +62,7 @@ public final class NotificacionEntity {
 	}
 
 	private final void setCantidadTiempo(final int cantidadTiempo) {
-		this.cantidadTiempo = cantidadTiempo;
+		this.cantidadTiempo = UtilNumber.getUtilNumber().getDefault(cantidadTiempo).intValue();
 	}
 
 	public final UnidadTiempoEntity getUnidadTiempo() {

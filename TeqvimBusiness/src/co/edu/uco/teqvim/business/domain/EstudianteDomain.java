@@ -18,12 +18,11 @@ public final class EstudianteDomain {
 	private String segudoApellido;
 	private String numeroTelefonico;
 	private String correo;
-	private String contraseña;
+	private String contrasena;
 	private LocalDate fechaNacimiento;
 	private TipoDocumentoDomain tipoDocumento;
 	private String numeroDocumento;
 	private RespuestaDomain confirmacionCorreo;
-	private TipoPeriodoAcademicoDomain tipoPeriodoAcademico;
 	private PaisDomain pais;
 	private EstadoEstudianteDomain estado;
 
@@ -36,20 +35,19 @@ public final class EstudianteDomain {
 		setSegudoApellido(UtilText.EMPTY);
 		setNumeroTelefonico(UtilText.EMPTY);
 		setCorreo(UtilText.EMPTY);
-		setContraseña(UtilText.EMPTY);
+		setContrasena(UtilText.EMPTY);
 		setFechaNacimiento(UtilDate.DEFAULT_DATE);
 		setTipoDocumento(TipoDocumentoDomain.getDefaultObject());
 		setNumeroDocumento(UtilText.EMPTY);
 		setConfirmacionCorreo(RespuestaDomain.getDefaultObject());
-		setTipoPeriodoAcademico(TipoPeriodoAcademicoDomain.getDefaultObject());
 		setPais(PaisDomain.getDefaultObject());
 		setEstado(EstadoEstudianteDomain.getDefaultObject());
 	}
 
 	public EstudianteDomain(UUID identificador, String primerNombre, String segundoNombre, String primerApellido,
-			String segudoApellido, String numeroTelefonico, String correo, String contraseña, LocalDate fechaNaciemiento,
+			String segudoApellido, String numeroTelefonico, String correo, String contrasena, LocalDate fechaNaciemiento,
 			TipoDocumentoDomain tipoDocumento, String numeroDocumento, RespuestaDomain confirmacionCorreo,
-			TipoPeriodoAcademicoDomain tipoPeriodoAcademico, PaisDomain pais, EstadoEstudianteDomain estado) {
+			PaisDomain pais, EstadoEstudianteDomain estado) {
 		super();
 		setIdentificador(identificador);
 		setPrimerNombre(primerNombre);
@@ -58,12 +56,11 @@ public final class EstudianteDomain {
 		setSegudoApellido(segudoApellido);
 		setNumeroTelefonico(numeroTelefonico);
 		setCorreo(correo);
-		setContraseña(contraseña);
+		setContrasena(contrasena);
 		setFechaNacimiento(fechaNaciemiento);
 		setTipoDocumento(tipoDocumento);
 		setNumeroDocumento(numeroDocumento);
 		setConfirmacionCorreo(confirmacionCorreo);
-		setTipoPeriodoAcademico(tipoPeriodoAcademico);
 		setPais(pais);
 		setEstado(estado);
 	}
@@ -128,12 +125,12 @@ public final class EstudianteDomain {
 		this.correo = UtilText.getDefaultEmail(correo);
 	}
 
-	public final String getContraseña() {
-		return contraseña;
+	public final String getContrasena() {
+		return contrasena;
 	}
 
-	private final void setContraseña(final String contraseña) {
-		this.contraseña = UtilText.getDefaultPassword(contraseña);
+	private final void setContrasena(final String contrasena) {
+		this.contrasena = UtilText.getDefaultPassword(contrasena);
 	}
 
 	public final TipoDocumentoDomain getTipoDocumento() {
@@ -160,15 +157,6 @@ public final class EstudianteDomain {
 		this.confirmacionCorreo = UtilObject.getDefault(confirmacionCorreo, RespuestaDomain.getDefaultObject());
 	}
 
-	public final TipoPeriodoAcademicoDomain getTipoPeriodoAcademico() {
-		return tipoPeriodoAcademico;
-	}
-
-	private final void setTipoPeriodoAcademico(final TipoPeriodoAcademicoDomain tipoPeriodoAcademico) {
-		this.tipoPeriodoAcademico = UtilObject.getDefault(tipoPeriodoAcademico,
-				TipoPeriodoAcademicoDomain.getDefaultObject());
-	}
-
 	public final PaisDomain getPais() {
 		return pais;
 	}
@@ -192,6 +180,4 @@ public final class EstudianteDomain {
 	private void setFechaNacimiento(LocalDate fechaNacimiento) {
 		this.fechaNacimiento = UtilDate.getDefault(fechaNacimiento);
 	}
-	
-
 }

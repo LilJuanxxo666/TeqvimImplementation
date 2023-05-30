@@ -23,33 +23,6 @@ public final class FestivoFacadeImpl implements FestivoFacade{
 	}
 
 	@Override
-	public void register(FestivoDTO dto) {
-		try {
-			final var domain = FestivoAssembler.getInstance().toDomainFromDto(dto);
-
-			daoFactory.initTransaction();
-			business.register(domain);
-			daoFactory.commitTransaction();
-
-		} catch (final TeqvimException exception) {
-
-			daoFactory.cancelTransaction();
-			throw exception;
-
-		} catch (final Exception exception) {
-
-			daoFactory.cancelTransaction();
-
-			var userMessage = FestivoFacadeImplMessages.REGISTER_EXCEPTION_USER_MESSAGE;
-			var technicalMessage = FestivoFacadeImplMessages.REGISTER_EXCEPTION_TECHNICAL_MESSAGE;
-
-			throw TeqvimBusinessException.create(technicalMessage, userMessage, exception);
-		} finally {
-			daoFactory.closeConection();
-		}
-	}
-
-	@Override
 	public List<FestivoDTO> list(FestivoDTO dto) {
 		try {
 			final var domain = FestivoAssembler.getInstance().toDomainFromDto(dto);
@@ -64,50 +37,6 @@ public final class FestivoFacadeImpl implements FestivoFacade{
 
 			var userMessage = FestivoFacadeImplMessages.LIST_EXCEPTION_USER_MESSAGE;
 			var technicalMessage = FestivoFacadeImplMessages.LIST_EXCEPTION_TECHNICAL_MESSAGE;
-
-			throw TeqvimBusinessException.create(technicalMessage, userMessage, exception);
-		} finally {
-			daoFactory.closeConection();
-		}
-	}
-
-	@Override
-	public void modify(FestivoDTO dto) {
-		try {
-			final var domain = FestivoAssembler.getInstance().toDomainFromDto(dto);
-			daoFactory.initTransaction();
-			business.modify(domain);
-			daoFactory.commitTransaction();
-		} catch (final TeqvimException exception) {
-			daoFactory.cancelTransaction();
-			throw exception;
-		} catch (final Exception exception) {
-			daoFactory.cancelTransaction();
-
-			var userMessage = FestivoFacadeImplMessages.MODIFY_EXCEPTION_USER_MESSAGE;
-			var technicalMessage = FestivoFacadeImplMessages.MODIFY_EXCEPTION_TECHNICAL_MESSAGE;
-
-			throw TeqvimBusinessException.create(technicalMessage, userMessage, exception);
-		} finally {
-			daoFactory.closeConection();
-		}
-	}
-
-	@Override
-	public void drop(FestivoDTO dto) {
-		try {
-			final var domain = FestivoAssembler.getInstance().toDomainFromDto(dto);
-			daoFactory.initTransaction();
-			business.drop(domain);
-			daoFactory.commitTransaction();
-		} catch (final TeqvimException exception) {
-			daoFactory.cancelTransaction();
-			throw exception;
-		} catch (final Exception exception) {
-			daoFactory.cancelTransaction();
-
-			var userMessage = FestivoFacadeImplMessages.DROP_EXCEPTION_USER_MESSAGE;
-			var technicalMessage = FestivoFacadeImplMessages.DROP_EXCEPTION_TECHNICAL_MESSAGE;
 
 			throw TeqvimBusinessException.create(technicalMessage, userMessage, exception);
 		} finally {

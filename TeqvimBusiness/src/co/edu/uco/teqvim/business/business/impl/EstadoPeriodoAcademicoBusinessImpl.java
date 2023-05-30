@@ -17,14 +17,6 @@ public final class EstadoPeriodoAcademicoBusinessImpl implements EstadoPeriodoAc
 	}
 
 	@Override
-	public void register(final EstadoPeriodoAcademicoDomain domain) {
-		final EstadoPeriodoAcademicoEntity entity = EstadoPeriodoAcademicoAssembler.getInstance()
-				.toEntityFromDomain(domain);
-		daoFactory.getEstadoPeriodoAcademicoDAO().create(entity);
-
-	}
-
-	@Override
 	public List<EstadoPeriodoAcademicoDomain> list(final EstadoPeriodoAcademicoDomain domain) {
 		final EstadoPeriodoAcademicoEntity entity = EstadoPeriodoAcademicoAssembler.getInstance()
 				.toEntityFromDomain(domain);

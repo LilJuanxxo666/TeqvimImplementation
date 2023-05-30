@@ -18,12 +18,11 @@ public final class EstudianteEntity {
 	private String segudoApellido;
 	private String numeroTelefonico;
 	private String correo;
-	private String contraseña;
+	private String contrasena;
 	private LocalDate fechaNacimiento;
 	private TipoDocumentoEntity tipoDocumento;
 	private String numeroDocumento;
 	private RespuestaEntity confirmacionCorreo;
-	private TipoPeriodoAcademicoEntity tipoPeriodoAcademico;
 	private PaisEntity pais;
 	private EstadoEstudianteEntity estado;
 	
@@ -36,20 +35,18 @@ public final class EstudianteEntity {
 		setSegudoApellido(UtilText.EMPTY);
 		setNumeroTelefonico(UtilText.EMPTY);
 		setCorreo(UtilText.EMPTY);
-		setContraseña(UtilText.EMPTY);
+		setContrasena(UtilText.EMPTY);
 		setFechaNacimiento(UtilDate.DEFAULT_DATE);
 		setTipoDocumento(TipoDocumentoEntity.getDefaultObject());
 		setNumeroDocumento(UtilText.EMPTY);
 		setConfirmacionCorreo(RespuestaEntity.getDefaultObject());
-		setTipoPeriodoAcademico(TipoPeriodoAcademicoEntity.getDefaultObject());
 		setPais(PaisEntity.getDefaultObject());
 		setEstado(EstadoEstudianteEntity.getDefaultObject());
 	}
 
 	public EstudianteEntity(UUID identificador, String primerNombre, String segundoNombre, String primerApellido,
-			String segudoApellido, String numeroTelefonico, String correo, String contraseña, LocalDate fechaNacimiento,
-			TipoDocumentoEntity tipoDocumento, String numeroDocumento, RespuestaEntity confirmacionCorreo,
-			TipoPeriodoAcademicoEntity tipoPeriodoAcademico, PaisEntity pais, EstadoEstudianteEntity estado) {
+			String segudoApellido, String numeroTelefonico, String correo, String contrasena, LocalDate fechaNacimiento,
+			TipoDocumentoEntity tipoDocumento, String numeroDocumento, RespuestaEntity confirmacionCorreo, PaisEntity pais, EstadoEstudianteEntity estado) {
 		super();
 		setIdentificador(identificador);
 		setPrimerNombre(primerNombre);
@@ -58,12 +55,11 @@ public final class EstudianteEntity {
 		setSegudoApellido(segudoApellido);
 		setNumeroTelefonico(numeroTelefonico);
 		setCorreo(correo);
-		setContraseña(contraseña);
+		setContrasena(contrasena);
 		setFechaNacimiento(fechaNacimiento);
 		setTipoDocumento(tipoDocumento);
 		setNumeroDocumento(numeroDocumento);
 		setConfirmacionCorreo(confirmacionCorreo);
-		setTipoPeriodoAcademico(tipoPeriodoAcademico);
 		setPais(pais);
 		setEstado(estado);
 	}
@@ -128,12 +124,12 @@ public final class EstudianteEntity {
 		this.correo = UtilText.getDefaultEmail(correo);
 	}
 
-	public final String getContraseña() {
-		return contraseña;
+	public final String getContrasena() {
+		return contrasena;
 	}
 
-	private final void setContraseña(final String contraseña) {
-		this.contraseña = UtilText.getDefaultPassword(contraseña);
+	private final void setContrasena(final String contrasena) {
+		this.contrasena = UtilText.getDefaultPassword(contrasena);
 	}
 
 	public final TipoDocumentoEntity getTipoDocumento() {
@@ -158,14 +154,6 @@ public final class EstudianteEntity {
 
 	private final void setConfirmacionCorreo(final RespuestaEntity confirmacionCorreo) {
 		this.confirmacionCorreo = UtilObject.getDefault(confirmacionCorreo, RespuestaEntity.getDefaultObject());
-	}
-
-	public final TipoPeriodoAcademicoEntity getTipoPeriodoAcademico() {
-		return tipoPeriodoAcademico;
-	}
-
-	private final void setTipoPeriodoAcademico(final TipoPeriodoAcademicoEntity tipoPeriodoAcademico) {
-		this.tipoPeriodoAcademico = UtilObject.getDefault(tipoPeriodoAcademico, TipoPeriodoAcademicoEntity.getDefaultObject());
 	}
 
 	public final PaisEntity getPais() {

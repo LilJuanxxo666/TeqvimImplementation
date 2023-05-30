@@ -23,14 +23,12 @@ public class EstudianteAssembler implements Assembler<EstudianteDomain, Estudian
 		return EstudianteDTO.create().setIdentificador(domain.getIdentificador())
 				.setPrimerNombre(domain.getPrimerNombre()).setSegundoNombre(domain.getSegundoNombre())
 				.setPrimerApellido(domain.getPrimerApellido()).setSegudoApellido(domain.getSegudoApellido())
-				.setContraseña(domain.getContraseña()).setCorreo(domain.getCorreo())
+				.setContrasena(domain.getContrasena()).setCorreo(domain.getCorreo())
 				.setPais(PaisAssembler.getInstance().toDtoFromDomain(domain.getPais()))
 				.setConfirmacionCorreo(RespuestaAssembler.getInstance().toDtoFromDomain(domain.getConfirmacionCorreo()))
 				.setTipoDocumento(TipoDocumentoAssembler.getInstance().toDtoFromDomain(domain.getTipoDocumento()))
 				.setNumeroDocumento(domain.getNumeroDocumento()).setFechaNacimiento(domain.getFechaNacimiento())
 				.setNumeroTelefonico(domain.getNumeroTelefonico())
-				.setTipoPeriodoAcademico(
-						TipoPeriodoAcademicoAssembler.getInstance().toDtoFromDomain(domain.getTipoPeriodoAcademico()))
 				.setEstado(EstadoEstudianteAssembler.getInstance().toDtoFromDomain(domain.getEstado()));
 	}
 
@@ -38,10 +36,9 @@ public class EstudianteAssembler implements Assembler<EstudianteDomain, Estudian
 	public EstudianteDomain toDomainFromDto(EstudianteDTO dto) {
 		return new EstudianteDomain(dto.getIdentificador(), dto.getPrimerNombre(), dto.getSegundoNombre(),
 				dto.getPrimerApellido(), dto.getSegudoApellido(), dto.getNumeroTelefonico(), dto.getCorreo(),
-				dto.getContraseña(), dto.getFechaNacimiento(),
+				dto.getContrasena(), dto.getFechaNacimiento(),
 				TipoDocumentoAssembler.getInstance().toDomainFromDto(dto.getTipoDocumento()), dto.getNumeroDocumento(),
 				RespuestaAssembler.getInstance().toDomainFromDto(dto.getConfirmacionCorreo()),
-				TipoPeriodoAcademicoAssembler.getInstance().toDomainFromDto(dto.getTipoPeriodoAcademico()),
 				PaisAssembler.getInstance().toDomainFromDto(dto.getPais()),
 				EstadoEstudianteAssembler.getInstance().toDomainFromDto(dto.getEstado()));
 	}
@@ -50,11 +47,10 @@ public class EstudianteAssembler implements Assembler<EstudianteDomain, Estudian
 	public EstudianteEntity toEntityFromDomain(EstudianteDomain domain) {
 		return new EstudianteEntity(domain.getIdentificador(), domain.getPrimerNombre(), domain.getSegundoNombre(),
 				domain.getPrimerApellido(), domain.getSegudoApellido(), domain.getNumeroTelefonico(),
-				domain.getCorreo(), domain.getContraseña(), domain.getFechaNacimiento(),
+				domain.getCorreo(), domain.getContrasena(), domain.getFechaNacimiento(),
 				TipoDocumentoAssembler.getInstance().toEntityFromDomain(domain.getTipoDocumento()),
 				domain.getNumeroDocumento(),
 				RespuestaAssembler.getInstance().toEntityFromDomain(domain.getConfirmacionCorreo()),
-				TipoPeriodoAcademicoAssembler.getInstance().toEntityFromDomain(domain.getTipoPeriodoAcademico()),
 				PaisAssembler.getInstance().toEntityFromDomain(domain.getPais()),
 				EstadoEstudianteAssembler.getInstance().toEntityFromDomain(domain.getEstado()));
 	}
@@ -63,11 +59,10 @@ public class EstudianteAssembler implements Assembler<EstudianteDomain, Estudian
 	public EstudianteDomain toDomainFromEntity(EstudianteEntity entity) {
 		return new EstudianteDomain(entity.getIdentificador(), entity.getPrimerNombre(), entity.getSegundoNombre(),
 				entity.getPrimerApellido(), entity.getSegudoApellido(), entity.getNumeroTelefonico(),
-				entity.getCorreo(), entity.getContraseña(), entity.getFechaNacimiento(),
+				entity.getCorreo(), entity.getContrasena(), entity.getFechaNacimiento(),
 				TipoDocumentoAssembler.getInstance().toDomainFromEntity(entity.getTipoDocumento()),
 				entity.getNumeroDocumento(),
 				RespuestaAssembler.getInstance().toDomainFromEntity(entity.getConfirmacionCorreo()),
-				TipoPeriodoAcademicoAssembler.getInstance().toDomainFromEntity(entity.getTipoPeriodoAcademico()),
 				PaisAssembler.getInstance().toDomainFromEntity(entity.getPais()),
 				EstadoEstudianteAssembler.getInstance().toDomainFromEntity(entity.getEstado()));
 	}

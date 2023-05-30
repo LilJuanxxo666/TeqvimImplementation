@@ -287,4 +287,26 @@ public final class Messages {
 		public static final String LIST_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de listar las unidades de tiempo. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
 		public static final String LIST_EXCEPTION_TECHNICAL_MESSAGE = "Se ha presentado un excepción no conocida al momento de listar la UnidadTiempoDTO. Por favor valide la traza completa de la excepcion presentada...";	
 	}
+	
+	public static final class NombreDiasemanaFacadeImplMessages{
+		private NombreDiasemanaFacadeImplMessages() {
+		}
+		public static final String LIST_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de listar los nombres del dia de la semana. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String LIST_EXCEPTION_TECHNICAL_MESSAGE = "Se ha presentado un excepción no conocida al momento de listar la NombreDiaSemanaDTO. Por favor valide la traza completa de la excepcion presentada...";	
+	}
+	public static final class DiaSemanaFacadeImplMessages{
+		private DiaSemanaFacadeImplMessages() {
+		}
+		public static final String REGISTER_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de registrar la informacion de un nuevo dia de semana. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String REGISTER_EXCEPTION_TECHNICAL_MESSAGE = "Se ha presentado un excepción no conocida al momento de registrar un nuevo DiaSemanaDTO. Por favor valide la traza completa de la excepcion presentada...";
+		public static final String LIST_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de listar la informacion del dia semana. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String LIST_EXCEPTION_TECHNICAL_MESSAGE = "Se ha presentado un excepción no conocida al momento de listar el DiaSemanaDTO. Por favor valide la traza completa de la excepcion presentada...";
+		public static final String MODIFY_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de modificar la informacion de un dia semana en específico. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String MODIFY_EXCEPTION_TECHNICAL_MESSAGE = "Se ha presentado un excepción no conocida al momento de modificar un DiaSemanaDTO. Por favor valide la traza completa de la excepcion presentada...";
+		public static final String DROP_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de eliminar la informacion de un dia semana en específico. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String DROP_EXCEPTION_TECHNICAL_MESSAGE = "Se ha presentado un excepción no conocida al momento de eliminar un DiaSemanaDTO. Por favor valide la traza completa de la excepcion presentada...";
+		
+	}
+	
+	
 }

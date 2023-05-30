@@ -20,7 +20,7 @@ public final class NotaDomain {
 		super();
 		setIdentificador(UtilUUID.DEFAULT_UUID);
 		setTipoNota(TipoNotaDomain.getDefaultObject());
-		setCalificacion(UtilNumber.ZERO_DOUBLE);
+		setCalificacion(UtilNumber.ZERO.doubleValue());
 		setDescripcion(UtilText.EMPTY);
 		setMateria(MateriaDomain.getDefaultObject());
 	}
@@ -59,7 +59,7 @@ public final class NotaDomain {
 	}
 
 	private final void setCalificacion(final double calificacion) {
-		this.calificacion = calificacion;
+		this.calificacion = UtilNumber.getUtilNumber().getDefault(calificacion).doubleValue();
 	}
 
 	public final String getDescripcion() {
@@ -74,9 +74,8 @@ public final class NotaDomain {
 		return materia;
 	}
 
-	public final NotaDomain setMateria(final MateriaDomain materia) {
+	public final void setMateria(final MateriaDomain materia) {
 		this.materia = UtilObject.getDefault(materia, MateriaDomain.getDefaultObject());
-		return this;
 	}
 
 }

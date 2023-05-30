@@ -13,14 +13,7 @@ public final class PaisPostgreSqlDAO implements PaisDAO {
 	}
 
 	@Override
-	public void create(PaisEntity entity) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public List<PaisEntity> read(PaisEntity entity) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

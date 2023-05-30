@@ -1,8 +1,8 @@
 package co.edu.uco.teqvim.business.domain;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
+import java.util.UUID;
 import co.edu.uco.teqvim.crosscutting.utils.UtilDate;
 import co.edu.uco.teqvim.crosscutting.utils.UtilObject;
 import co.edu.uco.teqvim.crosscutting.utils.UtilText;
@@ -17,6 +17,7 @@ public class PeriodoAcademicoDomain {
 	private LocalDate fechaFin;
 	private TipoPeriodoAcademicoDomain tipoPeriodo;
 	private EstadoPeriodoAcademicoDomain estado;
+	private EstudianteDomain estudiante;
 
 	private PeriodoAcademicoDomain() {
 		super();
@@ -26,10 +27,11 @@ public class PeriodoAcademicoDomain {
 		setFechaFin(UtilDate.DEFAULT_DATE);
 		setTipoPeriodo(TipoPeriodoAcademicoDomain.getDefaultObject());
 		setEstado(EstadoPeriodoAcademicoDomain.getDefaultObject());
+		setEstudiante(EstudianteDomain.getDefaultObject());
 	}
 
 	public PeriodoAcademicoDomain(UUID identificador, String nombre, LocalDate fechaInicio, LocalDate fechaFin,
-			TipoPeriodoAcademicoDomain tipoPeriodo, EstadoPeriodoAcademicoDomain estado) {
+			TipoPeriodoAcademicoDomain tipoPeriodo, EstadoPeriodoAcademicoDomain estado, EstudianteDomain estudiante) {
 		super();
 		setIdentificador(identificador);
 		setNombre(nombre);
@@ -37,6 +39,7 @@ public class PeriodoAcademicoDomain {
 		setFechaFin(fechaFin);
 		setTipoPeriodo(tipoPeriodo);
 		setEstado(estado);
+		setEstudiante(estudiante);
 	}
 
 	public static PeriodoAcademicoDomain getDefaultObject() {
@@ -91,4 +94,11 @@ public class PeriodoAcademicoDomain {
 		this.estado = UtilObject.getDefault(estado, EstadoPeriodoAcademicoDomain.getDefaultObject());
 	}
 
+	public final EstudianteDomain getEstudiante() {
+		return estudiante;
+	}
+
+	public final void setEstudiante(EstudianteDomain estudiante) {
+		this.estudiante = UtilObject.getDefault(estudiante, EstudianteDomain.getDefaultObject());
+	}
 }

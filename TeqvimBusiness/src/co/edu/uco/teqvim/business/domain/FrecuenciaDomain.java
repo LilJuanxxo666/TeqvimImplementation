@@ -16,7 +16,7 @@ public class FrecuenciaDomain {
 	private FrecuenciaDomain() {
 		super();
 		setIdentificador(UtilUUID.DEFAULT_UUID);
-		setIntervalo(UtilNumber.ZERO_INT);
+		setIntervalo(UtilNumber.ZERO.intValue());
 		setTipoFrecuencia(TipoFrecuenciaDomain.getDefaultObject());
 	}
 
@@ -44,7 +44,7 @@ public class FrecuenciaDomain {
 	}
 
 	private final void setIntervalo(final int intervalo) {
-		this.intervalo = intervalo;
+		this.intervalo = UtilNumber.getUtilNumber().getDefault(intervalo).intValue();
 	}
 
 	public final TipoFrecuenciaDomain getTipoFrecuencia() {

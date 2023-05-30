@@ -13,14 +13,7 @@ public final class EstadoPeriodoAcademicoSqlServerDAO implements EstadoPeriodoAc
 	}
 
 	@Override
-	public void create(EstadoPeriodoAcademicoEntity entity) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public List<EstadoPeriodoAcademicoEntity> read(EstadoPeriodoAcademicoEntity entity) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

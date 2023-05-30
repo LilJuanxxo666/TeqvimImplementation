@@ -17,6 +17,7 @@ public class PeriodoAcademicoEntity {
 	private LocalDate fechaFin;
 	private TipoPeriodoAcademicoEntity tipoPeriodo;
 	private EstadoPeriodoAcademicoEntity estado;
+	private EstudianteEntity estudiante;
 
 	private PeriodoAcademicoEntity() {
 		super();
@@ -26,10 +27,11 @@ public class PeriodoAcademicoEntity {
 		setFechaFin(UtilDate.DEFAULT_DATE);
 		setTipoPeriodo(TipoPeriodoAcademicoEntity.getDefaultObject());
 		setEstado(EstadoPeriodoAcademicoEntity.getDefaultObject());
+		setEstudiante(EstudianteEntity.getDefaultObject());
 	}
 
 	public PeriodoAcademicoEntity(UUID identificador, String nombre, LocalDate fechaInicio, LocalDate fechaFin,
-			TipoPeriodoAcademicoEntity tipoPeriodo, EstadoPeriodoAcademicoEntity estado) {
+			TipoPeriodoAcademicoEntity tipoPeriodo, EstadoPeriodoAcademicoEntity estado, EstudianteEntity estudiante) {
 		super();
 		setIdentificador(identificador);
 		setNombre(nombre);
@@ -37,6 +39,7 @@ public class PeriodoAcademicoEntity {
 		setFechaFin(fechaFin);
 		setTipoPeriodo(tipoPeriodo);
 		setEstado(estado);
+		setEstudiante(estudiante);
 	}
 
 	public static PeriodoAcademicoEntity getDefaultObject() {
@@ -91,4 +94,12 @@ public class PeriodoAcademicoEntity {
 		this.estado = UtilObject.getDefault(estado, EstadoPeriodoAcademicoEntity.getDefaultObject());
 	}
 
+	public final EstudianteEntity getEstudiante() {
+		return estudiante;
+	}
+
+	private final PeriodoAcademicoEntity setEstudiante(EstudianteEntity estudiante) {
+		this.estudiante = UtilObject.getDefault(estudiante, EstudianteEntity.getDefaultObject());
+		return this;
+	}
 }

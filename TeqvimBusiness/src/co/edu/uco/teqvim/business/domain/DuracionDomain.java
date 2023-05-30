@@ -16,7 +16,7 @@ public final class DuracionDomain {
 	private DuracionDomain() {
 		super();
 		setIdentificador(UtilUUID.DEFAULT_UUID);
-		setCantidadTiempo(UtilNumber.ZERO_INT);
+		setCantidadTiempo(UtilNumber.ZERO.intValue());
 		setUnidadTiempo(UnidadTiempoDomain.getDefaultObject());
 	}
 
@@ -35,7 +35,7 @@ public final class DuracionDomain {
 		return identificador;
 	}
 
-	public final DuracionDomain setIdentificador(final UUID identificador) {
+	private final DuracionDomain setIdentificador(final UUID identificador) {
 		this.identificador = UtilUUID.getDefault(identificador);
 		return this;
 	}
@@ -44,8 +44,8 @@ public final class DuracionDomain {
 		return cantidadTiempo;
 	}
 
-	public final DuracionDomain setCantidadTiempo(final int cantidadTiempo) {
-		this.cantidadTiempo = cantidadTiempo;
+	private final DuracionDomain setCantidadTiempo(final int cantidadTiempo) {
+		this.cantidadTiempo = UtilNumber.getUtilNumber().getDefault(cantidadTiempo).intValue();
 		return this;
 	}
 
@@ -53,7 +53,7 @@ public final class DuracionDomain {
 		return unidadTiempo;
 	}
 
-	public final DuracionDomain setUnidadTiempo(final UnidadTiempoDomain unidadTiempo) {
+	private final DuracionDomain setUnidadTiempo(final UnidadTiempoDomain unidadTiempo) {
 		this.unidadTiempo = UtilObject.getDefault(unidadTiempo, UnidadTiempoDomain.getDefaultObject());
 		return this;
 	}

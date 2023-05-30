@@ -17,13 +17,6 @@ public final class TipoFestivoFijoBusinessImpl implements TipoFestivoFijoBusines
 	}
 
 	@Override
-	public void register(final TipoFestivoFijoDomain domain) {
-		final TipoFestivoFijoEntity entity = TipoFestivoFijoAssembler.getInstance().toEntityFromDomain(domain);
-		daoFactory.getTipoFestivoFijoDAO().create(entity);
-
-	}
-
-	@Override
 	public List<TipoFestivoFijoDomain> list(final TipoFestivoFijoDomain domain) {
 		final TipoFestivoFijoEntity entity = TipoFestivoFijoAssembler.getInstance().toEntityFromDomain(domain);
 

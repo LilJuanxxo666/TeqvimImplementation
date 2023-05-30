@@ -13,14 +13,7 @@ public final class UnidadTiempoPostgreSqlDAO implements UnidadTiempoDAO {
 	}
 
 	@Override
-	public void create(UnidadTiempoEntity entity) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public List<UnidadTiempoEntity> read(UnidadTiempoEntity entity) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

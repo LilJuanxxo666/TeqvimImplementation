@@ -5,7 +5,5 @@ import co.edu.uco.teqvim.business.domain.TipoDocumentoDomain;
 
 public interface TipoDocumentoBusiness {
 
-	void register(TipoDocumentoDomain domain);
-
 	List<TipoDocumentoDomain> list(TipoDocumentoDomain domain);
 }

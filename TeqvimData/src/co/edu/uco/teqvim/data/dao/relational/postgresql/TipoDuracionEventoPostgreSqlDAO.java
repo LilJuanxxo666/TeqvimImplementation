@@ -13,14 +13,7 @@ public final class TipoDuracionEventoPostgreSqlDAO implements TipoDuracionEvento
 	}
 
 	@Override
-	public void create(TipoDuracionEventoEntity entity) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public List<TipoDuracionEventoEntity> read(TipoDuracionEventoEntity entity) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

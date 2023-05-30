@@ -17,33 +17,12 @@ public final class FestivoBusinessImpl implements FestivoBusiness {
 	}
 
 	@Override
-	public void register(final FestivoDomain domain) {
-		final FestivoEntity entity = FestivoAssembler.getInstance().toEntityFromDomain(domain);
-		daoFactory.getFestivoDAO().create(entity);
-
-	}
-
-	@Override
 	public List<FestivoDomain> list(final FestivoDomain domain) {
 		final FestivoEntity entity = FestivoAssembler.getInstance().toEntityFromDomain(domain);
 
 		List<FestivoEntity> resultEntityList = daoFactory.getFestivoDAO().read(entity);
 
 		return FestivoAssembler.getInstance().toDomainListFromEntityList(resultEntityList);
-	}
-
-	@Override
-	public void modify(final FestivoDomain domain) {
-		final FestivoEntity entity = FestivoAssembler.getInstance().toEntityFromDomain(domain);
-		daoFactory.getFestivoDAO().update(entity);
-
-	}
-
-	@Override
-	public void drop(final FestivoDomain domain) {
-		final FestivoEntity entity = FestivoAssembler.getInstance().toEntityFromDomain(domain);
-		daoFactory.getFestivoDAO().delete(entity);
-
 	}
 
 }

@@ -11,16 +11,9 @@ public final class TipoFestivoSqlServerDAO implements TipoFestivoDAO {
 	public TipoFestivoSqlServerDAO(final Connection connection) {
 
 	}
-
-	@Override
-	public void create(TipoFestivoEntity entity) {
-		// TODO Auto-generated method stub
-
-	}
-
+	
 	@Override
 	public List<TipoFestivoEntity> read(TipoFestivoEntity entity) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

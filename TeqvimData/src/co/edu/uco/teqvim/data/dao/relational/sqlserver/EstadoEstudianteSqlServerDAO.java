@@ -13,14 +13,7 @@ public final class EstadoEstudianteSqlServerDAO implements EstadoEstudianteDAO {
 	}
 
 	@Override
-	public void create(EstadoEstudianteEntity entity) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public List<EstadoEstudianteEntity> read(EstadoEstudianteEntity entity) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

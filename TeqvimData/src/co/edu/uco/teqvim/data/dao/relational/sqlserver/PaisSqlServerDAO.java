@@ -11,16 +11,9 @@ public final class PaisSqlServerDAO implements PaisDAO {
 	public PaisSqlServerDAO(final Connection connection) {
 
 	}
-
-	@Override
-	public void create(PaisEntity entity) {
-		// TODO Auto-generated method stub
-
-	}
-
+	
 	@Override
 	public List<PaisEntity> read(PaisEntity entity) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
