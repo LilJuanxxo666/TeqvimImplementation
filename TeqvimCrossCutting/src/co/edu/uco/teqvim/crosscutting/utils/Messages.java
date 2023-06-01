@@ -314,5 +314,229 @@ public final class Messages {
 		public static final String TECHNICAL_MESSAGE = "No se ha podido crear el SqlDAO, debido a que la conexion no esta abierta";
 	}
 	
+	public static final class EstadoEstudiantePostgresSqlDAOMessages{
+		private EstadoEstudiantePostgresSqlDAOMessages() {
+		}
+		public static final String READ_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de traer la informacion de estado estudiante. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String READ_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase EstadoEstudiantePostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String READ_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase EstadoEstudiantePostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de asignar los datos del estado estudiante. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String SET_PARAMETERS_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase EstadoEstudiantePostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase EstadoEstudiantePostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de ejecutar los datos del estado estudiante. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String EXECUTE_QUERY_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase EstadoEstudiantePostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase EstadoEstudiantePostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+	}
 	
+	public static final class EstadoEventoPostgresSqlDAOMessages{
+		private EstadoEventoPostgresSqlDAOMessages() {
+		}
+		public static final String READ_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de traer la informacion de estado evento. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String READ_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase EstadoEventoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String READ_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase EstadoEventoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de asignar los datos del estado evento. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String SET_PARAMETERS_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase EstadoEventoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase EstadoEventoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de ejecutar los datos del estado evento. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String EXECUTE_QUERY_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase EstadoEventoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase EstadoEventoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+	}
+	
+	public static final class EstadoNotificacionPostgresSqlDAOMessages{
+		private EstadoNotificacionPostgresSqlDAOMessages() {
+		}
+		public static final String READ_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de traer la informacion de estado notificacion. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String READ_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase EstadoNotificacionPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String READ_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase EstadoNotificacionPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de asignar los datos del estado notificacion. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String SET_PARAMETERS_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase EstadoNotificacionPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase EstadoNotificacionPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de ejecutar los datos del estado notificacion. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String EXECUTE_QUERY_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase EstadoNotificacionPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase EstadoNotificacionPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+	}
+	
+	public static final class EstadoPeriodoAcademicoPostgresSqlDAOMessages{
+		private EstadoPeriodoAcademicoPostgresSqlDAOMessages() {
+		}
+		public static final String READ_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de traer la informacion de estado periodo academico. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String READ_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase EstadoPeriodoAcademicoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String READ_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase EstadoPeriodoAcademicoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de asignar los datos del estado periodo academico. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String SET_PARAMETERS_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase EstadoPeriodoAcademicoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase EstadoPeriodoAcademicoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de ejecutar los datos del estado periodo academico. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String EXECUTE_QUERY_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase EstadoPeriodoAcademicoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase EstadoPeriodoAcademicoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+	}
+	
+	public static final class UnidadTiempoPostgresSqlDAOMessages{
+		private UnidadTiempoPostgresSqlDAOMessages() {
+		}
+		public static final String READ_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de traer la informacion de las unidades tiempo. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String READ_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase UnidadTiempoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String READ_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase UnidadTiempoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de asignar los datos de unidad tiempo. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String SET_PARAMETERS_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase UnidadTiempoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase UnidadTiempoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de ejecutar los datos de unidad tiempo. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String EXECUTE_QUERY_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase UnidadTiempoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase UnidadTiempoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+	}
+	
+	public static final class TipoPeriodoAcademicoPostgresSqlDAOMessages{
+		private TipoPeriodoAcademicoPostgresSqlDAOMessages() {
+		}
+		public static final String READ_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de traer la informacion de los tipo periodo academico. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String READ_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase TipoPeriodoAcademicoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String READ_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase TipoPeriodoAcademicoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de asignar los datos de los tipo periodo academico. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String SET_PARAMETERS_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase TipoPeriodoAcademicoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase TipoPeriodoAcademicoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de ejecutar los datos de los tipo periodo academico. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String EXECUTE_QUERY_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase TipoPeriodoAcademicoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase TipoPeriodoAcademicoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		
+	}
+	
+	public static final class TipoNotificacionPostgresSqlDAOMessages{
+		private TipoNotificacionPostgresSqlDAOMessages() {
+		}
+		public static final String READ_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de traer la informacion de los tipo notificacion. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String READ_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase TipoNotificacionPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String READ_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase TipoNotificacionPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de asignar los datos de los tipo notificacion. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String SET_PARAMETERS_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase TipoNotificacionPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase TipoNotificacionPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de ejecutar los datos de los tipo notificacion. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String EXECUTE_QUERY_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase TipoNotificacionPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase TipoNotificacionPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		
+	}
+	
+	public static final class TipoNotaPostgresSqlDAOMessages{
+		private TipoNotaPostgresSqlDAOMessages() {
+		}
+		public static final String READ_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de traer la informacion de los tipo nota. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String READ_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase TipoNotaPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String READ_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase TipoNotaPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de asignar los datos de los tipo nota. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String SET_PARAMETERS_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase TipoNotaPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase TipoNotaPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de ejecutar los datos de los tipo nota. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String EXECUTE_QUERY_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase TipoNotaPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase TipoNotaPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";	
+	}
+	
+	public static final class TipoFrecuenciaPostgresSqlDAOMessages{
+		private TipoFrecuenciaPostgresSqlDAOMessages() {
+		}
+		public static final String READ_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de traer la informacion de los tipo frecuencia. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String READ_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase TipoFrecuenciaPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String READ_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase TipoFrecuenciaPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de asignar los datos de los tipo frecuencia. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String SET_PARAMETERS_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase TipoFrecuenciaPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase TipoFrecuenciaPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de ejecutar los datos de los tipo frecuencia. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String EXECUTE_QUERY_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase TipoFrecuenciaPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase TipoFrecuenciaPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";	
+	}
+	
+	public static final class TipoFestivoPostgresSqlDAOMessages{
+		private TipoFestivoPostgresSqlDAOMessages() {
+		}
+		public static final String READ_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de traer la informacion de los tipo festivo. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String READ_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase TipoFestivoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String READ_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase TipoFestivoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de asignar los datos de los tipo festivo. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String SET_PARAMETERS_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase TipoFestivoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase TipoFestivoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de ejecutar los datos de los tipo festivo. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String EXECUTE_QUERY_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase TipoFestivoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase TipoFestivoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";	
+	}
+	
+	public static final class TipoFestivoFijoPostgresSqlDAOMessages{
+		private TipoFestivoFijoPostgresSqlDAOMessages() {
+		}
+		public static final String READ_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de traer la informacion de los tipo festivo fijo. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String READ_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase TipoFestivoFijoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String READ_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase TipoFestivoFijoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de asignar los datos de los tipo festivo fijo. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String SET_PARAMETERS_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase TipoFestivoFijoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase TipoFestivoFijoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de ejecutar los datos de los tipo festivo fijo. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String EXECUTE_QUERY_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase TipoFestivoFijoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase TipoFestivoFijoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";	
+	}
+	
+	public static final class TipoEventoPostgresSqlDAOMessages{
+		private TipoEventoPostgresSqlDAOMessages() {
+		}
+		public static final String READ_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de traer la informacion de los tipo evento. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String READ_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase TipoEventoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String READ_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase TipoEventoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de asignar los datos de los tipo evento. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String SET_PARAMETERS_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase TipoEventoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase TipoEventoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de ejecutar los datos de los tipo evento. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String EXECUTE_QUERY_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase TipoEventoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase TipoEventoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";	
+	}
+	
+	public static final class TipoDuracionEventoPostgresSqlDAOMessages{
+		private TipoDuracionEventoPostgresSqlDAOMessages() {
+		}
+		public static final String READ_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de traer la informacion de los tipo duracion evento. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String READ_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase TipoDuracionEventoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String READ_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase TipoDuracionEventoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de asignar los datos de los tipo duracion evento. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String SET_PARAMETERS_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase TipoDuracionEventoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase TipoDuracionEventoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de ejecutar los datos de los tipo duracion evento. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String EXECUTE_QUERY_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase TipoDuracionEventoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase TipoDuracionEventoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";	
+	}
+	
+	public static final class TipoDocumentoPostgresSqlDAOMessages{
+		private TipoDocumentoPostgresSqlDAOMessages() {
+		}
+		public static final String READ_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de traer la informacion de los tipo documento. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String READ_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase TipoDocumentoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String READ_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase TipoDocumentoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de asignar los datos de los tipo documento. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String SET_PARAMETERS_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase TipoDocumentoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase TipoDocumentoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de ejecutar los datos de los tipo documento. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String EXECUTE_QUERY_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase TipoDocumentoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase TipoDocumentoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";	
+	}
+	
+	public static final class RespuestaPostgresSqlDAOMessages{
+		private RespuestaPostgresSqlDAOMessages() {
+		}
+		public static final String READ_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de traer la informacion de la respuesta. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String READ_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase RespuestaPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String READ_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase RespuestaPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de asignar los datos de las respuesta. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String SET_PARAMETERS_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase RespuestaPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase RespuestaPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de ejecutar los datos de las respuesta. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String EXECUTE_QUERY_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase RespuestaPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase RespuestaPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";	
+	}
+	
+	public static final class PaisPostgresSqlDAOMessages{
+		private PaisPostgresSqlDAOMessages() {
+		}
+		public static final String READ_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de traer la informacion del pais. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String READ_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase PaisPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String READ_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase PaisPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de asignar los datos del pais. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String SET_PARAMETERS_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase PaisPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase PaisPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de ejecutar los datos del pais. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String EXECUTE_QUERY_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase PaisPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase PaisPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";	
+	}
 }
