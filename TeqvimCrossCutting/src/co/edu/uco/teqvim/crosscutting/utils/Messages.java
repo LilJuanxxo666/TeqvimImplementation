@@ -308,5 +308,11 @@ public final class Messages {
 		
 	}
 	
+	public static final class SqlDAOMessages{
+		private SqlDAOMessages() {}
+		public static final String USER_MESSAGE = "Se ha presentado un problema tratando de llevar a cabo la operacion deseada. Por favor intente de nuevo y si el problema persiste comuniquese con el administrador de la aplicacion.";
+		public static final String TECHNICAL_MESSAGE = "No se ha podido crear el SqlDAO, debido a que la conexion no esta abierta";
+	}
+	
 	
 }

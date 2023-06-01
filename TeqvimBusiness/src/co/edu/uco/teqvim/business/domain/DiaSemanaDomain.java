@@ -39,9 +39,11 @@ public final class DiaSemanaDomain {
 	private final void setNombreDiaSemana(NombreDiaSemanaDomain nombreDiaSemana) {
 		this.nombreDiaSemana = UtilObject.getDefault(nombreDiaSemana, NombreDiaSemanaDomain.getDefaultObject());
 	}
+	
 	public final RepeticionDomain getRepeticion() {
 		return repeticion;
 	}
+	
 	private final void setRepeticion(RepeticionDomain repeticion) {
 		this.repeticion = UtilObject.getDefault(repeticion, RepeticionDomain.getDefaultObject());
 	}
