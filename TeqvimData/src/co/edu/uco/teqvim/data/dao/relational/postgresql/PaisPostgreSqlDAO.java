@@ -49,7 +49,7 @@ public final class PaisPostgreSqlDAO extends SqlDAO<PaisEntity> implements PaisD
 
 	@Override
 	protected String prepareSelect() {
-		return "SELECT identificador, nombre";
+		return "SELECT identificador, nombre ";
 	}
 
 	@Override

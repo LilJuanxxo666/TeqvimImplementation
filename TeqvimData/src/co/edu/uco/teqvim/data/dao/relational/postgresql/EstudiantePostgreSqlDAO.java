@@ -230,7 +230,7 @@ public final class EstudiantePostgreSqlDAO extends SqlDAO<EstudianteEntity> impl
 
 	@Override
 	protected final String prepareOrderBy() {
-		return "ORDER BY nombre ASC";
+		return "ORDER BY primer_nombre ASC";
 	}
 
 	@Override

@@ -585,4 +585,27 @@ public final class Messages {
 		public static final String DELETE_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del método delete de la clase EstudiantePostgreSqlDAO de tipo Sqlexception. Por favor verifique la traza completa de la excepcion presentada";
 		public static final String DELETE_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema inesperado dentro del método delete de la clase EstudiantePostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
 	}
+	
+	public static final class EventoPostgresSqlDAOMessages{
+		private EventoPostgresSqlDAOMessages() {
+		}
+		public static final String READ_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de traer la informacion del evento. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String READ_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase EventoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String READ_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase EventoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de asignar los datos del evento. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String SET_PARAMETERS_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase EventoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase EventoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de ejecutar los datos del evento. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String EXECUTE_QUERY_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase EventoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase EventoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String CREATE_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema tratando de registrar la informacion del nuevo evento. Por favor intente de nuevo y si el problema persiste contacte al administrador respectivo";
+		public static final String CREATE_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del método create de la clase EventoPostgreSqlDAO de tipo Sqlexception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String CREATE_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema inesperado dentro del método create de la clase EventoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String UPDATE_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema tratando de modificar la informacion del nuevo evento. Por favor intente de nuevo y si el problema persiste contacte al administrador respectivo";
+		public static final String UPDATE_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del método update de la clase EventoPostgreSqlDAO de tipo Sqlexception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String UPDATE_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema inesperado dentro del método update de la clase EventoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String DELETE_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema tratando de dar de baja la informacion del evento. Por favor intente de nuevo y si el problema persiste contacte al administrador respectivo";
+		public static final String DELETE_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del método delete de la clase EventoPostgreSqlDAO de tipo Sqlexception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String DELETE_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema inesperado dentro del método delete de la clase EventoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+	}
 }
