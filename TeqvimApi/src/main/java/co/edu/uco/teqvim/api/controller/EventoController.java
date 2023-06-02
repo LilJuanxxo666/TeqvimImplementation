@@ -18,56 +18,56 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.uco.teqvim.api.controller.response.Response;
-import co.edu.uco.teqvim.api.validator.estudiante.ActualizarEstudianteValidation;
-import co.edu.uco.teqvim.api.validator.estudiante.CrearEstudianteValidation;
-import co.edu.uco.teqvim.business.facade.EstudianteFacade;
-import co.edu.uco.teqvim.business.facade.impl.EstudianteFacadeImpl;
+import co.edu.uco.teqvim.api.validator.evento.ActualizarEventoValidation;
+import co.edu.uco.teqvim.api.validator.evento.CrearEventoValidation;
+import co.edu.uco.teqvim.business.facade.EventoFacade;
+import co.edu.uco.teqvim.business.facade.impl.EventoFacadeImpl;
 import co.edu.uco.teqvim.crosscutting.exception.TeqvimException;
-import co.edu.uco.teqvim.dto.EstudianteDTO;
+import co.edu.uco.teqvim.dto.EventoDTO;
 
 @RestController
-@RequestMapping("teqvim/api/v1/estudiante")
-public final class EstudianteController {
+@RequestMapping("teqvim/api/v1/evento")
+public final class EventoController {
 
-	private Logger log = LoggerFactory.getLogger(EstudianteController.class);
-	private EstudianteFacade facade;
+	private Logger log = LoggerFactory.getLogger(EventoController.class);
+	private EventoFacade facade;
 
 	@GetMapping("/dummy")
-	public EstudianteDTO dummy() {
-		return EstudianteDTO.create();
+	public EventoDTO dummy() {
+		return EventoDTO.create();
 	}
 
-	@GetMapping
-	public ResponseEntity<Response<EstudianteDTO>> list(@RequestBody EstudianteDTO dto) {
+	@GetMapping("/list")
+	public ResponseEntity<Response<EventoDTO>> list(@RequestBody EventoDTO dto) {
 
-		facade = new EstudianteFacadeImpl();
-		List<EstudianteDTO> lista = facade.list(dto);
+		facade = new EventoFacadeImpl();
+		List<EventoDTO> lista = facade.list(dto);
 
 		List<String> messages = new ArrayList<>();
-		messages.add("Estudiante consultados correctamente");
+		messages.add("Eventos consultadas correctamente");
 
-		Response<EstudianteDTO> response = new Response<>(lista, messages);
+		Response<EventoDTO> response = new Response<>(lista, messages);
 		return new ResponseEntity<>(response, HttpStatus.OK);
 
 	}
 
 	@GetMapping("/{id}")
-	public EstudianteDTO getById(@PathVariable UUID id) {
-		return EstudianteDTO.create().setIdentificador(id);
+	public EventoDTO getById(@PathVariable UUID id) {
+		return EventoDTO.create().setIdentificador(id);
 	}
 
 	@PostMapping
-	public ResponseEntity<Response<EstudianteDTO>> create(@RequestBody EstudianteDTO dto) {
+	public ResponseEntity<Response<EventoDTO>> create(@RequestBody EventoDTO dto) {
 		var statusCode = HttpStatus.OK;
-		var response = new Response<EstudianteDTO>();
+		var response = new Response<EventoDTO>();
 
 		try {
-			var result = CrearEstudianteValidation.validate(dto);
+			var result = CrearEventoValidation.validate(dto);
 
 			if (result.getMessages().isEmpty()) {
-				facade = new EstudianteFacadeImpl();
+				facade = new EventoFacadeImpl();
 				facade.register(dto);
-				response.getMessages().add("El estudiante se ha creado correctamente");
+				response.getMessages().add("El evento se ha creado correctamente");
 			} else {
 				statusCode = HttpStatus.BAD_REQUEST;
 				response.setMessages(result.getMessages());
@@ -91,14 +91,14 @@ public final class EstudianteController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Response<EstudianteDTO>> update(@PathVariable UUID id, @RequestBody EstudianteDTO dto) {
+	public ResponseEntity<Response<EventoDTO>> update(@PathVariable UUID id, @RequestBody EventoDTO dto) {
 		var statusCode = HttpStatus.OK;
-		var response = new Response<EstudianteDTO>();
+		var response = new Response<EventoDTO>();
 
 		try {
 			dto.setIdentificador(id);
 
-			var result = ActualizarEstudianteValidation.validate(dto);
+			var result = ActualizarEventoValidation.validate(dto);
 
 			if (result.getMessages().isEmpty()) {
 				facade.modify(dto);
@@ -130,7 +130,7 @@ public final class EstudianteController {
 		var response = new Response<String>();
 
 		try {
-			EstudianteDTO dto = new EstudianteDTO();
+			EventoDTO dto = new EventoDTO();
 			dto.setIdentificador(id);
 			facade.drop(dto);
 			response.getMessages().add("La agenda se ha eliminado correctamente");
