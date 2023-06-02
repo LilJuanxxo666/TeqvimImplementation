@@ -72,7 +72,7 @@ public final class UnidadTiempoPostgreSqlDAO extends SqlDAO<UnidadTiempoEntity> 
 			}
 			if (!UtilText.getUtilText().isEmpty(entity.getNombre())) {
 				parameters.add(entity.getNombre());
-				where.append(setWhere ? "WHERE " : "AND").append("nombre=? ");
+				where.append(setWhere ? "WHERE " : "AND ").append("nombre=? ");
 				setWhere = false;
 			}
 		}

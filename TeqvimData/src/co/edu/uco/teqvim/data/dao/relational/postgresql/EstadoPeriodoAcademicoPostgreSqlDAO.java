@@ -72,12 +72,12 @@ public final class EstadoPeriodoAcademicoPostgreSqlDAO extends SqlDAO<EstadoPeri
 			}
 			if (!UtilText.getUtilText().isEmpty(entity.getNombre())) {
 				parameters.add(entity.getNombre());
-				where.append(setWhere ? "WHERE " : "AND").append("nombre=? ");
+				where.append(setWhere ? "WHERE " : "AND ").append("nombre=? ");
 				setWhere = false;
 			}
 			if (!UtilText.getUtilText().isEmpty(entity.getDescripcion())) {
 				parameters.add(entity.getDescripcion());
-				where.append(setWhere ? "WHERE " : "AND").append("descripcion LIKE %?% ");
+				where.append(setWhere ? "WHERE " : "AND ").append("descripcion LIKE %?% ");
 			}
 		}
 		return where.toString();
