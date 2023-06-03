@@ -15,7 +15,7 @@ import co.edu.uco.teqvim.dto.EstadoEstudianteDTO;
 
 public final class EstadoEstudianteFacadeImpl implements EstadoEstudianteFacade {
 
-	private final DAOFactory daoFactory;;
+	private final DAOFactory daoFactory;
 	private final EstadoEstudianteBusiness business;
 
 	public EstadoEstudianteFacadeImpl() {

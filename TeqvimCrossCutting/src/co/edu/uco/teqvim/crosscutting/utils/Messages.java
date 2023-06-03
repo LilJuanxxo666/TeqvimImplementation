@@ -608,4 +608,11 @@ public final class Messages {
 		public static final String DELETE_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del método delete de la clase EventoPostgreSqlDAO de tipo Sqlexception. Por favor verifique la traza completa de la excepcion presentada";
 		public static final String DELETE_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema inesperado dentro del método delete de la clase EventoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
 	}
+	public static final class IdentificadorValidationMessage {
+        private IdentificadorValidationMessage() {
+        }
+
+        public static final String IDENTIFICADOR_EMPTY_MESSAGE = "No es posible continuar con el identificador vacio";
+        public static final String IDENTIFICADOR_DEFAULT_MESSAGE = "No es posible continuar con el identificador vacio";
+    }
 }

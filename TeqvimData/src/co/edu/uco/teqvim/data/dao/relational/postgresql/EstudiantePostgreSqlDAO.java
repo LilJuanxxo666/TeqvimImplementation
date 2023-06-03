@@ -279,5 +279,4 @@ public final class EstudiantePostgreSqlDAO extends SqlDAO<EstudianteEntity> impl
 		}
 		return result;
 	}
-
 }

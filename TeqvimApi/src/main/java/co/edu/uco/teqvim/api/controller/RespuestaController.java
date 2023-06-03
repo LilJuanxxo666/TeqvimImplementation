@@ -52,39 +52,4 @@ public final class RespuestaController {
 	public RespuestaDTO getById(@PathVariable UUID id) {
 		return RespuestaDTO.create().setIdentificador(id);
 	}
-
-	@PostMapping
-	public ResponseEntity<Response<RespuestaDTO>> create(@RequestBody RespuestaDTO dto) {
-		var statusCode = HttpStatus.OK;
-		var response = new Response<RespuestaDTO>();
-
-		try {
-			var result = CrearRespuestaValidation.validate(dto);
-
-			if (result.getMessages().isEmpty()) {
-				facade = new RespuestaFacadeImpl();
-				facade.register(dto);
-				response.getMessages().add("La respuesta se ha creado correctamente");
-			} else {
-				statusCode = HttpStatus.BAD_REQUEST;
-				response.setMessages(result.getMessages());
-			}
-
-		} catch (final TeqvimException exception) {
-			statusCode = HttpStatus.BAD_REQUEST;
-			response.getMessages().add(exception.getUserMessage());
-			log.error(exception.getType().toString().concat(exception.getTechnicalMessage()), exception);
-
-			exception.printStackTrace();
-		} catch (final Exception exception) {
-			statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
-			response.getMessages().add(
-					"Se ha presentado un problema inesperado. Por favor, intenta de nuevo y si el problema persiste, contacta al administrador de la aplicación");
-			log.error("Se ha presentado un problema inesperado. Por favor validar la consola de errores...");
-			exception.printStackTrace();
-		}
-
-		return new ResponseEntity<>(response, statusCode);
-
-	}
 }

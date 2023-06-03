@@ -19,7 +19,9 @@ public class NombresValidation implements Validation<String>{
 		Result result = Result.create();
 
 		if (UtilText.getUtilText().isNull(data)) {
-			result.addMessage("El nombre del estudiante no puede estar vacío");
+			result.addMessage("El nombre del estudiante no puede estar vaciío");
+		}if(UtilText.getUtilText().applyTrim(data).length() > 10){
+			result.addMessage("La longitud no puede superar los 10 caracteres");
 		}
 
 		return result;

@@ -37,7 +37,7 @@ public final class ActualizarEstudianteValidation implements Validation<Estudian
 			result.addMessages(NombresValidation.validate(data.getPrimerNombre()).getMessages());
 			result.addMessages(NombresValidation.validate(data.getSegundoNombre()).getMessages());
 			result.addMessages(NombresValidation.validate(data.getPrimerApellido()).getMessages());
-			result.addMessages(NombresValidation.validate(data.getSegundoApellido()).getMessages());
+			result.addMessages(NombresValidation.validate(data.getSegudoApellido()).getMessages());
 			result.addMessages(NumeroTelefonicoValidation.validate(data.getNumeroTelefonico()).getMessages());
 			result.addMessages(CorreoValidation.validate(data.getCorreo()).getMessages());
 			result.addMessages(ContrasenaValidation.validate(data.getContrasena()).getMessages());

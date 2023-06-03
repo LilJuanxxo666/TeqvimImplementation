@@ -32,7 +32,7 @@ public class EstudianteValidation implements Validation<EstudianteDTO> {
 			if (UtilText.getUtilText().isNull(data.getPrimerApellido())) {
 				result.addMessage("El primer apellido del estudiante no puede estar vacío");
 			}
-			if (UtilText.getUtilText().isNull(data.getSegundoApellido())) {
+			if (UtilText.getUtilText().isNull(data.getSegudoApellido())) {
 				result.addMessage("El segundo apellido del estudiante no puede estar vacío");
 			}
 			if (UtilText.getUtilText().isNull(data.getNumeroTelefonico())) {

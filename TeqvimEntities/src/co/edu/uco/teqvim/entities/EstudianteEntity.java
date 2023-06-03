@@ -9,7 +9,7 @@ import co.edu.uco.teqvim.crosscutting.utils.UtilText;
 import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
 
 public final class EstudianteEntity {
-	
+
 	private static final EstudianteEntity DEFAULT_OBJECT = new EstudianteEntity();
 	private UUID identificador;
 	private String primerNombre;
@@ -25,7 +25,7 @@ public final class EstudianteEntity {
 	private RespuestaEntity confirmacionCorreo;
 	private PaisEntity pais;
 	private EstadoEstudianteEntity estado;
-	
+
 	private EstudianteEntity() {
 		super();
 		setIdentificador(UtilUUID.DEFAULT_UUID);
@@ -46,7 +46,8 @@ public final class EstudianteEntity {
 
 	public EstudianteEntity(UUID identificador, String primerNombre, String segundoNombre, String primerApellido,
 			String segudoApellido, String numeroTelefonico, String correo, String contrasena, LocalDate fechaNacimiento,
-			TipoDocumentoEntity tipoDocumento, String numeroDocumento, RespuestaEntity confirmacionCorreo, PaisEntity pais, EstadoEstudianteEntity estado) {
+			TipoDocumentoEntity tipoDocumento, String numeroDocumento, RespuestaEntity confirmacionCorreo,
+			PaisEntity pais, EstadoEstudianteEntity estado) {
 		super();
 		setIdentificador(identificador);
 		setPrimerNombre(primerNombre);
@@ -63,7 +64,19 @@ public final class EstudianteEntity {
 		setPais(pais);
 		setEstado(estado);
 	}
-	
+
+	public static final EstudianteEntity createWithIdentificador(final UUID identificador){
+		return new EstudianteEntity(identificador, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilDate.DEFAULT_DATE, TipoDocumentoEntity.getDefaultObject(), UtilText.EMPTY, RespuestaEntity.getDefaultObject(), PaisEntity.getDefaultObject(), EstadoEstudianteEntity.getDefaultObject());
+	}
+
+	public static final EstudianteEntity createWithCorreo(final String correo){
+		return new EstudianteEntity(UtilUUID.DEFAULT_UUID, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilDate.DEFAULT_DATE, TipoDocumentoEntity.getDefaultObject(), UtilText.EMPTY, RespuestaEntity.getDefaultObject(), PaisEntity.getDefaultObject(), EstadoEstudianteEntity.getDefaultObject());
+	}
+
+	public static final EstudianteEntity createWithNumeroDocumento(final String numeroDocumento){
+		return new EstudianteEntity(UtilUUID.DEFAULT_UUID, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilDate.DEFAULT_DATE, TipoDocumentoEntity.getDefaultObject(), numeroDocumento, RespuestaEntity.getDefaultObject(), PaisEntity.getDefaultObject(), EstadoEstudianteEntity.getDefaultObject());
+	}
+
 	public static EstudianteEntity getDefaultObject() {
 		return DEFAULT_OBJECT;
 	}
@@ -171,7 +184,7 @@ public final class EstudianteEntity {
 	private final void setEstado(final EstadoEstudianteEntity estado) {
 		this.estado = UtilObject.getDefault(estado, EstadoEstudianteEntity.getDefaultObject());
 	}
-	
+
 	public LocalDate getFechaNacimiento() {
 		return fechaNacimiento;
 	}
@@ -179,6 +192,5 @@ public final class EstudianteEntity {
 	private void setFechaNacimiento(LocalDate fechaNacimiento) {
 		this.fechaNacimiento = UtilDate.getDefault(fechaNacimiento);
 	}
-	
 
 }

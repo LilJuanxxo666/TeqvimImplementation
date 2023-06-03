@@ -52,10 +52,18 @@ public final class EstudianteController {
 	}
 
 	@GetMapping("/{id}")
-	public EstudianteDTO getById(@PathVariable UUID id) {
-		return EstudianteDTO.create().setIdentificador(id);
+	public ResponseEntity<Response<EstudianteDTO>> getById(@PathVariable UUID id) {
+		facade = new EstudianteFacadeImpl();
+		EstudianteDTO dto = EstudianteDTO.create().setIdentificador(id);
+		List<EstudianteDTO> lista = facade.list(dto);
+		
+		List<String> messages = new ArrayList<>();
+		messages.add("Estudiante consultado correctamente");
+		
+		Response<EstudianteDTO> response = new Response<>(lista, messages);
+		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
-
+	
 	@PostMapping
 	public ResponseEntity<Response<EstudianteDTO>> create(@RequestBody EstudianteDTO dto) {
 		var statusCode = HttpStatus.OK;
@@ -63,7 +71,6 @@ public final class EstudianteController {
 
 		try {
 			var result = CrearEstudianteValidation.validate(dto);
-
 			if (result.getMessages().isEmpty()) {
 				facade = new EstudianteFacadeImpl();
 				facade.register(dto);
