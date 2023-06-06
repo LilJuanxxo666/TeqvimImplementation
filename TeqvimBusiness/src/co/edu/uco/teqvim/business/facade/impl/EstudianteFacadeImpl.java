@@ -27,7 +27,6 @@ public final class EstudianteFacadeImpl implements EstudianteFacade{
 	public void register(EstudianteDTO dto) {
 		try {
 			final var domain = EstudianteAssembler.getInstance().toDomainFromDto(dto);
-
 			daoFactory.initTransaction();
 			business.register(domain);
 			daoFactory.commitTransaction();
@@ -53,20 +52,16 @@ public final class EstudianteFacadeImpl implements EstudianteFacade{
 	@Override
 	public List<EstudianteDTO> list(EstudianteDTO dto) {
 		try {
+			daoFactory.initTransaction();
 			final var domain = EstudianteAssembler.getInstance().toDomainFromDto(dto);
 			final var returnDomainList = business.list(domain);
-
 			return EstudianteAssembler.getInstance().toDTOListFromDomainList(returnDomainList);
 		} catch (final TeqvimException exception) {
 			daoFactory.cancelTransaction();
 			throw exception;
 		} catch (final Exception exception) {
 			daoFactory.cancelTransaction();
-
-			var userMessage = EstudianteFacadeImplMessages.LIST_EXCEPTION_USER_MESSAGE;
-			var technicalMessage = EstudianteFacadeImplMessages.LIST_EXCEPTION_TECHNICAL_MESSAGE;
-
-			throw TeqvimBusinessException.create(technicalMessage, userMessage, exception);
+			throw TeqvimBusinessException.create(EstudianteFacadeImplMessages.LIST_EXCEPTION_TECHNICAL_MESSAGE, EstudianteFacadeImplMessages.LIST_EXCEPTION_USER_MESSAGE, exception);
 		} finally {
 			daoFactory.closeConection();
 		}

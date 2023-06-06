@@ -5,9 +5,8 @@ import java.util.UUID;
 import co.edu.uco.teqvim.crosscutting.utils.UtilText;
 import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
 
-public class TipoPeriodoAcademicoEntity {
+public final class TipoPeriodoAcademicoEntity {
 
-	private static final TipoPeriodoAcademicoEntity DEFAULT_OBJECT = new TipoPeriodoAcademicoEntity();
 	private UUID identificador;
 	private String nombre;
 	private String descripcion;
@@ -26,32 +25,35 @@ public class TipoPeriodoAcademicoEntity {
 		setDescripcion(descripcion);
 	}
 
-	public static TipoPeriodoAcademicoEntity getDefaultObject() {
-		return DEFAULT_OBJECT;
+	public static TipoPeriodoAcademicoEntity create() {
+		return new TipoPeriodoAcademicoEntity();
 	}
 
 	public final UUID getIdentificador() {
 		return identificador;
 	}
 
-	private final void setIdentificador(final UUID identificador) {
+	public final TipoPeriodoAcademicoEntity setIdentificador(final UUID identificador) {
 		this.identificador = UtilUUID.getDefault(identificador);
+		return this;
 	}
 
 	public final String getNombre() {
 		return nombre;
 	}
 
-	private final void setNombre(final String nombre) {
+	public final TipoPeriodoAcademicoEntity setNombre(final String nombre) {
 		this.nombre = UtilText.getUtilText().applyTrim(nombre);
+		return this;
 	}
 
 	public final String getDescripcion() {
 		return descripcion;
 	}
 
-	private final void setDescripcion(final String descripcion) {
+	public final TipoPeriodoAcademicoEntity setDescripcion(final String descripcion) {
 		this.descripcion = UtilText.getUtilText().applyTrim(descripcion);
+		return this;
 	}
 
 }

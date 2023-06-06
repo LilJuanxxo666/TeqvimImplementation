@@ -5,9 +5,8 @@ import java.util.UUID;
 import co.edu.uco.teqvim.crosscutting.utils.UtilText;
 import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
 
-public class TipoEventoEntity {
+public final class TipoEventoEntity {
 
-	private static final TipoEventoEntity DEFAULT_OBJECT = new TipoEventoEntity();
 	private UUID identificador;
 	private String nombre;
 	private String descripcion;
@@ -26,32 +25,35 @@ public class TipoEventoEntity {
 		setDescripcion(descripcion);
 	}
 
-	public static TipoEventoEntity getDefaultObject() {
-		return DEFAULT_OBJECT;
+	public static TipoEventoEntity create() {
+		return new TipoEventoEntity();
 	}
 
 	public final UUID getIdentificador() {
 		return identificador;
 	}
 
-	private final void setIdentificador(final UUID identificador) {
+	public final TipoEventoEntity setIdentificador(final UUID identificador) {
 		this.identificador = UtilUUID.getDefault(identificador);
+		return this;
 	}
 
 	public final String getNombre() {
 		return nombre;
 	}
 
-	private final void setNombre(final String nombre) {
+	public final TipoEventoEntity setNombre(final String nombre) {
 		this.nombre = UtilText.getUtilText().applyTrim(nombre);
+		return this;
 	}
 
 	public final String getDescripcion() {
 		return descripcion;
 	}
 
-	private final void setDescripcion(final String descripcion) {
+	public final TipoEventoEntity setDescripcion(final String descripcion) {
 		this.descripcion = UtilText.getUtilText().applyTrim(descripcion);
+		return this;
 	}
 
 }

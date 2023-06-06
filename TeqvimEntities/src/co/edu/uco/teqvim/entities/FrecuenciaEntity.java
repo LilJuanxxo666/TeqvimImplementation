@@ -6,9 +6,8 @@ import co.edu.uco.teqvim.crosscutting.utils.UtilNumber;
 import co.edu.uco.teqvim.crosscutting.utils.UtilObject;
 import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
 
-public class FrecuenciaEntity {
+public final class FrecuenciaEntity {
 	
-	private static final FrecuenciaEntity DEFAULT_OBJECT = new FrecuenciaEntity();
 	private UUID identificador;
 	private int intervalo;
 	private TipoFrecuenciaEntity tipoFrecuencia;
@@ -17,7 +16,7 @@ public class FrecuenciaEntity {
 		super();
 		setIdentificador(UtilUUID.DEFAULT_UUID);
 		setIntervalo(UtilNumber.ZERO.intValue());
-		setTipoFrecuencia(TipoFrecuenciaEntity.getDefaultObject());
+		setTipoFrecuencia(TipoFrecuenciaEntity.create());
 	}
 
 	public FrecuenciaEntity(UUID identificador, int intervalo, TipoFrecuenciaEntity tipoFrecuencia) {
@@ -27,32 +26,35 @@ public class FrecuenciaEntity {
 		setTipoFrecuencia(tipoFrecuencia);
 	}
 	
-	public static FrecuenciaEntity getDefaultObject() {
-		return DEFAULT_OBJECT;
+	public static FrecuenciaEntity create() {
+		return new FrecuenciaEntity();
 	}
 
 	public final UUID getIdentificador() {
 		return identificador;
 	}
 
-	private final void setIdentificador(final UUID identificador) {
+	public final FrecuenciaEntity setIdentificador(final UUID identificador) {
 		this.identificador = UtilUUID.getDefault(identificador);
+		return this;
 	}
 
 	public final int getIntervalo() {
 		return intervalo;
 	}
 
-	private final void setIntervalo(final int intervalo) {
+	public final FrecuenciaEntity setIntervalo(final int intervalo) {
 		this.intervalo = UtilNumber.getUtilNumber().getDefault(intervalo).intValue();
+		return this;
 	}
 
 	public final TipoFrecuenciaEntity getTipoFrecuencia() {
 		return tipoFrecuencia;
 	}
 
-	private final void setTipoFrecuencia(final TipoFrecuenciaEntity tipoFrecuencia) {
-		this.tipoFrecuencia = UtilObject.getDefault(tipoFrecuencia, TipoFrecuenciaEntity.getDefaultObject());
+	public final FrecuenciaEntity setTipoFrecuencia(final TipoFrecuenciaEntity tipoFrecuencia) {
+		this.tipoFrecuencia = UtilObject.getDefault(tipoFrecuencia, TipoFrecuenciaEntity.create());
+		return this;
 	}
 
 }

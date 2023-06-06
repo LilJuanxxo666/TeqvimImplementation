@@ -5,9 +5,8 @@ import java.util.UUID;
 import co.edu.uco.teqvim.crosscutting.utils.UtilText;
 import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
 
-public class RespuestaEntity {
+public final class RespuestaEntity {
 
-	private static final RespuestaEntity DEFAULT_OBJECT = new RespuestaEntity();
 	private UUID identificador;
 	private String nombre;
 	private String descripcion;
@@ -26,32 +25,35 @@ public class RespuestaEntity {
 		setDescripcion(descripcion);
 	}
 
-	public static RespuestaEntity getDefaultObject() {
-		return DEFAULT_OBJECT;
+	public static RespuestaEntity create() {
+		return new RespuestaEntity();
 	}
 
 	public final UUID getIdentificador() {
 		return identificador;
 	}
 
-	private final void setIdentificador(final UUID identificador) {
+	public final RespuestaEntity setIdentificador(final UUID identificador) {
 		this.identificador = UtilUUID.getDefault(identificador);
+		return this;
 	}
 
 	public final String getNombre() {
 		return nombre;
 	}
 
-	private final void setNombre(final String nombre) {
+	public final RespuestaEntity setNombre(final String nombre) {
 		this.nombre = UtilText.getUtilText().applyTrim(nombre);
+		return this;
 	}
 
 	public final String getDescripcion() {
 		return descripcion;
 	}
 
-	private final void setDescripcion(final String descripcion) {
+	public final RespuestaEntity setDescripcion(final String descripcion) {
 		this.descripcion = UtilText.getUtilText().applyTrim(descripcion);
+		return this;
 	}
 
 }

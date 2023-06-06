@@ -7,7 +7,6 @@ import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
 
 public final class NombreDiaSemanaEntity {
 	
-	private static final NombreDiaSemanaEntity DEFAULT_OBJECT = new NombreDiaSemanaEntity();
 	private UUID identificador;
 	private String nombre;
 	private String apodo;
@@ -26,15 +25,15 @@ public final class NombreDiaSemanaEntity {
 		setApodo(apodo);
 	}
 	
-	public static NombreDiaSemanaEntity getDefaultObject() {
-		return DEFAULT_OBJECT;
+	public static NombreDiaSemanaEntity create() {
+		return new NombreDiaSemanaEntity();
 	}
 
 	public final UUID getIdentificador() {
 		return identificador;
 	}
 
-	private final NombreDiaSemanaEntity setIdentificador(final UUID identificador) {
+	public final NombreDiaSemanaEntity setIdentificador(final UUID identificador) {
 		this.identificador = UtilUUID.getDefault(identificador);
 		return this;
 	}
@@ -43,7 +42,7 @@ public final class NombreDiaSemanaEntity {
 		return nombre;
 	}
 
-	private final NombreDiaSemanaEntity setNombre(final String nombre) {
+	public final NombreDiaSemanaEntity setNombre(final String nombre) {
 		this.nombre = UtilText.getUtilText().applyTrim(nombre);
 		return this;
 	}
@@ -52,7 +51,7 @@ public final class NombreDiaSemanaEntity {
 		return apodo;
 	}
 
-	private final NombreDiaSemanaEntity setApodo(final String apodo) {
+	public final NombreDiaSemanaEntity setApodo(final String apodo) {
 		this.apodo = UtilText.getUtilText().applyTrim(apodo);
 		return this;
 	}

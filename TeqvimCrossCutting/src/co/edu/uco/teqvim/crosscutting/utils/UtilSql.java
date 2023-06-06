@@ -57,15 +57,15 @@ public final class UtilSql {
 
 	}
 
-	public static final void initCommitIsReady(final Connection connection) {
+	public static final boolean initCommitIsReady(final Connection connection) {
 
 		try {
-			connectionIsOpen(connection);
 			if (connection.getAutoCommit()) {
 				var userMessage = UtilSqlMessages.COMMIT_IS_STARTED_USER_MESSAGE;
 				var technicalMessage = UtilSqlMessages.COMMIT_IS_STARTED_TECHNICAL_AUTOCOMMIT;
 				throw TeqvimCrossCuttingException.create(technicalMessage, userMessage);
 			}
+			return !connection.getAutoCommit();
 		} catch (TeqvimCrossCuttingException exception) {
 			throw exception;
 		} catch (SQLException exception) {

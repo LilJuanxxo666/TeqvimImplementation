@@ -8,9 +8,8 @@ import co.edu.uco.teqvim.crosscutting.utils.UtilObject;
 import co.edu.uco.teqvim.crosscutting.utils.UtilText;
 import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
 
-public class FestivoEntity {
+public final class FestivoEntity {
 	
-	private static final FestivoEntity DEFAULT_OBJECT = new FestivoEntity();
 	private UUID identificador;
 	private TipoFestivoEntity tipo;
 	private TipoFestivoFijoEntity tipoFijo;
@@ -21,11 +20,11 @@ public class FestivoEntity {
 	private FestivoEntity() {
 		super();
 		setIdentificador(UtilUUID.DEFAULT_UUID);
-		setTipo(TipoFestivoEntity.getDefaultObject());
+		setTipo(TipoFestivoEntity.create());
 		setTipoFijo(TipoFestivoFijoEntity.getDefaultObject());
 		setFecha(UtilDate.DEFAULT_DATE);
 		setFestividad(UtilText.EMPTY);
-		setPaisCelebracion(PaisEntity.getDefaultObject());
+		setPaisCelebracion(PaisEntity.create());
 	}
 
 	public FestivoEntity(UUID identificador, TipoFestivoEntity tipo, TipoFestivoFijoEntity tipoFijo, LocalDate fecha,
@@ -39,56 +38,62 @@ public class FestivoEntity {
 		setPaisCelebracion(paisCelebracion);
 	}
 
-	public static FestivoEntity getDefaultObject() {
-		return DEFAULT_OBJECT;
+	public static FestivoEntity create() {
+		return new FestivoEntity();
 	}
 
 	public final UUID getIdentificador() {
 		return identificador;
 	}
 
-	private final void setIdentificador(final UUID identificador) {
+	public final FestivoEntity setIdentificador(final UUID identificador) {
 		this.identificador = UtilUUID.getDefault(identificador);
+		return this;
 	}
 
 	public final TipoFestivoEntity getTipo() {
 		return tipo;
 	}
 
-	private final void setTipo(final TipoFestivoEntity tipo) {
-		this.tipo = UtilObject.getDefault(tipo, TipoFestivoEntity.getDefaultObject());
+	public final FestivoEntity setTipo(final TipoFestivoEntity tipo) {
+		this.tipo = UtilObject.getDefault(tipo, TipoFestivoEntity.create());
+		return this;
 	}
 
 	public final TipoFestivoFijoEntity getTipoFijo() {
 		return tipoFijo;
 	}
 
-	private final void setTipoFijo(final TipoFestivoFijoEntity tipoFijo) {
+	public final FestivoEntity setTipoFijo(final TipoFestivoFijoEntity tipoFijo) {
 		this.tipoFijo = UtilObject.getDefault(tipoFijo, TipoFestivoFijoEntity.getDefaultObject());
+		return this;
 	}
 
 	public final LocalDate getFecha() {
 		return fecha;
 	}
 
-	private final void setFecha(final LocalDate fecha) {
+	public final FestivoEntity setFecha(final LocalDate fecha) {
 		this.fecha = UtilDate.getDefault(fecha);
+		return this;
 	}
 
 	public final String getFestividad() {
 		return festividad;
 	}
 
-	private final void setFestividad(final String festividad) {
+	public final FestivoEntity setFestividad(final String festividad) {
 		this.festividad = UtilText.getUtilText().applyTrim(festividad);
+		return this;
 	}
 
 	public final PaisEntity getPaisCelebracion() {
 		return paisCelebracion;
 	}
 
-	private final void setPaisCelebracion(final PaisEntity paisCelebracion) {
-		this.paisCelebracion = UtilObject.getDefault(paisCelebracion, PaisEntity.getDefaultObject());
+	public final FestivoEntity setPaisCelebracion(final PaisEntity paisCelebracion) {
+		this.paisCelebracion = UtilObject.getDefault(paisCelebracion, PaisEntity.create());
+		return this;
 	}
 
 }

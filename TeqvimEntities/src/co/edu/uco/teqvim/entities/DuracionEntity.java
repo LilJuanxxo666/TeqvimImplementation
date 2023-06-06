@@ -8,7 +8,6 @@ import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
 
 public final class DuracionEntity {
 	
-	private static final DuracionEntity DEFAULT_OBJECT = new DuracionEntity();
 	private UUID identificador;
 	private int cantidadTiempo;
 	private UnidadTiempoEntity unidadTiempo;
@@ -17,7 +16,7 @@ public final class DuracionEntity {
 		super();
 		setIdentificador(UtilUUID.DEFAULT_UUID);
 		setCantidadTiempo(UtilNumber.ZERO.intValue());
-		setUnidadTiempo(UnidadTiempoEntity.getDefaultObject());
+		setUnidadTiempo(UnidadTiempoEntity.create());
 	}
 
 	public DuracionEntity(final UUID identificador, final int cantidadTiempo, final UnidadTiempoEntity unidadTiempo) {
@@ -27,15 +26,15 @@ public final class DuracionEntity {
 		setUnidadTiempo(unidadTiempo);
 	}
 	
-	public static DuracionEntity getDefaultObject() {
-		return DEFAULT_OBJECT;
+	public static DuracionEntity create() {
+		return new DuracionEntity();
 	}
 
 	public final UUID getIdentificador() {
 		return identificador;
 	}
 
-	private final DuracionEntity setIdentificador(final UUID identificador) {
+	public final DuracionEntity setIdentificador(final UUID identificador) {
 		this.identificador = UtilUUID.getDefault(identificador);
 		return this;
 	}
@@ -44,7 +43,7 @@ public final class DuracionEntity {
 		return cantidadTiempo;
 	}
 
-	private final DuracionEntity setCantidadTiempo(final int cantidadTiempo) {
+	public final DuracionEntity setCantidadTiempo(final int cantidadTiempo) {
 		this.cantidadTiempo = UtilNumber.getUtilNumber().getDefault(cantidadTiempo).intValue();
 		return this;
 	}
@@ -53,8 +52,8 @@ public final class DuracionEntity {
 		return unidadTiempo;
 	}
 
-	private final DuracionEntity setUnidadTiempo(final UnidadTiempoEntity unidadTiempo) {
-		this.unidadTiempo = UtilObject.getDefault(unidadTiempo, UnidadTiempoEntity.getDefaultObject());
+	public final DuracionEntity setUnidadTiempo(final UnidadTiempoEntity unidadTiempo) {
+		this.unidadTiempo = UtilObject.getDefault(unidadTiempo, UnidadTiempoEntity.create());
 		return this;
 	}
 

@@ -48,9 +48,8 @@ public final class EstudianteController {
 
 		Response<EstudianteDTO> response = new Response<>(lista, messages);
 		return new ResponseEntity<>(response, HttpStatus.OK);
-
 	}
-
+	
 	@GetMapping("/{id}")
 	public ResponseEntity<Response<EstudianteDTO>> getById(@PathVariable UUID id) {
 		facade = new EstudianteFacadeImpl();
@@ -109,7 +108,7 @@ public final class EstudianteController {
 
 			if (result.getMessages().isEmpty()) {
 				facade.modify(dto);
-				response.getMessages().add("La agenda se ha actualizado correctamente");
+				response.getMessages().add("El estudiante se ha actualizado correctamente");
 			} else {
 				statusCode = HttpStatus.BAD_REQUEST;
 				response.setMessages(result.getMessages());
@@ -140,7 +139,7 @@ public final class EstudianteController {
 			EstudianteDTO dto = new EstudianteDTO();
 			dto.setIdentificador(id);
 			facade.drop(dto);
-			response.getMessages().add("La agenda se ha eliminado correctamente");
+			response.getMessages().add("El estudiante se ha elimidado correctamente");
 		} catch (final TeqvimException exception) {
 			statusCode = HttpStatus.BAD_REQUEST;
 			response.getMessages().add(exception.getUserMessage());

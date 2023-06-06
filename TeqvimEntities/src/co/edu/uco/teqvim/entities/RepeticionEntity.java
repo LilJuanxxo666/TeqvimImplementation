@@ -16,9 +16,9 @@ public final class RepeticionEntity {
 	private RepeticionEntity() {
 		super();
 		setIdentificador(UtilUUID.DEFAULT_UUID);
-		setEvento(EventoEntity.getDefaultObject());
-		setDuracion(DuracionEntity.getDefaultObject());
-		setFrecuencia(FrecuenciaEntity.getDefaultObject());
+		setEvento(EventoEntity.create());
+		setDuracion(DuracionEntity.create());
+		setFrecuencia(FrecuenciaEntity.create());
 	}
 
 	public RepeticionEntity(final UUID identificador, final EventoEntity evento, final DuracionEntity duracion,
@@ -48,7 +48,7 @@ public final class RepeticionEntity {
 	}
 
 	private final void setEvento(final EventoEntity evento) {
-		this.evento = UtilObject.getDefault(evento, EventoEntity.getDefaultObject());
+		this.evento = UtilObject.getDefault(evento, EventoEntity.create());
 	}
 
 	public final DuracionEntity getDuracion() {
@@ -56,7 +56,7 @@ public final class RepeticionEntity {
 	}
 
 	private final void setDuracion(final DuracionEntity duracion) {
-		this.duracion = UtilObject.getDefault(duracion, DuracionEntity.getDefaultObject());
+		this.duracion = UtilObject.getDefault(duracion, DuracionEntity.create());
 	}
 
 	public final FrecuenciaEntity getFrecuencia() {
@@ -64,6 +64,6 @@ public final class RepeticionEntity {
 	}
 
 	private final void setFrecuencia(final FrecuenciaEntity frecuencia) {
-		this.frecuencia = UtilObject.getDefault(frecuencia, FrecuenciaEntity.getDefaultObject());
+		this.frecuencia = UtilObject.getDefault(frecuencia, FrecuenciaEntity.create());
 	}
 }

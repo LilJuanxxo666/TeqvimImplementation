@@ -8,7 +8,6 @@ import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
 
 public final class NotificacionEntity {
 	
-	private static final NotificacionEntity DEFAULT_OBJECT = new NotificacionEntity();
 	private UUID identificador;
 	private EventoEntity evento;
 	private int cantidadTiempo;
@@ -19,11 +18,11 @@ public final class NotificacionEntity {
 	private NotificacionEntity() {
 		super();
 		setIdentificador(UtilUUID.DEFAULT_UUID);
-		setEvento(EventoEntity.getDefaultObject());
+		setEvento(EventoEntity.create());
 		setCantidadTiempo(UtilNumber.ZERO.intValue());
-		setUnidadTiempo(UnidadTiempoEntity.getDefaultObject());
-		setTipoNotificacion(TipoNotificacionEntity.getDefaultObject());
-		setEstado(EstadoNotificacionEntity.getDefaultObject());
+		setUnidadTiempo(UnidadTiempoEntity.create());
+		setTipoNotificacion(TipoNotificacionEntity.create());
+		setEstado(EstadoNotificacionEntity.create());
 	}
 
 	public NotificacionEntity(UUID identificador, EventoEntity evento, int cantidadTiempo, UnidadTiempoEntity unidadTiempo,
@@ -37,56 +36,62 @@ public final class NotificacionEntity {
 		setEstado(estado);
 	}
 	
-	public static NotificacionEntity getDefaultObject() {
-		return DEFAULT_OBJECT;
+	public static NotificacionEntity create() {
+		return new NotificacionEntity();
 	}
 
 	public final UUID getIdentificador() {
 		return identificador;
 	}
 
-	private final void setIdentificador(final UUID identificador) {
+	public final NotificacionEntity setIdentificador(final UUID identificador) {
 		this.identificador = UtilUUID.getDefault(identificador);
+		return this;
 	}
 
 	public final EventoEntity getEvento() {
 		return evento;
 	}
 
-	private final void setEvento(final EventoEntity evento) {
-		this.evento = UtilObject.getDefault(evento, EventoEntity.getDefaultObject());
+	public final NotificacionEntity setEvento(final EventoEntity evento) {
+		this.evento = UtilObject.getDefault(evento, EventoEntity.create());
+		return this;
 	}
 
 	public final int getCantidadTiempo() {
 		return cantidadTiempo;
 	}
 
-	private final void setCantidadTiempo(final int cantidadTiempo) {
+	public final NotificacionEntity setCantidadTiempo(final int cantidadTiempo) {
 		this.cantidadTiempo = UtilNumber.getUtilNumber().getDefault(cantidadTiempo).intValue();
+		return this;
 	}
 
 	public final UnidadTiempoEntity getUnidadTiempo() {
 		return unidadTiempo;
 	}
 
-	private final void setUnidadTiempo(final UnidadTiempoEntity unidadTiempo) {
-		this.unidadTiempo = UtilObject.getDefault(unidadTiempo, UnidadTiempoEntity.getDefaultObject());
+	public final NotificacionEntity setUnidadTiempo(final UnidadTiempoEntity unidadTiempo) {
+		this.unidadTiempo = UtilObject.getDefault(unidadTiempo, UnidadTiempoEntity.create());
+		return this;
 	}
 
 	public final TipoNotificacionEntity getTipoNotificacion() {
 		return tipoNotificacion;
 	}
 
-	private final void setTipoNotificacion(final TipoNotificacionEntity tipoNotificacion) {
-		this.tipoNotificacion = UtilObject.getDefault(tipoNotificacion, TipoNotificacionEntity.getDefaultObject());
+	public final NotificacionEntity setTipoNotificacion(final TipoNotificacionEntity tipoNotificacion) {
+		this.tipoNotificacion = UtilObject.getDefault(tipoNotificacion, TipoNotificacionEntity.create());
+		return this;
 	}
 
 	public final EstadoNotificacionEntity getEstado() {
 		return estado;
 	}
 
-	private final void setEstado(final EstadoNotificacionEntity estado) {
-		this.estado = UtilObject.getDefault(estado, EstadoNotificacionEntity.getDefaultObject());
+	public final NotificacionEntity setEstado(final EstadoNotificacionEntity estado) {
+		this.estado = UtilObject.getDefault(estado, EstadoNotificacionEntity.create());
+		return this;
 	}
 
 }

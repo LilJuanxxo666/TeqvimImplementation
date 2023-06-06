@@ -5,9 +5,8 @@ import java.util.UUID;
 import co.edu.uco.teqvim.crosscutting.utils.UtilText;
 import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
 
-public class PaisEntity {
+public final class PaisEntity {
 	
-	private static final PaisEntity DEFAULT_OBJECT = new PaisEntity();
 	private UUID identificador;
 	private String nombre;
 	
@@ -23,24 +22,26 @@ public class PaisEntity {
 		setNombre(nombre);
 	}
 	
-	public static PaisEntity getDefaultObject() {
-		return DEFAULT_OBJECT;
+	public static PaisEntity create() {
+		return new PaisEntity();
 	}
 
 	public final UUID getIdentificador() {
 		return identificador;
 	}
 
-	private final void setIdentificador(UUID identificador) {
+	public final PaisEntity setIdentificador(UUID identificador) {
 		this.identificador = UtilUUID.getDefault(identificador);
+		return this;
 	}
 
 	public final String getNombre() {
 		return nombre;
 	}
 
-	private final void setNombre(String nombre) {
+	public final PaisEntity setNombre(String nombre) {
 		this.nombre = UtilText.getUtilText().applyTrim(nombre);
+		return this;
 	}
 
 }

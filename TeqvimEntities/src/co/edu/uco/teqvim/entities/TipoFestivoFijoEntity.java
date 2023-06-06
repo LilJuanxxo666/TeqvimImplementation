@@ -5,9 +5,8 @@ import java.util.UUID;
 import co.edu.uco.teqvim.crosscutting.utils.UtilText;
 import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
 
-public class TipoFestivoFijoEntity {
+public final class TipoFestivoFijoEntity {
 	
-	private static final TipoFestivoFijoEntity DEFAULT_OBJECT = new TipoFestivoFijoEntity();
 	private UUID identificador;
 	private String nombre;
 	private String descripcion;
@@ -27,31 +26,34 @@ public class TipoFestivoFijoEntity {
 	}
 
 	public static TipoFestivoFijoEntity getDefaultObject() {
-		return DEFAULT_OBJECT;
+		return new TipoFestivoFijoEntity();
 	}
 
 	public final UUID getIdentificador() {
 		return identificador;
 	}
 
-	private final void setIdentificador(final UUID identificador) {
+	public final TipoFestivoFijoEntity setIdentificador(final UUID identificador) {
 		this.identificador = UtilUUID.getDefault(identificador);
+		return this;
 	}
 
 	public final String getNombre() {
 		return nombre;
 	}
 
-	private final void setNombre(final String nombre) {
+	public final TipoFestivoFijoEntity setNombre(final String nombre) {
 		this.nombre = UtilText.getUtilText().applyTrim(nombre);
+		return this;
 	}
 
 	public final String getDescripcion() {
 		return descripcion;
 	}
 
-	private final void setDescripcion(final String descripcion) {
+	public final TipoFestivoFijoEntity setDescripcion(final String descripcion) {
 		this.descripcion = UtilText.getUtilText().applyTrim(descripcion);
+		return this;
 	}
 
 }

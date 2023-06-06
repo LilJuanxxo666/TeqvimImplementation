@@ -7,14 +7,13 @@ import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
 
 public final class DiaSemanaEntity {
 	
-	private static final DiaSemanaEntity DEFAULT_OBJECT = new DiaSemanaEntity();
 	private UUID identificador;
 	private NombreDiaSemanaEntity nombreDiaSemana;
 	private RepeticionEntity repeticion;
 	
 	private DiaSemanaEntity() {
 		setIdentificador(UtilUUID.DEFAULT_UUID);
-		setNombreDiaSemana(NombreDiaSemanaEntity.getDefaultObject());
+		setNombreDiaSemana(NombreDiaSemanaEntity.create());
 		setRepeticion(RepeticionEntity.getDefaultObject());
 	}
 	
@@ -24,28 +23,28 @@ public final class DiaSemanaEntity {
 		setRepeticion(repeticion);
 	}
 	
-	public static DiaSemanaEntity getDefaultObject() {
-		return DEFAULT_OBJECT;
+	public static DiaSemanaEntity create() {
+		return new DiaSemanaEntity();
 	}
 	
 	public final UUID getIdentificador() {
 		return identificador;
 	}
-	private final DiaSemanaEntity setIdentificador(UUID identificador) {
+	public final DiaSemanaEntity setIdentificador(UUID identificador) {
 		this.identificador = UtilUUID.getDefault(identificador);
 		return this;
 	}
 	public final NombreDiaSemanaEntity getNombreDiaSemana() {
 		return nombreDiaSemana;
 	}
-	private final DiaSemanaEntity setNombreDiaSemana(NombreDiaSemanaEntity nombreDiaSemana) {
-		this.nombreDiaSemana = UtilObject.getDefault(nombreDiaSemana, NombreDiaSemanaEntity.getDefaultObject());
+	public final DiaSemanaEntity setNombreDiaSemana(NombreDiaSemanaEntity nombreDiaSemana) {
+		this.nombreDiaSemana = UtilObject.getDefault(nombreDiaSemana, NombreDiaSemanaEntity.create());
 		return this;
 	}
 	public final RepeticionEntity getRepeticion() {
 		return repeticion;
 	}
-	private final DiaSemanaEntity setRepeticion(RepeticionEntity repeticion) {
+	public final DiaSemanaEntity setRepeticion(RepeticionEntity repeticion) {
 		this.repeticion = UtilObject.getDefault(repeticion, RepeticionEntity.getDefaultObject());
 		return this;
 	}

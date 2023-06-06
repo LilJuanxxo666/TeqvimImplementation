@@ -137,27 +137,22 @@ public final class EstudiantePostgreSqlDAO extends SqlDAO<EstudianteEntity> impl
 
 	@Override
 	protected final String prepareSelect() {
-		return "SELECT EST.identificador, EST.primer_nombre, EST.segundo_nombre, EST.primer_apellido, EST.segundo_apellido, EST.numero_telefonico, EST.correo, \r\n"
-				+ "EST.fecha_nacimiento, EST.tipo_documento, TDO.nombre, TDO.descripcion, EST.numero_documento, EST.confirmacion_correo, CCO.nombre, CCO.descripcion, EST.pais, \r\n"
-				+ "PAI.nombre, EST.estado_estudiante, ES.nombre, ES.descripcion ";
+		return "SELECT EST.identificador, EST.primer_nombre, EST.segundo_nombre, EST.primer_apellido, EST.segundo_apellido, EST.numero_telefonico, EST.correo, EST.fecha_nacimiento, EST.tipo_documento, TDO.nombre, TDO.descripcion, EST.numero_documento, EST.confirmacion_correo, CCO.nombre, CCO.descripcion, EST.pais, PAI.nombre, EST.estado_estudiante, ES.nombre, ES.descripcion ";
 	}
 
 	@Override
 	protected final String prepareFrom() {
-		return "FROM estudiante EST JOIN tipo_documento TDO ON TDO.identificador = EST.tipo_documento JOIN respuesta CCO\r\n"
-				+ "ON EST.confirmacion_correo = CCO.identificador JOIN pais PAI ON PAI.identificador = EST.pais JOIN estado_estudiante ES ON\r\n"
-				+ "ES.identificador = EST.estado_estudiante ";
+		return "FROM estudiante EST JOIN tipo_documento TDO ON TDO.identificador = EST.tipo_documento JOIN respuesta CCO ON EST.confirmacion_correo = CCO.identificador JOIN pais PAI ON PAI.identificador = EST.pais JOIN estado_estudiante ES ON ES.identificador = EST.estado_estudiante ";
 	}
 
 	@Override
 	protected final String prepareWhere(final EstudianteEntity entity, List<Object> parameters) {
-
 		final var where = new StringBuilder("");
 		parameters = UtilObject.getDefault(parameters, new ArrayList<>());
 
 		var setWhere = true;
 
-		if (UtilObject.isNull(entity)) {
+		if (!UtilObject.isNull(entity)) {
 			if (!UtilUUID.isDefault(entity.getIdentificador())) {
 				parameters.add(entity.getIdentificador());
 				where.append("WHERE identificador=? ");
@@ -191,37 +186,32 @@ public final class EstudiantePostgreSqlDAO extends SqlDAO<EstudianteEntity> impl
 				where.append(setWhere ? "WHERE " : "AND ").append("correo=? ");
 				setWhere = false;
 			}
-			if (!UtilText.getUtilText().isEmpty(entity.getCorreo())) {
-				parameters.add(entity.getCorreo());
-				where.append(setWhere ? "WHERE " : "AND").append("contrasena=? ");
-				setWhere = false;
-			}
 			if (!UtilObject.isNull(entity.getFechaNacimiento())) {
 				parameters.add(entity.getFechaNacimiento());
-				where.append(setWhere ? "WHERE " : "AND").append("fecha_nacimiento=? ");
+				where.append(setWhere ? "WHERE " : "AND ").append("fecha_nacimiento=? ");
 			}
 			if (!UtilUUID.isDefault(entity.getTipoDocumento().getIdentificador())) {
 				parameters.add(entity.getTipoDocumento().getIdentificador());
-				where.append(setWhere ? "WHERE " : "AND").append("tipo_documento=? ");
+				where.append(setWhere ? "WHERE " : "AND ").append("tipo_documento=? ");
 				setWhere = false;
 			}
 			if (!UtilText.getUtilText().isEmpty(entity.getNumeroDocumento())) {
 				parameters.add(entity.getNumeroDocumento());
-				where.append(setWhere ? "WHERE " : "AND").append("numero_documento=? ");
+				where.append(setWhere ? "WHERE " : "AND ").append("numero_documento=? ");
 				setWhere = false;
 			}
 			if (!UtilUUID.isDefault(entity.getConfirmacionCorreo().getIdentificador())) {
 				parameters.add(entity.getConfirmacionCorreo().getIdentificador());
-				where.append(setWhere ? "WHERE " : "AND").append("confirmacion_correo=? ");
+				where.append(setWhere ? "WHERE " : "AND ").append("confirmacion_correo=? ");
 			}
 			if (!UtilUUID.isDefault(entity.getPais().getIdentificador())) {
 				parameters.add(entity.getPais().getIdentificador());
-				where.append(setWhere ? "WHERE " : "AND").append("pais=? ");
+				where.append(setWhere ? "WHERE " : "AND ").append("pais=? ");
 				setWhere = false;
 			}
 			if (!UtilUUID.isDefault(entity.getEstado().getIdentificador())) {
 				parameters.add(entity.getEstado().getIdentificador());
-				where.append(setWhere ? "WHERE " : "AND").append("estado_estudiante=? ");
+				where.append(setWhere ? "WHERE " : "AND ").append("estado_estudiante=? ");
 				setWhere = false;
 			}
 		}
@@ -259,16 +249,7 @@ public final class EstudiantePostgreSqlDAO extends SqlDAO<EstudianteEntity> impl
 		try (var resultSet = preparedStatement.executeQuery()) {
 
 			while (resultSet.next()) {
-				var tipoDocumento = new TipoDocumentoEntity(resultSet.getObject(9, UUID.class), resultSet.getString(10), resultSet.getString(11));
-				var confirmacionCorreo = new RespuestaEntity(resultSet.getObject(13, UUID.class), resultSet.getString(14), resultSet.getString(15));
-				var pais = new PaisEntity(resultSet.getObject(16, UUID.class), resultSet.getString(17));
-				var estadoEstudiante = new EstadoEstudianteEntity(resultSet.getObject(18, UUID.class), resultSet.getString(19), resultSet.getString(20));
-				var entityTmp = new EstudianteEntity(
-						resultSet.getObject(1, UUID.class), resultSet.getString(2), resultSet.getString(3),
-						resultSet.getString(4), resultSet.getString(5), resultSet.getString(6),
-						resultSet.getString(7), "", resultSet.getObject(8, LocalDate.class), tipoDocumento, resultSet.getString(12), confirmacionCorreo, pais, estadoEstudiante);
-				
-				result.add(entityTmp);
+				//EstudianteEntity entityTmp = EstudianteEntity.create().setIdentificador(resultSet.getObject(1, UUID.class)).setPrimerNombre(resultSet.getString(2)).setSegundoNombre(resultSet.getString(3)).setPrimerApellido(resultSet.getString(4)).setSegudoApellido(resultSet.getString(5)).setNumeroTelefonico(resultSet.getString(6)).setCorreo(resultSet.getString(7)).setFechaNacimiento(resultSet.getObject(8, LocalDate.class)).setTipoDocumento(TipoDocumentoEntity.create().setIdentificador(9, UUID.class)).
 			}
 
 		} catch (final SQLException exception) {

@@ -5,9 +5,8 @@ import java.util.UUID;
 import co.edu.uco.teqvim.crosscutting.utils.UtilText;
 import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
 
-public class UnidadTiempoEntity {
+public final class UnidadTiempoEntity {
 	
-	private static final UnidadTiempoEntity DEFAULT_OBJECT = new UnidadTiempoEntity();
 	private UUID identificador;
 	private String nombre;
 	
@@ -23,24 +22,26 @@ public class UnidadTiempoEntity {
 		setNombre(nombre);
 	}
 	
-	public static UnidadTiempoEntity getDefaultObject() {
-		return DEFAULT_OBJECT;
+	public static UnidadTiempoEntity create() {
+		return new UnidadTiempoEntity();
 	}
 
 	public final UUID getIdentificador() {
 		return identificador;
 	}
 
-	private final void setIdentificador(UUID identificador) {
+	public final UnidadTiempoEntity setIdentificador(UUID identificador) {
 		this.identificador = UtilUUID.getDefault(identificador);
+		return this;
 	}
 
 	public final String getNombre() {
 		return nombre;
 	}
 
-	private final void setNombre(String nombre) {
+	public final UnidadTiempoEntity setNombre(String nombre) {
 		this.nombre = UtilText.getUtilText().applyTrim(nombre);
+		return this;
 	}
 
 }

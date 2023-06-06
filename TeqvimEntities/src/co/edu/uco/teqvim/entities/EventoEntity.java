@@ -8,9 +8,8 @@ import co.edu.uco.teqvim.crosscutting.utils.UtilObject;
 import co.edu.uco.teqvim.crosscutting.utils.UtilText;
 import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
 
-public class EventoEntity {
+public final class EventoEntity {
 	
-	private static final EventoEntity DEFAULT_OBJECT = new EventoEntity();
 	private UUID identificador;
 	private String titulo;
 	private String descripcion;
@@ -29,9 +28,9 @@ public class EventoEntity {
 		setFechaInicio(UtilDate.DEFAULT_DATE);
 		setFechaFin(UtilDate.DEFAULT_DATE);
 		setDuracionEvento(TipoDuracionEventoEntity.getDefaultObject());
-		setEstado(EstadoEventoEntity.getDefaultObject());
-		setTipoEvento(TipoEventoEntity.getDefaultObject());
-		setEstudiante(EstudianteEntity.getDefaultObject());
+		setEstado(EstadoEventoEntity.create());
+		setTipoEvento(TipoEventoEntity.create());
+		setEstudiante(EstudianteEntity.create());
 	}
 
 	public EventoEntity(UUID identificador, String titulo, String descripcion, LocalDate fechaInicio, LocalDate fechaFin,
@@ -49,80 +48,89 @@ public class EventoEntity {
 		setEstudiante(estudiante);
 	}
 	
-	public static EventoEntity getDefaultObject() {
-		return DEFAULT_OBJECT;
+	public static EventoEntity create() {
+		return new EventoEntity();
 	}
 
 	public final UUID getIdentificador() {
 		return identificador;
 	}
 
-	private final void setIdentificador(final UUID identificador) {
+	public final EventoEntity setIdentificador(final UUID identificador) {
 		this.identificador = UtilUUID.getDefault(identificador);
+		return this;
 	}
 
 	public final String getTitulo() {
 		return titulo;
 	}
 
-	private final void setTitulo(final String titulo) {
+	public final EventoEntity setTitulo(final String titulo) {
 		this.titulo = UtilText.getUtilText().applyTrim(titulo);
+		return this;
 	}
 
 	public final String getDescripcion() {
 		return descripcion;
 	}
 
-	private final void setDescripcion(final String descripcion) {
+	public final EventoEntity setDescripcion(final String descripcion) {
 		this.descripcion = UtilText.getUtilText().applyTrim(descripcion);
+		return this;
 	}
 
 	public final LocalDate getFechaInicio() {
 		return fechaInicio;
 	}
 
-	private final void setFechaInicio(final LocalDate fechaInicio) {
+	public final EventoEntity setFechaInicio(final LocalDate fechaInicio) {
 		this.fechaInicio = UtilDate.getDefault(fechaInicio);
+		return this;
 	}
 
 	public final LocalDate getFechaFin() {
 		return fechaFin;
 	}
 
-	private final void setFechaFin(final LocalDate fechaFin) {
+	public final EventoEntity setFechaFin(final LocalDate fechaFin) {
 		this.fechaFin = UtilDate.getDefault(fechaFin);
+		return this;
 	}
 
 	public final TipoDuracionEventoEntity getDuracionEvento() {
 		return duracionEvento;
 	}
 
-	private final void setDuracionEvento(final TipoDuracionEventoEntity duracionEvento) {
+	public final EventoEntity setDuracionEvento(final TipoDuracionEventoEntity duracionEvento) {
 		this.duracionEvento = UtilObject.getDefault(duracionEvento, TipoDuracionEventoEntity.getDefaultObject());
+		return this;
 	}
 
 	public final EstadoEventoEntity getEstado() {
 		return estado;
 	}
 
-	private final void setEstado(final EstadoEventoEntity estado) {
-		this.estado = UtilObject.getDefault(estado, EstadoEventoEntity.getDefaultObject());
+	public final EventoEntity setEstado(final EstadoEventoEntity estado) {
+		this.estado = UtilObject.getDefault(estado, EstadoEventoEntity.create());
+		return this;
 	}
 
 	public final TipoEventoEntity getTipoEvento() {
 		return tipoEvento;
 	}
 
-	private final void setTipoEvento(final TipoEventoEntity tipoEvento) {
-		this.tipoEvento = UtilObject.getDefault(tipoEvento, TipoEventoEntity.getDefaultObject());
+	public final EventoEntity setTipoEvento(final TipoEventoEntity tipoEvento) {
+		this.tipoEvento = UtilObject.getDefault(tipoEvento, TipoEventoEntity.create());
+		return this;
 	}
 
 	public final EstudianteEntity getEstudiante() {
 		return estudiante;
 	}
 
-	private final void setEstudiante(final EstudianteEntity estudiante) {
-		this.estudiante = UtilObject.getDefault(estudiante, EstudianteEntity.getDefaultObject());
+	public final EventoEntity setEstudiante(final EstudianteEntity estudiante) {
+		this.estudiante = UtilObject.getDefault(estudiante, EstudianteEntity.create());
+		return this;
 	}
 
 }

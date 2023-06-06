@@ -113,8 +113,9 @@ public final class PostgreSqlDAOFactory extends DAOFactory {
 	@Override
 	public final void initTransaction() {
 		try {
-			UtilSql.connectionIsOpen(conexion);
-			conexion.setAutoCommit(false);
+			if(UtilSql.connectionIsOpen(conexion)) {
+				conexion.setAutoCommit(false);
+			}
 		} catch (final TeqvimException exception) {
 			throw exception;
 		} catch (final SQLException exception) {
@@ -129,15 +130,13 @@ public final class PostgreSqlDAOFactory extends DAOFactory {
 	@Override
 	public void commitTransaction() {
 		try {
-			UtilSql.initCommitIsReady(conexion);
-			conexion.commit();
+			if(UtilSql.initCommitIsReady(conexion) && UtilSql.connectionIsOpen(conexion)) {
+				conexion.commit();
+			}
 		} catch (TeqvimException exception) {
 			throw exception;
 		} catch (SQLException exception) {
-			var userMessage = UtilSqlMessages.CONFIRM_COMMIT_USER_MESSAGE;
-			var technicalMessage = UtilSqlMessages.COMMIT_TECHNICAL_SQL_EXCEPTION;
-
-			throw TeqvimCrossCuttingException.create(userMessage, technicalMessage, exception);
+			throw TeqvimCrossCuttingException.create(UtilSqlMessages.CONFIRM_COMMIT_USER_MESSAGE, UtilSqlMessages.COMMIT_TECHNICAL_SQL_EXCEPTION, exception);
 		}
 
 	}
@@ -145,15 +144,13 @@ public final class PostgreSqlDAOFactory extends DAOFactory {
 	@Override
 	public void cancelTransaction() {
 		try {
-			UtilSql.initCommitIsReady(conexion);
-			conexion.rollback();
+			if(UtilSql.initCommitIsReady(conexion) && UtilSql.connectionIsOpen(conexion)) {
+				conexion.rollback();
+			}
 		} catch (TeqvimException exception) {
 			throw exception;
 		} catch (SQLException exception) {
-			var userMessage = UtilSqlMessages.CANCEL_COMMIT_USER_MESSAGE;
-			var technicalMessage = UtilSqlMessages.COMMIT_TECHNICAL_SQL_EXCEPTION;
-
-			throw TeqvimCrossCuttingException.create(userMessage, technicalMessage, exception);
+			throw TeqvimCrossCuttingException.create(UtilSqlMessages.CANCEL_COMMIT_USER_MESSAGE, UtilSqlMessages.COMMIT_TECHNICAL_SQL_EXCEPTION, exception);
 		}
 
 	}

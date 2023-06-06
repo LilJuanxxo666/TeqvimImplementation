@@ -5,9 +5,8 @@ import java.util.UUID;
 import co.edu.uco.teqvim.crosscutting.utils.UtilText;
 import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
 
-public class TipoDocumentoEntity {
+public final class TipoDocumentoEntity {
 	
-	private static final TipoDocumentoEntity DEFAULT_OBJECT = new TipoDocumentoEntity();
 	private UUID identificador;
 	private String nombre;
 	private String descripcion;
@@ -26,31 +25,34 @@ public class TipoDocumentoEntity {
 		setDescripcion(descripcion);
 	}
 
-	public static TipoDocumentoEntity getDefaultObject() {
-		return DEFAULT_OBJECT;
+	public static TipoDocumentoEntity create() {
+		return new TipoDocumentoEntity();
 	}
 
 	public final UUID getIdentificador() {
 		return identificador;
 	}
 
-	private final void setIdentificador(final UUID identificador) {
+	public final TipoDocumentoEntity setIdentificador(final UUID identificador) {
 		this.identificador = UtilUUID.getDefault(identificador);
+		return this;
 	}
 
 	public final String getNombre() {
 		return nombre;
 	}
 
-	private final void setNombre(final String nombre) {
+	public final TipoDocumentoEntity setNombre(final String nombre) {
 		this.nombre = UtilText.getUtilText().applyTrim(nombre);
+		return this;
 	}
 
 	public final String getDescripcion() {
 		return descripcion;
 	}
 
-	private final void setDescripcion(final String descripcion) {
+	public final TipoDocumentoEntity setDescripcion(final String descripcion) {
 		this.descripcion = UtilText.getUtilText().applyTrim(descripcion);
+		return this;
 	}
 }

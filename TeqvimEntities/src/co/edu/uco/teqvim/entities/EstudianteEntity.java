@@ -9,8 +9,7 @@ import co.edu.uco.teqvim.crosscutting.utils.UtilText;
 import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
 
 public final class EstudianteEntity {
-
-	private static final EstudianteEntity DEFAULT_OBJECT = new EstudianteEntity();
+	
 	private UUID identificador;
 	private String primerNombre;
 	private String segundoNombre;
@@ -37,11 +36,11 @@ public final class EstudianteEntity {
 		setCorreo(UtilText.EMPTY);
 		setContrasena(UtilText.EMPTY);
 		setFechaNacimiento(UtilDate.DEFAULT_DATE);
-		setTipoDocumento(TipoDocumentoEntity.getDefaultObject());
+		setTipoDocumento(TipoDocumentoEntity.create());
 		setNumeroDocumento(UtilText.EMPTY);
-		setConfirmacionCorreo(RespuestaEntity.getDefaultObject());
-		setPais(PaisEntity.getDefaultObject());
-		setEstado(EstadoEstudianteEntity.getDefaultObject());
+		setConfirmacionCorreo(RespuestaEntity.create());
+		setPais(PaisEntity.create());
+		setEstado(EstadoEstudianteEntity.create());
 	}
 
 	public EstudianteEntity(UUID identificador, String primerNombre, String segundoNombre, String primerApellido,
@@ -65,132 +64,134 @@ public final class EstudianteEntity {
 		setEstado(estado);
 	}
 
-	public static final EstudianteEntity createWithIdentificador(final UUID identificador){
-		return new EstudianteEntity(identificador, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilDate.DEFAULT_DATE, TipoDocumentoEntity.getDefaultObject(), UtilText.EMPTY, RespuestaEntity.getDefaultObject(), PaisEntity.getDefaultObject(), EstadoEstudianteEntity.getDefaultObject());
-	}
-
-	public static final EstudianteEntity createWithCorreo(final String correo){
-		return new EstudianteEntity(UtilUUID.DEFAULT_UUID, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilDate.DEFAULT_DATE, TipoDocumentoEntity.getDefaultObject(), UtilText.EMPTY, RespuestaEntity.getDefaultObject(), PaisEntity.getDefaultObject(), EstadoEstudianteEntity.getDefaultObject());
-	}
-
-	public static final EstudianteEntity createWithNumeroDocumento(final String numeroDocumento){
-		return new EstudianteEntity(UtilUUID.DEFAULT_UUID, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilText.EMPTY, UtilDate.DEFAULT_DATE, TipoDocumentoEntity.getDefaultObject(), numeroDocumento, RespuestaEntity.getDefaultObject(), PaisEntity.getDefaultObject(), EstadoEstudianteEntity.getDefaultObject());
-	}
-
-	public static EstudianteEntity getDefaultObject() {
-		return DEFAULT_OBJECT;
+	public static EstudianteEntity create() {
+		return new EstudianteEntity();
 	}
 
 	public final UUID getIdentificador() {
 		return identificador;
 	}
 
-	private final void setIdentificador(final UUID identificador) {
+	public final EstudianteEntity setIdentificador(final UUID identificador) {
 		this.identificador = UtilUUID.getDefault(identificador);
+		return this;
 	}
 
 	public final String getPrimerNombre() {
 		return primerNombre;
 	}
 
-	private final void setPrimerNombre(final String primerNombre) {
+	public final EstudianteEntity setPrimerNombre(final String primerNombre) {
 		this.primerNombre = UtilText.getUtilText().applyTrim(primerNombre);
+		return this;
 	}
 
 	public final String getSegundoNombre() {
 		return segundoNombre;
 	}
 
-	private final void setSegundoNombre(final String segundoNombre) {
+	public final EstudianteEntity setSegundoNombre(final String segundoNombre) {
 		this.segundoNombre = UtilText.getUtilText().applyTrim(segundoNombre);
+		return this;
 	}
 
 	public final String getPrimerApellido() {
 		return primerApellido;
 	}
 
-	private final void setPrimerApellido(final String primerApellido) {
+	public final EstudianteEntity setPrimerApellido(final String primerApellido) {
 		this.primerApellido = UtilText.getUtilText().applyTrim(primerApellido);
+		return this;
 	}
 
 	public final String getSegudoApellido() {
 		return segudoApellido;
 	}
 
-	private final void setSegudoApellido(final String segudoApellido) {
+	public final EstudianteEntity setSegudoApellido(final String segudoApellido) {
 		this.segudoApellido = UtilText.getUtilText().applyTrim(segudoApellido);
+		return this;
 	}
 
 	public final String getNumeroTelefonico() {
 		return numeroTelefonico;
 	}
 
-	private final void setNumeroTelefonico(final String numeroTelefonico) {
+	public final EstudianteEntity setNumeroTelefonico(final String numeroTelefonico) {
 		this.numeroTelefonico = UtilText.getUtilText().applyTrim(numeroTelefonico);
+		return this;
 	}
 
 	public final String getCorreo() {
 		return correo;
 	}
 
-	private final void setCorreo(final String correo) {
+	public final EstudianteEntity setCorreo(final String correo) {
 		this.correo = UtilText.getDefaultEmail(correo);
+		return this;
 	}
 
 	public final String getContrasena() {
 		return contrasena;
 	}
 
-	private final void setContrasena(final String contrasena) {
+	public final EstudianteEntity setContrasena(final String contrasena) {
 		this.contrasena = UtilText.getDefaultPassword(contrasena);
+		return this;
 	}
 
 	public final TipoDocumentoEntity getTipoDocumento() {
 		return tipoDocumento;
 	}
 
-	private final void setTipoDocumento(final TipoDocumentoEntity tipoDocumento) {
-		this.tipoDocumento = UtilObject.getDefault(tipoDocumento, TipoDocumentoEntity.getDefaultObject());
+	public final EstudianteEntity setTipoDocumento(final TipoDocumentoEntity tipoDocumento) {
+		this.tipoDocumento = UtilObject.getDefault(tipoDocumento, TipoDocumentoEntity.create());
+		return this;
 	}
 
 	public final String getNumeroDocumento() {
 		return numeroDocumento;
 	}
 
-	private final void setNumeroDocumento(final String numeroDocumento) {
+	public final EstudianteEntity setNumeroDocumento(final String numeroDocumento) {
 		this.numeroDocumento = UtilText.getUtilText().applyTrim(numeroDocumento);
+		return this;
 	}
 
 	public final RespuestaEntity getConfirmacionCorreo() {
 		return confirmacionCorreo;
 	}
 
-	private final void setConfirmacionCorreo(final RespuestaEntity confirmacionCorreo) {
-		this.confirmacionCorreo = UtilObject.getDefault(confirmacionCorreo, RespuestaEntity.getDefaultObject());
+	public final EstudianteEntity setConfirmacionCorreo(final RespuestaEntity confirmacionCorreo) {
+		this.confirmacionCorreo = UtilObject.getDefault(confirmacionCorreo, RespuestaEntity.create());
+		return this;
 	}
 
 	public final PaisEntity getPais() {
 		return pais;
 	}
 
-	private final void setPais(final PaisEntity pais) {
-		this.pais = UtilObject.getDefault(pais, PaisEntity.getDefaultObject());
+	public final EstudianteEntity setPais(final PaisEntity pais) {
+		this.pais = UtilObject.getDefault(pais, PaisEntity.create());
+		return this;
 	}
 
 	public final EstadoEstudianteEntity getEstado() {
 		return estado;
 	}
 
-	private final void setEstado(final EstadoEstudianteEntity estado) {
-		this.estado = UtilObject.getDefault(estado, EstadoEstudianteEntity.getDefaultObject());
+	public final EstudianteEntity setEstado(final EstadoEstudianteEntity estado) {
+		this.estado = UtilObject.getDefault(estado, EstadoEstudianteEntity.create());
+		return this;
 	}
 
 	public LocalDate getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 
-	private void setFechaNacimiento(LocalDate fechaNacimiento) {
+	public EstudianteEntity setFechaNacimiento(LocalDate fechaNacimiento) {
 		this.fechaNacimiento = UtilDate.getDefault(fechaNacimiento);
+		return this;
 	}
 
 }
