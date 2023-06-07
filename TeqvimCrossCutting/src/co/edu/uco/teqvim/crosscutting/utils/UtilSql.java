@@ -14,45 +14,29 @@ public final class UtilSql {
 
 	public static boolean connectionIsOpen(final Connection connection) {
 		if (UtilObject.isNull(connection)) {
-			var userMessage = UtilSqlMessages.CONNECTION_IS_OPEN_USER_MESSAGE;
-			var technicalMessage = UtilSqlMessages.CONNECTION_IS_OPEN_TECHNICAL_NULL_CONNECTION;
-
-			throw TeqvimCrossCuttingException.create(technicalMessage, userMessage);
+			throw TeqvimCrossCuttingException.create(UtilSqlMessages.CONNECTION_IS_OPEN_TECHNICAL_NULL_CONNECTION, UtilSqlMessages.CONNECTION_IS_OPEN_USER_MESSAGE);
 		}
-
 		try {
 			return !connection.isClosed();
 		} catch (final SQLException exception) {
-			var userMessage = UtilSqlMessages.CONNECTION_IS_OPEN_USER_MESSAGE;
-			var technicalMessage = UtilSqlMessages.CONNECTION_IS_OPEN_TECHNICAL_SQL_EXCEPTION;
-
-			throw TeqvimCrossCuttingException.create(technicalMessage, userMessage, exception);
+			throw TeqvimCrossCuttingException.create(UtilSqlMessages.CONNECTION_IS_OPEN_TECHNICAL_SQL_EXCEPTION, UtilSqlMessages.CONNECTION_IS_OPEN_USER_MESSAGE, exception);
 		} catch (final Exception exception) {
-			var userMessage = UtilSqlMessages.CONNECTION_IS_OPEN_USER_MESSAGE;
-			var technicalMessage = UtilSqlMessages.CONNECTION_IS_OPEN_TECHNICAL_EXCEPTION;
-
-			throw TeqvimCrossCuttingException.create(technicalMessage, userMessage, exception);
+			throw TeqvimCrossCuttingException.create(UtilSqlMessages.CONNECTION_IS_OPEN_TECHNICAL_EXCEPTION, UtilSqlMessages.CONNECTION_IS_OPEN_USER_MESSAGE, exception);
 		}
 
 	}
 
 	public static final void closeConnection(final Connection connection) {
 		try {
-			if (!connectionIsOpen(connection)) {
+			if (connectionIsOpen(connection)) {
 				connection.close();
 			}
 		} catch (final TeqvimCrossCuttingException exception) {
 			throw exception;
 		} catch (final SQLException exception) {
-			var userMessage = UtilSqlMessages.CONNECTION_IS_OPEN_USER_MESSAGE;
-			var technicalMessage = UtilSqlMessages.CONNECTION_IS_OPEN_TECHNICAL_SQL_EXCEPTION;
-
-			throw TeqvimCrossCuttingException.create(technicalMessage, userMessage, exception);
+			throw TeqvimCrossCuttingException.create(UtilSqlMessages.CONNECTION_IS_OPEN_TECHNICAL_SQL_EXCEPTION, UtilSqlMessages.CONNECTION_IS_OPEN_USER_MESSAGE, exception);
 		} catch (final Exception exception) {
-			var userMessage = UtilSqlMessages.CONNECTION_IS_OPEN_USER_MESSAGE;
-			var technicalMessage = UtilSqlMessages.CONNECTION_IS_OPEN_TECHNICAL_EXCEPTION;
-
-			throw TeqvimCrossCuttingException.create(technicalMessage, userMessage, exception);
+			throw TeqvimCrossCuttingException.create(UtilSqlMessages.CONNECTION_IS_OPEN_TECHNICAL_EXCEPTION, UtilSqlMessages.CONNECTION_IS_OPEN_USER_MESSAGE, exception);
 		}
 
 	}
@@ -61,23 +45,15 @@ public final class UtilSql {
 
 		try {
 			if (connection.getAutoCommit()) {
-				var userMessage = UtilSqlMessages.COMMIT_IS_STARTED_USER_MESSAGE;
-				var technicalMessage = UtilSqlMessages.COMMIT_IS_STARTED_TECHNICAL_AUTOCOMMIT;
-				throw TeqvimCrossCuttingException.create(technicalMessage, userMessage);
+				throw TeqvimCrossCuttingException.create(UtilSqlMessages.COMMIT_IS_STARTED_TECHNICAL_AUTOCOMMIT, UtilSqlMessages.COMMIT_IS_STARTED_USER_MESSAGE);
 			}
 			return !connection.getAutoCommit();
 		} catch (TeqvimCrossCuttingException exception) {
 			throw exception;
 		} catch (SQLException exception) {
-			var userMessage = UtilSqlMessages.COMMIT_IS_STARTED_USER_MESSAGE;
-			var technicalMessage = UtilSqlMessages.COMMIT_IS_STARTED_TECHNICAL_SQL_EXCEPTION;
-
-			throw TeqvimCrossCuttingException.create(technicalMessage, userMessage, exception);
+			throw TeqvimCrossCuttingException.create(UtilSqlMessages.COMMIT_IS_STARTED_TECHNICAL_SQL_EXCEPTION, UtilSqlMessages.COMMIT_IS_STARTED_USER_MESSAGE, exception);
 		} catch (final Exception exception) {
-			var userMessage = UtilSqlMessages.COMMIT_IS_STARTED_USER_MESSAGE;
-			var technicalMessage = UtilSqlMessages.COMMIT_IS_STARTED_TECHNICAL_EXCEPTION;
-
-			throw TeqvimCrossCuttingException.create(userMessage, technicalMessage, exception);
+			throw TeqvimCrossCuttingException.create(UtilSqlMessages.COMMIT_IS_STARTED_TECHNICAL_EXCEPTION, UtilSqlMessages.COMMIT_IS_STARTED_USER_MESSAGE, exception);
 		}
 	}
 

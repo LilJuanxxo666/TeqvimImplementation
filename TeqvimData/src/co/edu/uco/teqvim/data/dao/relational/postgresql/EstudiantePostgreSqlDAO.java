@@ -14,6 +14,7 @@ import co.edu.uco.teqvim.crosscutting.utils.UtilObject;
 import co.edu.uco.teqvim.crosscutting.utils.UtilText;
 import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
 import co.edu.uco.teqvim.crosscutting.utils.Messages.EstudiantePostgresSqlDAOMessages;
+import co.edu.uco.teqvim.crosscutting.utils.UtilDate;
 import co.edu.uco.teqvim.data.dao.EstudianteDAO;
 import co.edu.uco.teqvim.data.dao.relational.SqlDAO;
 import co.edu.uco.teqvim.entities.EstadoEstudianteEntity;
@@ -49,15 +50,17 @@ public final class EstudiantePostgreSqlDAO extends SqlDAO<EstudianteEntity> impl
 			preparedStatement.setObject(12, entity.getConfirmacionCorreo().getIdentificador());
 			preparedStatement.setObject(13, entity.getPais().getIdentificador());
 			preparedStatement.setObject(14, entity.getEstado().getIdentificador());
-			
+
 			preparedStatement.executeUpdate();
 
 		} catch (final SQLException exception) {
 
-			throw TeqvimDataException.create(EstudiantePostgresSqlDAOMessages.CREATE_TECHNICAL_SQL_EXCEPTION_MESSAGE, EstudiantePostgresSqlDAOMessages.CREATE_EXCEPTION_USER_MESSAGE, exception);
+			throw TeqvimDataException.create(EstudiantePostgresSqlDAOMessages.CREATE_TECHNICAL_SQL_EXCEPTION_MESSAGE,
+					EstudiantePostgresSqlDAOMessages.CREATE_EXCEPTION_USER_MESSAGE, exception);
 
 		} catch (final Exception exception) {
-			throw TeqvimDataException.create(EstudiantePostgresSqlDAOMessages.CREATE_TECHNICAL_EXCEPTION_MESSAGE, EstudiantePostgresSqlDAOMessages.CREATE_EXCEPTION_USER_MESSAGE, exception);
+			throw TeqvimDataException.create(EstudiantePostgresSqlDAOMessages.CREATE_TECHNICAL_EXCEPTION_MESSAGE,
+					EstudiantePostgresSqlDAOMessages.CREATE_EXCEPTION_USER_MESSAGE, exception);
 		}
 	}
 
@@ -74,16 +77,17 @@ public final class EstudiantePostgreSqlDAO extends SqlDAO<EstudianteEntity> impl
 		try (var preaparedStatement = getConnection().prepareStatement(sqlStatement.toString())) {
 
 			setParameters(preaparedStatement, parameters);
-			
+
 			return executeQuery(preaparedStatement);
 
-		}catch (final TeqvimDataException exception) { 
+		} catch (final TeqvimDataException exception) {
 			throw exception;
-		}
-		catch (final SQLException exception) {
-			throw TeqvimDataException.create(EstudiantePostgresSqlDAOMessages.READ_TECHNICAL_SQL_EXCEPTION_MESSAGE, EstudiantePostgresSqlDAOMessages.READ_EXCEPTION_USER_MESSAGE, exception);
+		} catch (final SQLException exception) {
+			throw TeqvimDataException.create(EstudiantePostgresSqlDAOMessages.READ_TECHNICAL_SQL_EXCEPTION_MESSAGE,
+					EstudiantePostgresSqlDAOMessages.READ_EXCEPTION_USER_MESSAGE, exception);
 		} catch (final Exception exception) {
-			throw TeqvimDataException.create(EstudiantePostgresSqlDAOMessages.READ_TECHNICAL_EXCEPTION_MESSAGE, EstudiantePostgresSqlDAOMessages.READ_EXCEPTION_USER_MESSAGE, exception);
+			throw TeqvimDataException.create(EstudiantePostgresSqlDAOMessages.READ_TECHNICAL_EXCEPTION_MESSAGE,
+					EstudiantePostgresSqlDAOMessages.READ_EXCEPTION_USER_MESSAGE, exception);
 		}
 	}
 
@@ -92,7 +96,6 @@ public final class EstudiantePostgreSqlDAO extends SqlDAO<EstudianteEntity> impl
 		var sqlStatement = "UPDATE estudiante SET primer_nombre=?, segundo_nombre=?, primer_apellido=?, segundo_apellido=?, numero_telefonico=?, correo=?, contrasena=?, fecha_nacimiento=?, tipo_documento=?, numero_documento=?, confirmacion_correo=?, pais=?, estado_estudiante=? WHERE identificador = ?";
 
 		try (var preparedStatement = getConnection().prepareStatement(sqlStatement)) {
-
 			preparedStatement.setString(1, entity.getPrimerNombre());
 			preparedStatement.setString(2, entity.getSegundoNombre());
 			preparedStatement.setString(3, entity.getPrimerApellido());
@@ -101,19 +104,20 @@ public final class EstudiantePostgreSqlDAO extends SqlDAO<EstudianteEntity> impl
 			preparedStatement.setString(6, entity.getCorreo());
 			preparedStatement.setString(7, entity.getContrasena());
 			preparedStatement.setObject(8, entity.getFechaNacimiento());
-			preparedStatement.setObject(9, entity.getTipoDocumento());
+			preparedStatement.setObject(9, entity.getTipoDocumento().getIdentificador());
 			preparedStatement.setString(10, entity.getNumeroDocumento());
-			preparedStatement.setObject(11, entity.getConfirmacionCorreo());
-			preparedStatement.setObject(12, entity.getPais());
-			preparedStatement.setObject(13, entity.getEstado());
+			preparedStatement.setObject(11, entity.getConfirmacionCorreo().getIdentificador());
+			preparedStatement.setObject(12, entity.getPais().getIdentificador());
+			preparedStatement.setObject(13, entity.getEstado().getIdentificador());
 			preparedStatement.setObject(14, entity.getIdentificador());
-
 			preparedStatement.executeUpdate();
 
 		} catch (final SQLException exception) {
-			throw TeqvimDataException.create(EstudiantePostgresSqlDAOMessages.UPDATE_TECHNICAL_SQL_EXCEPTION_MESSAGE, EstudiantePostgresSqlDAOMessages.UPDATE_EXCEPTION_USER_MESSAGE, exception);
+			throw TeqvimDataException.create(EstudiantePostgresSqlDAOMessages.UPDATE_TECHNICAL_SQL_EXCEPTION_MESSAGE,
+					EstudiantePostgresSqlDAOMessages.UPDATE_EXCEPTION_USER_MESSAGE, exception);
 		} catch (final Exception exception) {
-			throw TeqvimDataException.create(EstudiantePostgresSqlDAOMessages.UPDATE_TECHNICAL_EXCEPTION_MESSAGE, EstudiantePostgresSqlDAOMessages.UPDATE_EXCEPTION_USER_MESSAGE, exception);
+			throw TeqvimDataException.create(EstudiantePostgresSqlDAOMessages.UPDATE_TECHNICAL_EXCEPTION_MESSAGE,
+					EstudiantePostgresSqlDAOMessages.UPDATE_EXCEPTION_USER_MESSAGE, exception);
 		}
 	}
 
@@ -128,10 +132,12 @@ public final class EstudiantePostgreSqlDAO extends SqlDAO<EstudianteEntity> impl
 			preparedStatement.executeUpdate();
 
 		} catch (final SQLException exception) {
-			throw TeqvimDataException.create(EstudiantePostgresSqlDAOMessages.UPDATE_TECHNICAL_SQL_EXCEPTION_MESSAGE, EstudiantePostgresSqlDAOMessages.UPDATE_EXCEPTION_USER_MESSAGE, exception);
+			throw TeqvimDataException.create(EstudiantePostgresSqlDAOMessages.UPDATE_TECHNICAL_SQL_EXCEPTION_MESSAGE,
+					EstudiantePostgresSqlDAOMessages.UPDATE_EXCEPTION_USER_MESSAGE, exception);
 
 		} catch (final Exception exception) {
-			throw TeqvimDataException.create(EstudiantePostgresSqlDAOMessages.UPDATE_TECHNICAL_EXCEPTION_MESSAGE, EstudiantePostgresSqlDAOMessages.UPDATE_EXCEPTION_USER_MESSAGE, exception);
+			throw TeqvimDataException.create(EstudiantePostgresSqlDAOMessages.UPDATE_TECHNICAL_EXCEPTION_MESSAGE,
+					EstudiantePostgresSqlDAOMessages.UPDATE_EXCEPTION_USER_MESSAGE, exception);
 		}
 	}
 
@@ -149,70 +155,107 @@ public final class EstudiantePostgreSqlDAO extends SqlDAO<EstudianteEntity> impl
 	protected final String prepareWhere(final EstudianteEntity entity, List<Object> parameters) {
 		final var where = new StringBuilder("");
 		parameters = UtilObject.getDefault(parameters, new ArrayList<>());
-
 		var setWhere = true;
 
 		if (!UtilObject.isNull(entity)) {
 			if (!UtilUUID.isDefault(entity.getIdentificador())) {
 				parameters.add(entity.getIdentificador());
-				where.append("WHERE identificador=? ");
+				where.append("WHERE EST.identificador=? ");
 				setWhere = false;
 			}
 			if (!UtilText.getUtilText().isEmpty(entity.getPrimerNombre())) {
 				parameters.add(entity.getPrimerNombre());
-				where.append(setWhere ? "WHERE " : "AND ").append("primer_nombre=? ");
+				where.append(setWhere ? "WHERE " : "AND ").append("EST.primer_nombre=? ");
 				setWhere = false;
 			}
 			if (!UtilText.getUtilText().isEmpty(entity.getSegundoNombre())) {
 				parameters.add(entity.getSegundoNombre());
-				where.append(setWhere ? "WHERE " : "AND ").append("segundo_nombre=? ");
+				where.append(setWhere ? "WHERE " : "AND ").append("EST.segundo_nombre=? ");
+				setWhere = false;
 			}
 			if (!UtilText.getUtilText().isEmpty(entity.getPrimerApellido())) {
 				parameters.add(entity.getPrimerApellido());
-				where.append(setWhere ? "WHERE " : "AND ").append("primer_apellido=? ");
+				where.append(setWhere ? "WHERE " : "AND ").append("EST.primer_apellido=? ");
 				setWhere = false;
 			}
 			if (!UtilText.getUtilText().isEmpty(entity.getSegudoApellido())) {
 				parameters.add(entity.getPrimerApellido());
-				where.append(setWhere ? "WHERE " : "AND ").append("segundo_apellido=? ");
+				where.append(setWhere ? "WHERE " : "AND ").append("EST.segundo_apellido=? ");
 				setWhere = false;
 			}
 			if (!UtilText.getUtilText().isEmpty(entity.getNumeroTelefonico())) {
 				parameters.add(entity.getNumeroTelefonico());
-				where.append(setWhere ? "WHERE " : "AND ").append("numero_telefonico=? ");
+				where.append(setWhere ? "WHERE " : "AND ").append("EST.numero_telefonico=? ");
+				setWhere = false;
 			}
 			if (!UtilText.getUtilText().isEmpty(entity.getCorreo())) {
 				parameters.add(entity.getCorreo());
-				where.append(setWhere ? "WHERE " : "AND ").append("correo=? ");
+				where.append(setWhere ? "WHERE " : "AND ").append("EST.correo=? ");
 				setWhere = false;
 			}
-			if (!UtilObject.isNull(entity.getFechaNacimiento())) {
+			if (!UtilDate.isDefaultDateOrNull(entity.getFechaNacimiento())) {
 				parameters.add(entity.getFechaNacimiento());
-				where.append(setWhere ? "WHERE " : "AND ").append("fecha_nacimiento=? ");
+				where.append(setWhere ? "WHERE " : "AND ").append("EST.fecha_nacimiento=? ");
+				setWhere = false;
 			}
 			if (!UtilUUID.isDefault(entity.getTipoDocumento().getIdentificador())) {
 				parameters.add(entity.getTipoDocumento().getIdentificador());
-				where.append(setWhere ? "WHERE " : "AND ").append("tipo_documento=? ");
+				where.append(setWhere ? "WHERE " : "AND ").append("EST.tipo_documento=? ");
+				setWhere = false;
+			}
+			if (!UtilText.getUtilText().isEmpty(entity.getTipoDocumento().getNombre())) {
+				parameters.add(entity.getTipoDocumento().getNombre());
+				where.append(setWhere ? "WHERE " : "AND ").append("TDO.nombre=? ");
+				setWhere = false;
+			}
+			if (!UtilText.getUtilText().isEmpty(entity.getTipoDocumento().getDescripcion())) {
+				parameters.add(entity.getTipoDocumento().getDescripcion());
+				where.append(setWhere ? "WHERE " : "AND ").append("TDO.descripcion=? ");
 				setWhere = false;
 			}
 			if (!UtilText.getUtilText().isEmpty(entity.getNumeroDocumento())) {
 				parameters.add(entity.getNumeroDocumento());
-				where.append(setWhere ? "WHERE " : "AND ").append("numero_documento=? ");
+				where.append(setWhere ? "WHERE " : "AND ").append("EST.numero_documento=? ");
 				setWhere = false;
 			}
 			if (!UtilUUID.isDefault(entity.getConfirmacionCorreo().getIdentificador())) {
 				parameters.add(entity.getConfirmacionCorreo().getIdentificador());
-				where.append(setWhere ? "WHERE " : "AND ").append("confirmacion_correo=? ");
+				where.append(setWhere ? "WHERE " : "AND ").append("EST.confirmacion_correo=? ");
+				setWhere = false;
+			}
+			if (!UtilText.getUtilText().isEmpty(entity.getConfirmacionCorreo().getNombre())) {
+				parameters.add(entity.getConfirmacionCorreo().getNombre());
+				where.append(setWhere ? "WHERE " : "AND ").append("CCO.nombre=? ");
+				setWhere = false;
+			}
+			if (!UtilText.getUtilText().isEmpty(entity.getConfirmacionCorreo().getDescripcion())) {
+				parameters.add(entity.getConfirmacionCorreo().getDescripcion());
+				where.append(setWhere ? "WHERE " : "AND ").append("CCO.descripcion=? ");
+				setWhere = false;
 			}
 			if (!UtilUUID.isDefault(entity.getPais().getIdentificador())) {
 				parameters.add(entity.getPais().getIdentificador());
-				where.append(setWhere ? "WHERE " : "AND ").append("pais=? ");
+				where.append(setWhere ? "WHERE " : "AND ").append("EST.pais=? ");
+				setWhere = false;
+			}
+			if (!UtilText.getUtilText().isEmpty(entity.getPais().getNombre())) {
+				parameters.add(entity.getPais().getNombre());
+				where.append(setWhere ? "WHERE " : "AND ").append("PAI.nombre=? ");
 				setWhere = false;
 			}
 			if (!UtilUUID.isDefault(entity.getEstado().getIdentificador())) {
 				parameters.add(entity.getEstado().getIdentificador());
-				where.append(setWhere ? "WHERE " : "AND ").append("estado_estudiante=? ");
+				where.append(setWhere ? "WHERE " : "AND ").append("EST.estado_estudiante=? ");
 				setWhere = false;
+			}
+			if (!UtilText.getUtilText().isEmpty(entity.getEstado().getNombre())) {
+				parameters.add(entity.getEstado().getNombre());
+				where.append(setWhere ? "WHERE " : "AND ").append("ES.nombre=? ");
+				setWhere = false;
+			}
+			if (!UtilText.getUtilText().isEmpty(entity.getEstado().getDescripcion())) {
+				parameters.add(entity.getPais().getNombre());
+				where.append(setWhere ? "WHERE " : "AND ").append("ES.descripcion=? ");
 			}
 		}
 		return where.toString();
@@ -233,11 +276,15 @@ public final class EstudiantePostgreSqlDAO extends SqlDAO<EstudianteEntity> impl
 			}
 		} catch (final SQLException exception) {
 
-			throw TeqvimDataException.create(EstudiantePostgresSqlDAOMessages.SET_PARAMETERS_TECHNICAL_SQL_EXCEPTION_MESSAGE, EstudiantePostgresSqlDAOMessages.SET_PARAMETERS_EXCEPTION_USER_MESSAGE, exception);
+			throw TeqvimDataException.create(
+					EstudiantePostgresSqlDAOMessages.SET_PARAMETERS_TECHNICAL_SQL_EXCEPTION_MESSAGE,
+					EstudiantePostgresSqlDAOMessages.SET_PARAMETERS_EXCEPTION_USER_MESSAGE, exception);
 
 		} catch (final Exception exception) {
 
-			throw TeqvimDataException.create(EstudiantePostgresSqlDAOMessages.SET_PARAMETERS_TECHNICAL_EXCEPTION_MESSAGE, EstudiantePostgresSqlDAOMessages.SET_PARAMETERS_EXCEPTION_USER_MESSAGE, exception);
+			throw TeqvimDataException.create(
+					EstudiantePostgresSqlDAOMessages.SET_PARAMETERS_TECHNICAL_EXCEPTION_MESSAGE,
+					EstudiantePostgresSqlDAOMessages.SET_PARAMETERS_EXCEPTION_USER_MESSAGE, exception);
 		}
 	}
 
@@ -247,10 +294,20 @@ public final class EstudiantePostgreSqlDAO extends SqlDAO<EstudianteEntity> impl
 		final List<EstudianteEntity> result = new ArrayList<>();
 		
 		try (var resultSet = preparedStatement.executeQuery()) {
-
 			while (resultSet.next()) {
-				//EstudianteEntity entityTmp = EstudianteEntity.create().setIdentificador(resultSet.getObject(1, UUID.class)).setPrimerNombre(resultSet.getString(2)).setSegundoNombre(resultSet.getString(3)).setPrimerApellido(resultSet.getString(4)).setSegudoApellido(resultSet.getString(5)).setNumeroTelefonico(resultSet.getString(6)).setCorreo(resultSet.getString(7)).setFechaNacimiento(resultSet.getObject(8, LocalDate.class)).setTipoDocumento(TipoDocumentoEntity.create().setIdentificador(9, UUID.class)).
+				EstudianteEntity entityTmp = EstudianteEntity.create().setIdentificador(resultSet.getObject(1, UUID.class)).
+						setPrimerNombre(resultSet.getString(2)).setSegundoNombre(resultSet.getString(3)).setPrimerApellido(resultSet.getString(4)).
+						setSegudoApellido(resultSet.getString(5)).setNumeroTelefonico(resultSet.getString(6)).setCorreo(resultSet.getString(7)).
+						setFechaNacimiento(resultSet.getObject(8, LocalDate.class)).setTipoDocumento(TipoDocumentoEntity.create().
+						setIdentificador(resultSet.getObject(9, UUID.class)).setNombre(resultSet.getString(10)).setDescripcion(resultSet.getString(11))).
+						setNumeroDocumento(resultSet.getString(12)).setConfirmacionCorreo(RespuestaEntity.create().setIdentificador(resultSet.getObject(13, UUID.class)).
+						setNombre(resultSet.getString(14)).setDescripcion(resultSet.getString(15))).setPais(PaisEntity.create().
+						setIdentificador(resultSet.getObject(16, UUID.class)).setNombre(resultSet.getString(17))).
+						setEstado(EstadoEstudianteEntity.create().setIdentificador(resultSet.getObject(18, UUID.class)).
+						setNombre(resultSet.getString(19)).setDescripcion(resultSet.getString(20)));
+				result.add(entityTmp);
 			}
+			return result;
 
 		} catch (final SQLException exception) {
 			throw TeqvimDataException.create(EstudiantePostgresSqlDAOMessages.EXECUTE_QUERY_TECHNICAL_SQL_EXCEPTION_MESSAGE, EstudiantePostgresSqlDAOMessages.EXECUTE_QUERY_EXCEPTION_USER_MESSAGE, exception);
@@ -258,6 +315,5 @@ public final class EstudiantePostgreSqlDAO extends SqlDAO<EstudianteEntity> impl
 		} catch (final Exception exception) {
 			throw TeqvimDataException.create(EstudiantePostgresSqlDAOMessages.EXECUTE_QUERY_TECHNICAL_EXCEPTION_MESSAGE, EstudiantePostgresSqlDAOMessages.EXECUTE_QUERY_EXCEPTION_USER_MESSAGE, exception);
 		}
-		return result;
 	}
 }

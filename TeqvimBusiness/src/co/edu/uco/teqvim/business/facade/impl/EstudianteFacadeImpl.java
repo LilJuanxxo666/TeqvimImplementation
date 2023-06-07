@@ -79,11 +79,7 @@ public final class EstudianteFacadeImpl implements EstudianteFacade{
 			throw exception;
 		} catch (final Exception exception) {
 			daoFactory.cancelTransaction();
-
-			var userMessage = EstudianteFacadeImplMessages.MODIFY_EXCEPTION_USER_MESSAGE;
-			var technicalMessage = EstudianteFacadeImplMessages.MODIFY_EXCEPTION_TECHNICAL_MESSAGE;
-
-			throw TeqvimBusinessException.create(technicalMessage, userMessage, exception);
+			throw TeqvimBusinessException.create(EstudianteFacadeImplMessages.MODIFY_EXCEPTION_TECHNICAL_MESSAGE, EstudianteFacadeImplMessages.MODIFY_EXCEPTION_USER_MESSAGE, exception);
 		} finally {
 			daoFactory.closeConection();
 		}

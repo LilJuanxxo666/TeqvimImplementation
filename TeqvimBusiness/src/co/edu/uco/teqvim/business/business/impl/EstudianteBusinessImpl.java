@@ -58,8 +58,7 @@ public final class EstudianteBusinessImpl implements EstudianteBusiness {
 
 	@Override
 	public void modify(final EstudianteDomain domain) {
-		final EstudianteEntity entity = EstudianteAssembler.getInstance().toEntityFromDomain(domain);
-		daoFactory.getEstudianteDAO().update(entity);
+		daoFactory.getEstudianteDAO().update(EstudianteAssembler.getInstance().toEntityFromDomain(domain));
 
 	}
 

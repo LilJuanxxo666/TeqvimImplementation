@@ -103,7 +103,9 @@ public final class PostgreSqlDAOFactory extends DAOFactory {
 	@Override
 	public final void closeConection() {
 		try {
-			UtilSql.closeConnection(conexion);
+			if(UtilSql.connectionIsOpen(conexion)) {
+				UtilSql.closeConnection(conexion);
+			}
 		} catch (final TeqvimException exception) {
 			throw exception;
 		}
@@ -119,10 +121,7 @@ public final class PostgreSqlDAOFactory extends DAOFactory {
 		} catch (final TeqvimException exception) {
 			throw exception;
 		} catch (final SQLException exception) {
-			var userMessage = UtilSqlMessages.COMMIT_IS_STARTING_USER_MESSAGE;
-			var technicalMessage = UtilSqlMessages.COMMIT_TECHNICAL_SQL_EXCEPTION;
-
-			throw TeqvimCrossCuttingException.create(userMessage, technicalMessage, exception);
+			throw TeqvimCrossCuttingException.create(UtilSqlMessages.COMMIT_IS_STARTING_USER_MESSAGE, UtilSqlMessages.COMMIT_TECHNICAL_SQL_EXCEPTION, exception);
 		}
 
 	}

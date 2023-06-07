@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import co.edu.uco.teqvim.api.controller.response.Response;
 import co.edu.uco.teqvim.api.validator.estudiante.ActualizarEstudianteValidation;
 import co.edu.uco.teqvim.api.validator.estudiante.CrearEstudianteValidation;
+import co.edu.uco.teqvim.business.business.impl.EstudianteBusinessImpl;
 import co.edu.uco.teqvim.business.facade.EstudianteFacade;
 import co.edu.uco.teqvim.business.facade.impl.EstudianteFacadeImpl;
 import co.edu.uco.teqvim.crosscutting.exception.TeqvimException;
@@ -67,11 +68,11 @@ public final class EstudianteController {
 	public ResponseEntity<Response<EstudianteDTO>> create(@RequestBody EstudianteDTO dto) {
 		var statusCode = HttpStatus.OK;
 		var response = new Response<EstudianteDTO>();
-
+		facade = new EstudianteFacadeImpl();
+		
 		try {
 			var result = CrearEstudianteValidation.validate(dto);
 			if (result.getMessages().isEmpty()) {
-				facade = new EstudianteFacadeImpl();
 				facade.register(dto);
 				response.getMessages().add("El estudiante se ha creado correctamente");
 			} else {
@@ -96,16 +97,13 @@ public final class EstudianteController {
 		return new ResponseEntity<>(response, statusCode);
 	}
 
-	@PutMapping("/{id}")
-	public ResponseEntity<Response<EstudianteDTO>> update(@PathVariable UUID id, @RequestBody EstudianteDTO dto) {
+	@PutMapping
+	public ResponseEntity<Response<EstudianteDTO>> update(@RequestBody EstudianteDTO dto) {
 		var statusCode = HttpStatus.OK;
 		var response = new Response<EstudianteDTO>();
-
+		facade = new EstudianteFacadeImpl();
 		try {
-			dto.setIdentificador(id);
-
 			var result = ActualizarEstudianteValidation.validate(dto);
-
 			if (result.getMessages().isEmpty()) {
 				facade.modify(dto);
 				response.getMessages().add("El estudiante se ha actualizado correctamente");
@@ -134,6 +132,7 @@ public final class EstudianteController {
 	public ResponseEntity<Response<String>> delete(@PathVariable UUID id) {
 		var statusCode = HttpStatus.OK;
 		var response = new Response<String>();
+		facade = new EstudianteFacadeImpl();
 
 		try {
 			EstudianteDTO dto = new EstudianteDTO();

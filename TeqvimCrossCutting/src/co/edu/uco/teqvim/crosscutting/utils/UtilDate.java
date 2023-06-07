@@ -29,4 +29,7 @@ public final class UtilDate {
 		return (UtilObject.isNull(dateValue)) ? DEFAULT_DATE : dateValue;
 	}
 	
+	public static final boolean isDefaultDateOrNull(final LocalDate dateValue) {
+		return (UtilObject.isNull(dateValue) || dateValue.isEqual(DEFAULT_DATE));
+	}
 }
