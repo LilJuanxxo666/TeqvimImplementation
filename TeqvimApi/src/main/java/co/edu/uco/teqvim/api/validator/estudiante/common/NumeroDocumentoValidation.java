@@ -18,11 +18,12 @@ public class NumeroDocumentoValidation implements Validation<String>{
 	public Result execute(String data) {
 		Result result = Result.create();
 
-		if (UtilText.getUtilText().isNull(data)) {
+		if (UtilText.getUtilText().isEmpty(data)){
 			result.addMessage("El numero de documento del estudiante no puede estar vacío");
 		}
-
+		else if (UtilText.getUtilText().applyTrim(data).length() > 15) {
+			result.addMessage("El numero de documento del estudiante ser mayor a 15 caracteres");
+		}
 		return result;
 	}
-
 }

@@ -615,4 +615,16 @@ public final class Messages {
         public static final String IDENTIFICADOR_EMPTY_MESSAGE = "No es posible continuar con el identificador vacio";
         public static final String IDENTIFICADOR_DEFAULT_MESSAGE = "No es posible continuar con el identificador vacio";
     }
+	
+	public static final class EstudianteValidatorMessage {
+        private EstudianteValidatorMessage() {
+        }
+
+        public static final String UPDATE_ESTUDIANTE_OBJECT_NULL_MESSAGE = "No es posible actualizar un estudiante vacio";
+        public static final String CREATE_ESTUDIANTE_OBJECT_NULL_MESSAGE = "No es posible crear un estudiante vacio";
+        public static final String NUMERO_TELEFONO_EMPTY_MESSAGE = "El numero telefonico del estudiante no puede estar vacío";
+        public static final String NUMERO_TELEFONO_LENGTH_MESSAGE = "El numero telefonico del estudiante no ser mayor a 15 digitos";
+        public static final String NOMBRE_EMPTY_MESSAGE = "El numero telefonico del estudiante no puede estar vacío";
+        public static final String NOMBRE_LENGTH_MESSAGE = "El numero telefonico del estudiante no puede estar vacío";
+    }
 }

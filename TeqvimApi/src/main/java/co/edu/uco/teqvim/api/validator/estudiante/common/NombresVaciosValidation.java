@@ -5,27 +5,22 @@ import co.edu.uco.teqvim.api.validator.Validation;
 import co.edu.uco.teqvim.crosscutting.utils.Messages.EstudianteValidatorMessage;
 import co.edu.uco.teqvim.crosscutting.utils.UtilText;
 
-public class NumeroTelefonicoValidation implements Validation<String>{
+public class NombresVaciosValidation implements Validation<String>{
 	
-	private NumeroTelefonicoValidation() {
+	private NombresVaciosValidation() {
 		super();
 	}
 
 	public static Result validate(String data) {
-		return new NumeroTelefonicoValidation().execute(data);
+		return new NombresVaciosValidation().execute(data);
 	}
 
 	@Override
 	public Result execute(String data) {
 		Result result = Result.create();
-
-		if (UtilText.getUtilText().isEmpty(data)) {
-			result.addMessage(EstudianteValidatorMessage.NUMERO_TELEFONO_EMPTY_MESSAGE);
-		}
-		else if (UtilText.getUtilText().applyTrim(data).length() > 15) {
-			result.addMessage(EstudianteValidatorMessage.NUMERO_TELEFONO_LENGTH_MESSAGE);
+		if(UtilText.getUtilText().applyTrim(data).length() > 10){
+			result.addMessage(EstudianteValidatorMessage.NOMBRE_LENGTH_MESSAGE);
 		}
 		return result;
 	}
-
 }

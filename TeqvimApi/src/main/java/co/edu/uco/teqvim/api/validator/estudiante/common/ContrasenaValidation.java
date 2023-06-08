@@ -21,6 +21,15 @@ public class ContrasenaValidation implements Validation<String>{
 		if (UtilText.getUtilText().isNull(data)) {
 			result.addMessage("La contraseña del estudiante no puede estar vacío");
 		}
+		else if (UtilText.passwordStringIsValid(data)){
+			result.addMessage("La contraseña del estudiante no puede tener caracteres especiales");
+		}
+		else if (UtilText.getUtilText().applyTrim(data).length() > 16) {
+			result.addMessage("La contraseña del estudiante no puede tener mas de 16 caracteres");
+		}
+		else if (UtilText.getUtilText().applyTrim(data).length() < 8) {
+			result.addMessage("La contraseña del estudiante no puede tener menos de 8 caracteres");
+		}
 
 		return result;
 	}

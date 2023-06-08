@@ -2,6 +2,7 @@ package co.edu.uco.teqvim.api.validator.estudiante.common;
 
 import co.edu.uco.teqvim.api.validator.Result;
 import co.edu.uco.teqvim.api.validator.Validation;
+import co.edu.uco.teqvim.crosscutting.utils.Messages.EstudianteValidatorMessage;
 import co.edu.uco.teqvim.crosscutting.utils.UtilText;
 
 public class NombresValidation implements Validation<String>{
@@ -17,14 +18,12 @@ public class NombresValidation implements Validation<String>{
 	@Override
 	public Result execute(String data) {
 		Result result = Result.create();
-
-		if (UtilText.getUtilText().isNull(data)) {
-			result.addMessage("El nombre del estudiante no puede estar vaciío");
-		}if(UtilText.getUtilText().applyTrim(data).length() > 10){
-			result.addMessage("La longitud no puede superar los 10 caracteres");
+		if (UtilText.getUtilText().isEmpty(data)) {
+			result.addMessage(EstudianteValidatorMessage.NOMBRE_EMPTY_MESSAGE);
 		}
-
+		if(UtilText.getUtilText().applyTrim(data).length() > 10){
+			result.addMessage(EstudianteValidatorMessage.NOMBRE_LENGTH_MESSAGE);
+		}
 		return result;
 	}
-
 }

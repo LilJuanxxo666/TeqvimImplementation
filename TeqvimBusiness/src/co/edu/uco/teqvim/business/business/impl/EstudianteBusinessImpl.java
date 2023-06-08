@@ -28,13 +28,20 @@ public final class EstudianteBusinessImpl implements EstudianteBusiness {
 		
 		do {
 			identificador = UtilUUID.generateNewUUID();
-			entityTmp = EstudianteEntity.create().setIdentificador(identificador).setNumeroDocumento(domain.getNumeroDocumento()).setCorreo(domain.getCorreo());
+			entityTmp = EstudianteEntity.create().setIdentificador(identificador);
 			result = daoFactory.getEstudianteDAO().read(entityTmp);
 		}while(!result.isEmpty());
 		
-		if (!result.isEmpty()) {
+		if (!daoFactory.getEstudianteDAO().read(EstudianteEntity.create().setNumeroDocumento(domain.getNumeroDocumento())).isEmpty()) {
 			throw TeqvimBusinessException.create(
-					"El estudiante que intenta crear ya se encuentra registrado, por favor intente con diferentes datos o de ser necesario actualizarlos");
+					"El estudiante que intenta crear ya se encuentra registrado, por favor intente con un nuevo numero de identificación o de ser necesario actualizarlo");
+		}else if(!daoFactory.getEstudianteDAO().read(EstudianteEntity.create().setCorreo(domain.getCorreo())).isEmpty()){
+			throw TeqvimBusinessException.create(
+					"El estudiante que intenta crear ya se encuentra registrado, por favor intente con un nuevo correo electronico o de ser necesario actualizarlo");
+		}
+		else if(!daoFactory.getEstudianteDAO().read(EstudianteEntity.create().setNumeroTelefonico(domain.getNumeroTelefonico())).isEmpty()){
+			throw TeqvimBusinessException.create(
+					"El estudiante que intenta crear ya se encuentra registrado, por favor intente con un nuevo numero telefónico o de ser necesario actualizarlo");
 		}
 		final var domainToCreate = new EstudianteDomain(identificador, domain.getPrimerNombre(),
 				domain.getSegundoNombre(), domain.getPrimerApellido(), domain.getSegudoApellido(),

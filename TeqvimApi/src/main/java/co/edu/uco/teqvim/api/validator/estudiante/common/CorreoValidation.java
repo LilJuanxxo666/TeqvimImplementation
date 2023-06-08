@@ -18,10 +18,12 @@ public class CorreoValidation implements Validation<String>{
 	public Result execute(String data) {
 		Result result = Result.create();
 
-		if (UtilText.getUtilText().isNull(data)) {
+		if (UtilText.getUtilText().isEmpty(data)) {
 			result.addMessage("El correo del estudiante no puede estar vacío");
 		}
-
+		else if (UtilText.emailStringIsValid(data)) {
+			result.addMessage("El correo del estudiante no cumple con el formato adecuado");
+		}
 		return result;
 	}
 

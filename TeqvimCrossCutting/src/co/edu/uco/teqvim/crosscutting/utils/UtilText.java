@@ -6,7 +6,7 @@ public final class UtilText {
 	public static final String EMPTY = "";
 	public static final String DEFAULT_EMAIL = EMPTY;
 	private static final String EMAIL_RE = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-	private static final String PASSWORD_RE = "^[a-z][a-zA-Z0-9]*$";
+	private static final String PASSWORD_RE = "^[a-zA-Z0-9]*$";
 
 	private UtilText() {
 		super();
@@ -57,7 +57,6 @@ public final class UtilText {
 		return getDefault(text).matches(getDefault(pattern));
 	}
 
-	// Para el correo
 	public static final boolean emailStringIsValid(final String emailValue) {
 		return (UtilText.getUtilText().matchPattern(emailValue, EMAIL_RE));
 	}
@@ -69,8 +68,6 @@ public final class UtilText {
 	public static final String getDefaultEmail(final String emailValue) {
 		return UtilObject.isNull(emailValue) ? DEFAULT_EMAIL : emailValue;
 	}
-
-	// Para la contraseña
 	public static final boolean passwordStringIsValid(final String passwordValue) {
 		return (UtilText.getUtilText().matchPattern(passwordValue, PASSWORD_RE));
 	}
