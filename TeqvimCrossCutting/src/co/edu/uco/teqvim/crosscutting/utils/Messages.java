@@ -626,5 +626,38 @@ public final class Messages {
         public static final String NUMERO_TELEFONO_LENGTH_MESSAGE = "El numero telefonico del estudiante no ser mayor a 15 digitos";
         public static final String NOMBRE_EMPTY_MESSAGE = "El numero telefonico del estudiante no puede estar vacío";
         public static final String NOMBRE_LENGTH_MESSAGE = "El numero telefonico del estudiante no puede estar vacío";
+        public static final String CORREO_EMPTY_MESSAGE = "El correo del estudiante no puede estar vacío";
+        public static final String CORREO_VALID_MESSAGE = "El correo del estudiante no cumple con el formato adecuado";
+        public static final String CONTRASENA_EMPTY_MESSAGE = "La contraseña del estudiante no puede estar vacío";
+        public static final String CONTRASENA_VALID_MESSAGE = "La contraseña del estudiante no puede tener caracteres especiales";
+        public static final String CONTRASENA_LENGHT_MORE_MESSAGE = "La contraseña del estudiante no puede tener mas de 16 caracteres";
+        public static final String CONTRASENA_LENGHT_LESS_MESSAGE = "La contraseña del estudiante no puede tener menos de 8 caracteres";
+        public static final String FECHA_NACIMIENTO_EMPTY_LESS_MESSAGE = "La fecha de nacimiento no puede estar vacía";
+        public static final String FECHA_NACIMIENTO_IS_AFTER_LESS_MESSAGE = "La fecha de nacimiento esta después de la fecha actual";
+        public static final String NUMERO_DOCUMENTO_EMPTY_LESS_MESSAGE = "El numero de documento del estudiante no puede estar vacío";
+        public static final String NUMERO_DOCUMENTO_LENGHT_LESS_MESSAGE = "El numero de documento del estudiante ser mayor a 15 caracteres";
     }
+	
+	public static final class EstudianteControllerMessages{
+		private EstudianteControllerMessages() {
+			
+		}
+		public static final String READ_ESTUDIANTE_RIGHT_MESSAGE = "Estudiante consultados correctamente";
+		public static final String CREATE_ESTUDIANTE_RIGHT_MESSAGE = "El estudiante se ha creado correctamente";
+		public static final String UPDATE_ESTUDIANTE_RIGHT_MESSAGE = "El estudiante se ha actualizado correctamente";
+		public static final String DELETE_ESTUDIANTE_RIGHT_MESSAGE = "El estudiante se ha elimidado correctamente";
+		public static final String UNEXPECTED_PROBLEM_MESSAGE = "Se ha presentado un problema inesperado. Por favor, intenta de nuevo y si el problema persiste, contacta al administrador de la aplicación";
+		public static final String UNEXPECTED_PROBLEM_CREATE_LOG_MESSAGE = "Se ha presentado un problema inesperado en el metodo create. Por favor validar la consola de errores...";
+		public static final String UNEXPECTED_PROBLEM_UPDATE_LOG_MESSAGE = "Se ha presentado un problema inesperado en el metodo update. Por favor validar la consola de errores...";
+		public static final String UNEXPECTED_PROBLEM_DELETE_LOG_MESSAGE = "Se ha presentado un problema inesperado en el metodo delete. Por favor validar la consola de errores...";
+	}
+	
+	public static final class EstudianteBusinessImplMessages{
+		private EstudianteBusinessImplMessages() {
+			
+		}
+		public static final String NUMERO_IDENTIFICACION_MESSAGE = "El estudiante que intenta crear ya se encuentra registrado, por favor intente con un nuevo numero de identificación o de ser necesario actualizarlo";
+		public static final String CORREO_MESSAGE = "El estudiante que intenta crear ya se encuentra registrado, por favor intente con un nuevo correo electronico o de ser necesario actualizarlo";
+		public static final String NUMERO_TELEFONICO_MESSAGE = "El estudiante que intenta crear ya se encuentra registrado, por favor intente con un nuevo numero telefónico o de ser necesario actualizarlo";
+	}
 }

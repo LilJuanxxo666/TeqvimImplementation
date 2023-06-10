@@ -2,6 +2,7 @@ package co.edu.uco.teqvim.api.validator.estudiante.common;
 
 import co.edu.uco.teqvim.api.validator.Result;
 import co.edu.uco.teqvim.api.validator.Validation;
+import co.edu.uco.teqvim.crosscutting.utils.Messages.EstudianteValidatorMessage;
 import co.edu.uco.teqvim.crosscutting.utils.UtilText;
 
 public class CorreoValidation implements Validation<String>{
@@ -19,10 +20,10 @@ public class CorreoValidation implements Validation<String>{
 		Result result = Result.create();
 
 		if (UtilText.getUtilText().isEmpty(data)) {
-			result.addMessage("El correo del estudiante no puede estar vacío");
+			result.addMessage(EstudianteValidatorMessage.CORREO_EMPTY_MESSAGE);
 		}
 		else if (UtilText.emailStringIsValid(data)) {
-			result.addMessage("El correo del estudiante no cumple con el formato adecuado");
+			result.addMessage(EstudianteValidatorMessage.CORREO_VALID_MESSAGE);
 		}
 		return result;
 	}

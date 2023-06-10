@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import co.edu.uco.teqvim.api.validator.Result;
 import co.edu.uco.teqvim.api.validator.Validation;
+import co.edu.uco.teqvim.crosscutting.utils.Messages.EstudianteValidatorMessage;
 import co.edu.uco.teqvim.crosscutting.utils.UtilDate;
 
 public class FechaNacimientoValidation implements Validation<LocalDate> {
@@ -21,10 +22,10 @@ public class FechaNacimientoValidation implements Validation<LocalDate> {
 		Result result = Result.create();
 
 		if (UtilDate.isDefaultDateOrNull(data)) {
-			result.addMessage("La fecha de nacimiento no puede estar vacía");
+			result.addMessage(EstudianteValidatorMessage.FECHA_NACIMIENTO_EMPTY_LESS_MESSAGE);
 		}
 		else if (data.isAfter(LocalDate.now())) {
-			result.addMessage("La fecha de nacimiento esta después de la fecha actual");
+			result.addMessage(EstudianteValidatorMessage.FECHA_NACIMIENTO_IS_AFTER_LESS_MESSAGE);
 		}
 		return result;
 	}

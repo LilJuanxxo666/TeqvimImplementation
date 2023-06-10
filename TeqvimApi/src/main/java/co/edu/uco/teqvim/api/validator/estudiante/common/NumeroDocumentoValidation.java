@@ -2,6 +2,7 @@ package co.edu.uco.teqvim.api.validator.estudiante.common;
 
 import co.edu.uco.teqvim.api.validator.Result;
 import co.edu.uco.teqvim.api.validator.Validation;
+import co.edu.uco.teqvim.crosscutting.utils.Messages.EstudianteValidatorMessage;
 import co.edu.uco.teqvim.crosscutting.utils.UtilText;
 
 public class NumeroDocumentoValidation implements Validation<String>{
@@ -19,10 +20,10 @@ public class NumeroDocumentoValidation implements Validation<String>{
 		Result result = Result.create();
 
 		if (UtilText.getUtilText().isEmpty(data)){
-			result.addMessage("El numero de documento del estudiante no puede estar vacío");
+			result.addMessage(EstudianteValidatorMessage.FECHA_NACIMIENTO_EMPTY_LESS_MESSAGE);
 		}
 		else if (UtilText.getUtilText().applyTrim(data).length() > 15) {
-			result.addMessage("El numero de documento del estudiante ser mayor a 15 caracteres");
+			result.addMessage(EstudianteValidatorMessage.FECHA_NACIMIENTO_IS_AFTER_LESS_MESSAGE);
 		}
 		return result;
 	}

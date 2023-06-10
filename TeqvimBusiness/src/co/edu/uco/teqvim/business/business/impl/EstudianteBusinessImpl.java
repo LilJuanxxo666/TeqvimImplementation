@@ -7,6 +7,7 @@ import co.edu.uco.teqvim.business.assembler.concrete.EstudianteAssembler;
 import co.edu.uco.teqvim.business.business.EstudianteBusiness;
 import co.edu.uco.teqvim.business.domain.EstudianteDomain;
 import co.edu.uco.teqvim.crosscutting.exception.TeqvimBusinessException;
+import co.edu.uco.teqvim.crosscutting.utils.Messages.EstudianteBusinessImplMessages;
 import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
 import co.edu.uco.teqvim.data.dao.factory.DAOFactory;
 import co.edu.uco.teqvim.entities.EstudianteEntity;
@@ -33,15 +34,12 @@ public final class EstudianteBusinessImpl implements EstudianteBusiness {
 		}while(!result.isEmpty());
 		
 		if (!daoFactory.getEstudianteDAO().read(EstudianteEntity.create().setNumeroDocumento(domain.getNumeroDocumento())).isEmpty()) {
-			throw TeqvimBusinessException.create(
-					"El estudiante que intenta crear ya se encuentra registrado, por favor intente con un nuevo numero de identificación o de ser necesario actualizarlo");
+			throw TeqvimBusinessException.create(EstudianteBusinessImplMessages.NUMERO_IDENTIFICACION_MESSAGE);
 		}else if(!daoFactory.getEstudianteDAO().read(EstudianteEntity.create().setCorreo(domain.getCorreo())).isEmpty()){
-			throw TeqvimBusinessException.create(
-					"El estudiante que intenta crear ya se encuentra registrado, por favor intente con un nuevo correo electronico o de ser necesario actualizarlo");
+			throw TeqvimBusinessException.create(EstudianteBusinessImplMessages.CORREO_MESSAGE);
 		}
 		else if(!daoFactory.getEstudianteDAO().read(EstudianteEntity.create().setNumeroTelefonico(domain.getNumeroTelefonico())).isEmpty()){
-			throw TeqvimBusinessException.create(
-					"El estudiante que intenta crear ya se encuentra registrado, por favor intente con un nuevo numero telefónico o de ser necesario actualizarlo");
+			throw TeqvimBusinessException.create(EstudianteBusinessImplMessages.NUMERO_TELEFONICO_MESSAGE);
 		}
 		final var domainToCreate = new EstudianteDomain(identificador, domain.getPrimerNombre(),
 				domain.getSegundoNombre(), domain.getPrimerApellido(), domain.getSegudoApellido(),

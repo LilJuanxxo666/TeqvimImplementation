@@ -1,18 +1,15 @@
 package co.edu.uco.teqvim.api.validator.estudiante;
 
 import co.edu.uco.teqvim.api.validator.Result;
+
 import co.edu.uco.teqvim.api.validator.Validation;
-import co.edu.uco.teqvim.api.validator.estudiante.common.ConfirmacionCorreoValidation;
 import co.edu.uco.teqvim.api.validator.estudiante.common.ContrasenaValidation;
 import co.edu.uco.teqvim.api.validator.estudiante.common.CorreoValidation;
-import co.edu.uco.teqvim.api.validator.estudiante.common.EstadoEstudianteValidation;
 import co.edu.uco.teqvim.api.validator.estudiante.common.FechaNacimientoValidation;
 import co.edu.uco.teqvim.api.validator.estudiante.common.NombresVaciosValidation;
 import co.edu.uco.teqvim.api.validator.estudiante.common.NombresValidation;
 import co.edu.uco.teqvim.api.validator.estudiante.common.NumeroDocumentoValidation;
 import co.edu.uco.teqvim.api.validator.estudiante.common.NumeroTelefonicoValidation;
-import co.edu.uco.teqvim.api.validator.estudiante.common.PaisValidation;
-import co.edu.uco.teqvim.api.validator.estudiante.common.TipoDocumentoValidation;
 import co.edu.uco.teqvim.api.validator.general.common.IdentificadorValidation;
 import co.edu.uco.teqvim.crosscutting.utils.Messages.EstudianteValidatorMessage;
 import co.edu.uco.teqvim.crosscutting.utils.UtilObject;

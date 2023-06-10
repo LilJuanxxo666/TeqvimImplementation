@@ -2,6 +2,7 @@ package co.edu.uco.teqvim.api.validator.estudiante.common;
 
 import co.edu.uco.teqvim.api.validator.Result;
 import co.edu.uco.teqvim.api.validator.Validation;
+import co.edu.uco.teqvim.crosscutting.utils.Messages.EstudianteValidatorMessage;
 import co.edu.uco.teqvim.crosscutting.utils.UtilText;
 
 public class ContrasenaValidation implements Validation<String>{
@@ -19,18 +20,17 @@ public class ContrasenaValidation implements Validation<String>{
 		Result result = Result.create();
 
 		if (UtilText.getUtilText().isNull(data)) {
-			result.addMessage("La contraseña del estudiante no puede estar vacío");
+			result.addMessage(EstudianteValidatorMessage.CONTRASENA_EMPTY_MESSAGE);
 		}
 		else if (UtilText.passwordStringIsValid(data)){
-			result.addMessage("La contraseña del estudiante no puede tener caracteres especiales");
+			result.addMessage(EstudianteValidatorMessage.CONTRASENA_VALID_MESSAGE);
 		}
 		else if (UtilText.getUtilText().applyTrim(data).length() > 16) {
-			result.addMessage("La contraseña del estudiante no puede tener mas de 16 caracteres");
+			result.addMessage(EstudianteValidatorMessage.CONTRASENA_LENGHT_MORE_MESSAGE);
 		}
 		else if (UtilText.getUtilText().applyTrim(data).length() < 8) {
-			result.addMessage("La contraseña del estudiante no puede tener menos de 8 caracteres");
+			result.addMessage(EstudianteValidatorMessage.CONTRASENA_LENGHT_LESS_MESSAGE);
 		}
-
 		return result;
 	}
 
