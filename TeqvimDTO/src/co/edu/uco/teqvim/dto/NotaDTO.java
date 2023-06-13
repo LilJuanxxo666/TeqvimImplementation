@@ -11,7 +11,8 @@ public final class NotaDTO {
 
 	private UUID identificador;
 	private TipoNotaDTO tipoNota;
-	private double calificacion;
+	private Double calificacion;
+	private Double porcentaje;
 	private String descripcion;
 	private MateriaDTO materia;
 
@@ -22,15 +23,17 @@ public final class NotaDTO {
 		setCalificacion(UtilNumber.ZERO.doubleValue());
 		setDescripcion(UtilText.EMPTY);
 		setMateria(MateriaDTO.create());
+		setPorcentaje(UtilNumber.ZERO.doubleValue());
 	}
 
-	public NotaDTO(UUID identificador, TipoNotaDTO tipoNota, double calificacion, String descripcion) {
+	public NotaDTO(UUID identificador, TipoNotaDTO tipoNota, Double calificacion, String descripcion, MateriaDTO materia, Double porcentaje) {
 		super();
 		setIdentificador(identificador);
 		setTipoNota(tipoNota);
 		setCalificacion(calificacion);
 		setDescripcion(descripcion);
 		setMateria(materia);
+		setPorcentaje(porcentaje);
 	}
 
 	public static NotaDTO create() {
@@ -55,11 +58,11 @@ public final class NotaDTO {
 		return this;
 	}
 
-	public final double getCalificacion() {
+	public final Double getCalificacion() {
 		return calificacion;
 	}
 
-	public final NotaDTO setCalificacion(final double calificacion) {
+	public final NotaDTO setCalificacion(final Double calificacion) {
 		this.calificacion = UtilNumber.getUtilNumber().getDefault(calificacion).doubleValue();
 		return this;
 	}
@@ -82,4 +85,12 @@ public final class NotaDTO {
 		return this;
 	}
 
+	public final Double getPorcentaje() {
+		return porcentaje;
+	}
+
+	public final NotaDTO setPorcentaje(final Double porcentaje) {
+		this.porcentaje = UtilNumber.getUtilNumber().getDefault(porcentaje).doubleValue();
+		return this;
+	}
 }

@@ -4,6 +4,7 @@ public class UtilNumber{
 	
 	private static final UtilNumber INSTANCE = new UtilNumber();
 	public static final Number ZERO = 0;
+	public static final String RE_DOUBLE = "\\d+\\.\\d+";
 	
 	private UtilNumber(){
 		super();
@@ -28,4 +29,13 @@ public class UtilNumber{
 	public final Number getDefault(final Number number) {
 		return getDefault(number, ZERO);
 	}
+	
+	public final boolean isZero(final Number number) {
+		return getDefault(number).equals(ZERO);
+	}
+	
+	public final boolean isValidDoubleToNote(final Number number) {
+		return (UtilText.getUtilText().matchPattern(UtilText.getUtilText().applyTrim(number.toString()), RE_DOUBLE));
+	}
 }
+

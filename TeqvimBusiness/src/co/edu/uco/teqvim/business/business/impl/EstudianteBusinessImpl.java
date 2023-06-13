@@ -24,13 +24,11 @@ public final class EstudianteBusinessImpl implements EstudianteBusiness {
 	public void register(final EstudianteDomain domain) {
 
 		UUID identificador;
-		EstudianteEntity entityTmp;
 		List<EstudianteEntity> result;
 		
 		do {
 			identificador = UtilUUID.generateNewUUID();
-			entityTmp = EstudianteEntity.create().setIdentificador(identificador);
-			result = daoFactory.getEstudianteDAO().read(entityTmp);
+			result = daoFactory.getEstudianteDAO().read(EstudianteEntity.create().setIdentificador(identificador));
 		}while(!result.isEmpty());
 		
 		if (!daoFactory.getEstudianteDAO().read(EstudianteEntity.create().setNumeroDocumento(domain.getNumeroDocumento())).isEmpty()) {
@@ -46,32 +44,30 @@ public final class EstudianteBusinessImpl implements EstudianteBusiness {
 				domain.getNumeroTelefonico(), domain.getCorreo(), domain.getContrasena(), domain.getFechaNacimiento(),
 				domain.getTipoDocumento(), domain.getNumeroDocumento(), domain.getConfirmacionCorreo(),
 				domain.getPais(), domain.getEstado());
-
-		final EstudianteEntity entity = EstudianteAssembler.getInstance().toEntityFromDomain(domainToCreate);
-		daoFactory.getEstudianteDAO().create(entity);
-
+		daoFactory.getEstudianteDAO().create(EstudianteAssembler.getInstance().toEntityFromDomain(domainToCreate));
 	}
 
 	@Override
 	public List<EstudianteDomain> list(final EstudianteDomain domain) {
-		final EstudianteEntity entity = EstudianteAssembler.getInstance().toEntityFromDomain(domain);
-
-		List<EstudianteEntity> resultEntityList = daoFactory.getEstudianteDAO().read(entity);
-
-		return EstudianteAssembler.getInstance().toDomainListFromEntityList(resultEntityList);
+		return EstudianteAssembler.getInstance().toDomainListFromEntityList(daoFactory.getEstudianteDAO().read(EstudianteAssembler.getInstance().toEntityFromDomain(domain)));
 	}
 
 	@Override
 	public void modify(final EstudianteDomain domain) {
+		if (!daoFactory.getEstudianteDAO().read(EstudianteEntity.create().setNumeroDocumento(domain.getNumeroDocumento())).isEmpty()) {
+			throw TeqvimBusinessException.create(EstudianteBusinessImplMessages.NUMERO_IDENTIFICACION_MESSAGE);
+		}else if(!daoFactory.getEstudianteDAO().read(EstudianteEntity.create().setCorreo(domain.getCorreo())).isEmpty()){
+			throw TeqvimBusinessException.create(EstudianteBusinessImplMessages.CORREO_MESSAGE);
+		}
+		else if(!daoFactory.getEstudianteDAO().read(EstudianteEntity.create().setNumeroTelefonico(domain.getNumeroTelefonico())).isEmpty()){
+			throw TeqvimBusinessException.create(EstudianteBusinessImplMessages.NUMERO_TELEFONICO_MESSAGE);
+		}
 		daoFactory.getEstudianteDAO().update(EstudianteAssembler.getInstance().toEntityFromDomain(domain));
-
 	}
 
 	@Override
 	public void drop(final EstudianteDomain domain) {
-		final EstudianteEntity entity = EstudianteAssembler.getInstance().toEntityFromDomain(domain);
-		daoFactory.getEstudianteDAO().delete(entity);
-
+		daoFactory.getEstudianteDAO().delete(EstudianteAssembler.getInstance().toEntityFromDomain(domain));
 	}
 
 }

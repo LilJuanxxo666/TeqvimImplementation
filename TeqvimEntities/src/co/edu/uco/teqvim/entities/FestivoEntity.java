@@ -21,7 +21,7 @@ public final class FestivoEntity {
 		super();
 		setIdentificador(UtilUUID.DEFAULT_UUID);
 		setTipo(TipoFestivoEntity.create());
-		setTipoFijo(TipoFestivoFijoEntity.getDefaultObject());
+		setTipoFijo(TipoFestivoFijoEntity.create());
 		setFecha(UtilDate.DEFAULT_DATE);
 		setFestividad(UtilText.EMPTY);
 		setPaisCelebracion(PaisEntity.create());
@@ -65,7 +65,7 @@ public final class FestivoEntity {
 	}
 
 	public final FestivoEntity setTipoFijo(final TipoFestivoFijoEntity tipoFijo) {
-		this.tipoFijo = UtilObject.getDefault(tipoFijo, TipoFestivoFijoEntity.getDefaultObject());
+		this.tipoFijo = UtilObject.getDefault(tipoFijo, TipoFestivoFijoEntity.create());
 		return this;
 	}
 

@@ -15,6 +15,7 @@ import co.edu.uco.teqvim.crosscutting.utils.Messages.EstadoPeriodoAcademicoPostg
 import co.edu.uco.teqvim.data.dao.EstadoPeriodoAcademicoDAO;
 import co.edu.uco.teqvim.data.dao.relational.SqlDAO;
 import co.edu.uco.teqvim.entities.EstadoPeriodoAcademicoEntity;
+import co.edu.uco.teqvim.entities.TipoDocumentoEntity;
 
 public final class EstadoPeriodoAcademicoPostgreSqlDAO extends SqlDAO<EstadoPeriodoAcademicoEntity> implements EstadoPeriodoAcademicoDAO {
 
@@ -64,7 +65,7 @@ public final class EstadoPeriodoAcademicoPostgreSqlDAO extends SqlDAO<EstadoPeri
 
 		var setWhere = true;
 
-		if (UtilObject.isNull(entity)) {
+		if (!UtilObject.isNull(entity)) {
 			if (!UtilUUID.isDefault(entity.getIdentificador())) {
 				parameters.add(entity.getIdentificador());
 				where.append("WHERE identificador=? ");
@@ -113,8 +114,8 @@ public final class EstadoPeriodoAcademicoPostgreSqlDAO extends SqlDAO<EstadoPeri
 
 			while (resultSet.next()) {
 
-				var entityTmp = new EstadoPeriodoAcademicoEntity(resultSet.getObject("identificador", UUID.class),
-						resultSet.getString("nombre"), resultSet.getString("descripcion"));
+				var entityTmp = EstadoPeriodoAcademicoEntity.create().setIdentificador(resultSet.getObject(1, UUID.class))
+						.setNombre(resultSet.getString(2)).setDescripcion(resultSet.getString(3));
 
 				result.add(entityTmp);
 			}

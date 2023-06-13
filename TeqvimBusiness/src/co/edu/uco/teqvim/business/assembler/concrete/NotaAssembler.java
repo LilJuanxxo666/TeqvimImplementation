@@ -24,28 +24,29 @@ public class NotaAssembler implements Assembler<NotaDomain, NotaDTO, NotaEntity>
 		return NotaDTO.create().setIdentificador(domain.getIdentificador())
 				.setTipoNota(TipoNotaAssembler.getInstance().toDtoFromDomain(domain.getTipoNota()))
 				.setCalificacion(domain.getCalificacion()).setDescripcion(domain.getDescripcion())
-				.setMateria(MateriaAssembler.getInstance().toDtoFromDomain(domain.getMateria()));
+				.setMateria(MateriaAssembler.getInstance().toDtoFromDomain(domain.getMateria())).setPorcentaje(domain.getPorcentaje());
 	}
 
 	@Override
 	public NotaDomain toDomainFromDto(NotaDTO dto) {
 		return new NotaDomain(dto.getIdentificador(),
 				TipoNotaAssembler.getInstance().toDomainFromDto(dto.getTipoNota()), dto.getCalificacion(),
-				dto.getDescripcion());
+				dto.getDescripcion(), MateriaAssembler.getInstance().toDomainFromDto(dto.getMateria()), dto.getPorcentaje());
 	}
 
 	@Override
 	public NotaEntity toEntityFromDomain(NotaDomain domain) {
 		return new NotaEntity(domain.getIdentificador(),
 				TipoNotaAssembler.getInstance().toEntityFromDomain(domain.getTipoNota()), domain.getCalificacion(),
-				domain.getDescripcion());
+				domain.getDescripcion(), MateriaAssembler.getInstance().toEntityFromDomain(domain.getMateria()), domain.getPorcentaje());
 	}
 
 	@Override
 	public NotaDomain toDomainFromEntity(NotaEntity entity) {
 		return new NotaDomain(entity.getIdentificador(),
 				TipoNotaAssembler.getInstance().toDomainFromEntity(entity.getTipoNota()), entity.getCalificacion(),
-				entity.getDescripcion());
+				entity.getDescripcion(), MateriaAssembler.getInstance().toDomainFromEntity(entity.getMateria()), entity.getPorcentaje());
+
 	}
 
 	@Override

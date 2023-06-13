@@ -624,8 +624,8 @@ public final class Messages {
         public static final String CREATE_ESTUDIANTE_OBJECT_NULL_MESSAGE = "No es posible crear un estudiante vacio";
         public static final String NUMERO_TELEFONO_EMPTY_MESSAGE = "El numero telefonico del estudiante no puede estar vacío";
         public static final String NUMERO_TELEFONO_LENGTH_MESSAGE = "El numero telefonico del estudiante no ser mayor a 15 digitos";
-        public static final String NOMBRE_EMPTY_MESSAGE = "El numero telefonico del estudiante no puede estar vacío";
-        public static final String NOMBRE_LENGTH_MESSAGE = "El numero telefonico del estudiante no puede estar vacío";
+        public static final String NOMBRE_EMPTY_MESSAGE = "El nombre o apellido del estudiante no puede estar vacío";
+        public static final String NOMBRE_LENGTH_MESSAGE = "El nombre o apellido no puede ser mayor a 20 caracteres";
         public static final String CORREO_EMPTY_MESSAGE = "El correo del estudiante no puede estar vacío";
         public static final String CORREO_VALID_MESSAGE = "El correo del estudiante no cumple con el formato adecuado";
         public static final String CONTRASENA_EMPTY_MESSAGE = "La contraseña del estudiante no puede estar vacío";
@@ -659,5 +659,101 @@ public final class Messages {
 		public static final String NUMERO_IDENTIFICACION_MESSAGE = "El estudiante que intenta crear ya se encuentra registrado, por favor intente con un nuevo numero de identificación o de ser necesario actualizarlo";
 		public static final String CORREO_MESSAGE = "El estudiante que intenta crear ya se encuentra registrado, por favor intente con un nuevo correo electronico o de ser necesario actualizarlo";
 		public static final String NUMERO_TELEFONICO_MESSAGE = "El estudiante que intenta crear ya se encuentra registrado, por favor intente con un nuevo numero telefónico o de ser necesario actualizarlo";
+	}
+	
+	public static final class PeriodoAcademicoPostgresSqlDAOMessages{
+		private PeriodoAcademicoPostgresSqlDAOMessages() {
+		}
+		public static final String READ_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de traer la informacion del periodo academico. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String READ_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase PeriodoAcademicoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String READ_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase PeriodoAcademicoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de asignar los datos del periodo academico. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String SET_PARAMETERS_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase PeriodoAcademicoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase PeriodoAcademicoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de ejecutar los datos del periodo academico. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String EXECUTE_QUERY_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase PeriodoAcademicoPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase PeriodoAcademicoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String CREATE_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema tratando de registrar la informacion del nuevo periodo academico. Por favor intente de nuevo y si el problema persiste contacte al administrador respectivo";
+		public static final String CREATE_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del método create de la clase PeriodoAcademicoPostgreSqlDAO de tipo Sqlexception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String CREATE_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema inesperado dentro del método create de la clase PeriodoAcademicoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String UPDATE_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema tratando de modificar la informacion del nuevo periodo academico. Por favor intente de nuevo y si el problema persiste contacte al administrador respectivo";
+		public static final String UPDATE_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del método update de la clase PeriodoAcademicoPostgreSqlDAO de tipo Sqlexception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String UPDATE_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema inesperado dentro del método update de la clase PeriodoAcademicoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String DELETE_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema tratando de dar de baja la informacion del periodo academico. Por favor intente de nuevo y si el problema persiste contacte al administrador respectivo";
+		public static final String DELETE_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del método delete de la clase PeriodoAcademicoPostgreSqlDAO de tipo Sqlexception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String DELETE_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema inesperado dentro del método delete de la clase PeriodoAcademicoPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+	}
+	public static final class NombreDiaSemanaPostgresSqlDAOMessages{
+		private NombreDiaSemanaPostgresSqlDAOMessages() {
+		}
+		public static final String READ_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de traer la informacion de los nombres del dia de la semana. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String READ_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase NombreDiaSemanaPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String READ_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase NombreDiaSemanaPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de asignar los datos de los nombres del dia de la semana. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String SET_PARAMETERS_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase NombreDiaSemanaPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase NombreDiaSemanaPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de ejecutar los datos de los nombres del dia de la semana. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String EXECUTE_QUERY_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase NombreDiaSemanaPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase NombreDiaSemanaPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";	
+	}
+	
+	public static final class PeriodoAcademicoControllerMessages{
+		private PeriodoAcademicoControllerMessages() {
+			
+		}
+		public static final String READ_ESTUDIANTE_RIGHT_MESSAGE = "Periodo Academico consultados correctamente";
+		public static final String CREATE_ESTUDIANTE_RIGHT_MESSAGE = "El Periodo Academico se ha creado correctamente";
+		public static final String UPDATE_ESTUDIANTE_RIGHT_MESSAGE = "El Periodo Academico se ha actualizado correctamente";
+		public static final String DELETE_ESTUDIANTE_RIGHT_MESSAGE = "El Periodo Academico  se ha elimidado correctamente";
+		public static final String UNEXPECTED_PROBLEM_MESSAGE = "Se ha presentado un problema inesperado. Por favor, intenta de nuevo y si el problema persiste, contacta al administrador de la aplicación";
+		public static final String UNEXPECTED_PROBLEM_CREATE_LOG_MESSAGE = "Se ha presentado un problema inesperado en el metodo create. Por favor validar la consola de errores...";
+		public static final String UNEXPECTED_PROBLEM_UPDATE_LOG_MESSAGE = "Se ha presentado un problema inesperado en el metodo update. Por favor validar la consola de errores...";
+		public static final String UNEXPECTED_PROBLEM_DELETE_LOG_MESSAGE = "Se ha presentado un problema inesperado en el metodo delete. Por favor validar la consola de errores...";
+	}
+	
+	public static final class PeriodoAcademicoValidatorMessage {
+        private PeriodoAcademicoValidatorMessage() {
+        }
+
+        public static final String UPDATE_ESTUDIANTE_OBJECT_NULL_MESSAGE = "No es posible actualizar un periodo academico vacio";
+        public static final String CREATE_ESTUDIANTE_OBJECT_NULL_MESSAGE = "No es posible crear un periodo academico vacio";
+        public static final String FECHA_INICIO_EMPTY_MESSAGE = "La fecha inicio no puede estar vacía";
+        public static final String FECHA_FIN_EMPTY_MESSAGE = "La fecha fin no puede estar vacía";
+        public static final String NOMBRE_EMPTY_MESSAGE = "El nombre del periodo academico no puede estar vacío";
+        public static final String NOMBRE_LENGTH_MESSAGE = "La longitud del nombre del periodo academico no puede ser mayor a 20 caracteres";
+        public static final String PROMEDIO_PERIODO_EMPTY_MESSAGE = "El promedio materia del periodo academico no puede estar vacío";
+        public static final String PROMEDIO_PERIODO_MORE_MESSAGE = "El promedio materia del periodo academico no puede ser mayor a 5";
+        public static final String PROMEDIO_PERIODO_LESS_MESSAGE = "El promedio materia del periodo academico no puede ser menor a 0";
+        public static final String PROMEDIO_PERIODO_FORMAT_MESSAGE = "El promedio materia no cumple con el formato adecuado";
+    }
+	
+	public static final class PeriodoAcademicoBusinessImplMessage {
+		private PeriodoAcademicoBusinessImplMessage() {
+		}
+		public static final String DATE_IS_AFTER = "No es posible tener una fecha inicio igual o mayor a la fecha fin";
+        public static final String DATE_IS_LESS_A_WEEK = "El periodo academico debe durar minimo una semana";
+        public static final String DATE_IS_INVALID = "El periodo academico no se puede crear con mas de una año de anticipación";
+	}
+	public static final class ConsultedControllerMessage{
+		private ConsultedControllerMessage() {
+		}
+		public static final String TIPO_EVENTO_CONSULTED = "Tipo evento consultadas correctamente";
+		public static final String UNIDAD_TIEMPO_CONSULTED = "Unidad tiempo consultados correctamente";
+		public static final String PAIS_CONSULTED = "Paises consultados correctamente";
+		public static final String TIPO_PERIODO_ACADEMICO_CONSULTED = "Tipo periodo academico consultadas correctamente";
+		public static final String TIPO_NOTIFICACION_CONSULTED = "Tipo notificacion consultadas correctamente";
+		public static final String TIPO_NOTA_CONSULTED = "Tipo nota consultadas correctamente";
+		public static final String TIPO_FRECUENCIA_CONSULTED = "Tipo frecuencia consultadas correctamente";
+		public static final String TIPO_FESTIVO_FIJO_CONSULTED = "Tipo festivo fijo consultadas correctamente";
+		public static final String TIPO_FESTIVO_CONSULTED = "Tipo festivo consultadas correctamente";
+		public static final String TIPO_DURACION_EVENTO_CONSULTED = "Tipo duracion evento consultados correctamente";
+		public static final String TIPO_DOCUMENTO_CONSULTED = "Tipo documento consultadas correctamente";
+		public static final String RESPUESTA_CONSULTED = "Respuesta consultadas correctamente";
+		public static final String NOMBRE_DIA_SEMANA_CONSULTED = "Nombre dia semana consultados correctamente";
+		public static final String ESTADO_PERIODO_ACADEMICO_CONSULTED = "Estado periodo academico consultados correctamente";
+		public static final String ESTADO_NOTIFICACION_CONSULTED = "Estado notificación consultados correctamente";
+		public static final String ESTADO_EVENTO_CONSULTED = "Estado evento consultados correctamente";
+		public static final String ESTADO_ESTUDIANTE_CONSULTED = "Estado estudiante consultadas correctamente";
+		
 	}
 }

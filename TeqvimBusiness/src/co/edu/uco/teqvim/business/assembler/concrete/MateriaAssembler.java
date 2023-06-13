@@ -23,26 +23,26 @@ public class MateriaAssembler implements Assembler<MateriaDomain, MateriaDTO, Ma
 	public MateriaDTO toDtoFromDomain(MateriaDomain domain) {
 		return MateriaDTO.create().setIdentificador(domain.getIdentificador()).setNombre(domain.getNombre())
 				.setCreditos(domain.getCreditos()).setPeriodoAcademico(
-						PeriodoAcademicoAssembler.getInstance().toDtoFromDomain(domain.getPeriodoAcademico()));
+						PeriodoAcademicoAssembler.getInstance().toDtoFromDomain(domain.getPeriodoAcademico())).setPromedioMateria(domain.getPromedioMateria());
 
 	}
 
 	@Override
 	public MateriaDomain toDomainFromDto(MateriaDTO dto) {
 		return new MateriaDomain(dto.getIdentificador(), dto.getNombre(), dto.getCreditos(),
-				PeriodoAcademicoAssembler.getInstance().toDomainFromDto(dto.getPeriodoAcademico()));
+				PeriodoAcademicoAssembler.getInstance().toDomainFromDto(dto.getPeriodoAcademico()), dto.getPromedioMateria());
 	}
 
 	@Override
 	public MateriaEntity toEntityFromDomain(MateriaDomain domain) {
 		return new MateriaEntity(domain.getIdentificador(), domain.getNombre(), domain.getCreditos(),
-				PeriodoAcademicoAssembler.getInstance().toEntityFromDomain(domain.getPeriodoAcademico()));
+				PeriodoAcademicoAssembler.getInstance().toEntityFromDomain(domain.getPeriodoAcademico()), domain.getPromedioMateria());
 	}
 
 	@Override
 	public MateriaDomain toDomainFromEntity(MateriaEntity entity) {
 		return new MateriaDomain(entity.getIdentificador(), entity.getNombre(), entity.getCreditos(),
-				PeriodoAcademicoAssembler.getInstance().toDomainFromEntity(entity.getPeriodoAcademico()));
+				PeriodoAcademicoAssembler.getInstance().toDomainFromEntity(entity.getPeriodoAcademico()), entity.getPromedioMateria());
 	}
 
 	@Override

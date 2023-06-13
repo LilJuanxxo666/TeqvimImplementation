@@ -15,6 +15,7 @@ import co.edu.uco.teqvim.crosscutting.utils.Messages.EstadoEventoPostgresSqlDAOM
 import co.edu.uco.teqvim.data.dao.EstadoEventoDAO;
 import co.edu.uco.teqvim.data.dao.relational.SqlDAO;
 import co.edu.uco.teqvim.entities.EstadoEventoEntity;
+import co.edu.uco.teqvim.entities.EstadoNotificacionEntity;
 
 public final class EstadoEventoPostgreSqlDAO extends SqlDAO<EstadoEventoEntity> implements EstadoEventoDAO {
 
@@ -64,7 +65,7 @@ public final class EstadoEventoPostgreSqlDAO extends SqlDAO<EstadoEventoEntity> 
 
 		var setWhere = true;
 
-		if (UtilObject.isNull(entity)) {
+		if (!UtilObject.isNull(entity)) {
 			if (!UtilUUID.isDefault(entity.getIdentificador())) {
 				parameters.add(entity.getIdentificador());
 				where.append("WHERE identificador=? ");
@@ -113,8 +114,8 @@ public final class EstadoEventoPostgreSqlDAO extends SqlDAO<EstadoEventoEntity> 
 
 			while (resultSet.next()) {
 
-				var entityTmp = new EstadoEventoEntity(resultSet.getObject("identificador", UUID.class),
-						resultSet.getString("nombre"), resultSet.getString("descripcion"));
+				var entityTmp = EstadoEventoEntity.create().setIdentificador(resultSet.getObject(1, UUID.class))
+						.setNombre(resultSet.getString(2)).setDescripcion(resultSet.getString(3));
 
 				result.add(entityTmp);
 			}

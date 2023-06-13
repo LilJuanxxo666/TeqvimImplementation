@@ -14,6 +14,7 @@ import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
 import co.edu.uco.teqvim.crosscutting.utils.Messages.TipoFestivoFijoPostgresSqlDAOMessages;
 import co.edu.uco.teqvim.data.dao.TipoFestivoFijoDAO;
 import co.edu.uco.teqvim.data.dao.relational.SqlDAO;
+import co.edu.uco.teqvim.entities.TipoFestivoEntity;
 import co.edu.uco.teqvim.entities.TipoFestivoFijoEntity;
 
 public final class TipoFestivoFijoPostgreSqlDAO extends SqlDAO<TipoFestivoFijoEntity> implements TipoFestivoFijoDAO {
@@ -64,7 +65,7 @@ public final class TipoFestivoFijoPostgreSqlDAO extends SqlDAO<TipoFestivoFijoEn
 
 		var setWhere = true;
 
-		if (UtilObject.isNull(entity)) {
+		if (!UtilObject.isNull(entity)) {
 			if (!UtilUUID.isDefault(entity.getIdentificador())) {
 				parameters.add(entity.getIdentificador());
 				where.append("WHERE identificador=? ");
@@ -112,8 +113,8 @@ public final class TipoFestivoFijoPostgreSqlDAO extends SqlDAO<TipoFestivoFijoEn
 
 			while (resultSet.next()) {
 
-				var entityTmp = new TipoFestivoFijoEntity(resultSet.getObject("identificador", UUID.class),
-						resultSet.getString("nombre"), resultSet.getString("descripcion"));
+				var entityTmp = TipoFestivoFijoEntity.create().setIdentificador(resultSet.getObject(1, UUID.class))
+						.setNombre(resultSet.getString(2)).setDescripcion(resultSet.getString(3));
 
 				result.add(entityTmp);
 			}

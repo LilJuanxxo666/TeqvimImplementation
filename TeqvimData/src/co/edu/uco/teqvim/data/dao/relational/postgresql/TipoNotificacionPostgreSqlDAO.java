@@ -15,6 +15,7 @@ import co.edu.uco.teqvim.crosscutting.utils.Messages.TipoNotificacionPostgresSql
 import co.edu.uco.teqvim.data.dao.TipoNotificacionDAO;
 import co.edu.uco.teqvim.data.dao.relational.SqlDAO;
 import co.edu.uco.teqvim.entities.TipoNotificacionEntity;
+import co.edu.uco.teqvim.entities.TipoPeriodoAcademicoEntity;
 
 public final class TipoNotificacionPostgreSqlDAO extends SqlDAO<TipoNotificacionEntity> implements TipoNotificacionDAO {
 
@@ -113,8 +114,8 @@ public final class TipoNotificacionPostgreSqlDAO extends SqlDAO<TipoNotificacion
 
 			while (resultSet.next()) {
 
-				var entityTmp = new TipoNotificacionEntity(resultSet.getObject("identificador", UUID.class),
-						resultSet.getString("nombre"), resultSet.getString("descripcion"));
+				var entityTmp = TipoNotificacionEntity.create().setIdentificador(resultSet.getObject(1, UUID.class))
+						.setNombre(resultSet.getString(2)).setDescripcion(resultSet.getString(3));
 
 				result.add(entityTmp);
 			}

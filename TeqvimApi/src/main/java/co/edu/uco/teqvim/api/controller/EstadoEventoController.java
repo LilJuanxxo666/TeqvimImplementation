@@ -18,15 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 import co.edu.uco.teqvim.api.controller.response.Response;
 import co.edu.uco.teqvim.business.facade.EstadoEventoFacade;
 import co.edu.uco.teqvim.business.facade.impl.EstadoEventoFacadeImpl;
+import co.edu.uco.teqvim.crosscutting.utils.Messages.ConsultedControllerMessage;
 import co.edu.uco.teqvim.dto.EstadoEventoDTO;
 
 @RestController
 @RequestMapping("teqvim/api/v1/estadoevento")
 public final class EstadoEventoController {
-
-	private Logger log = LoggerFactory.getLogger(EstadoEventoController.class);
-	private EstadoEventoFacade facade;
-
 	@GetMapping("/dummy")
 	public EstadoEventoDTO dummy() {
 		return EstadoEventoDTO.create();
@@ -35,19 +32,13 @@ public final class EstadoEventoController {
 	@GetMapping
 	public ResponseEntity<Response<EstadoEventoDTO>> list(@RequestBody EstadoEventoDTO dto) {
 
-		facade = new EstadoEventoFacadeImpl();
+		EstadoEventoFacade facade = new EstadoEventoFacadeImpl();
 		List<EstadoEventoDTO> lista = facade.list(dto);
 
 		List<String> messages = new ArrayList<>();
-		messages.add("Estado evento consultadas correctamente");
+		messages.add(ConsultedControllerMessage.ESTADO_EVENTO_CONSULTED);
 
 		Response<EstadoEventoDTO> response = new Response<>(lista, messages);
 		return new ResponseEntity<>(response, HttpStatus.OK);
-
-	}
-
-	@GetMapping("/{id}")
-	public EstadoEventoDTO getById(@PathVariable UUID id) {
-		return EstadoEventoDTO.create().setIdentificador(id);
 	}
 }

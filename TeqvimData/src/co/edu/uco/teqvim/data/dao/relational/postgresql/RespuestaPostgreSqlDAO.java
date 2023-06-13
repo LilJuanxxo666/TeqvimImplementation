@@ -21,7 +21,7 @@ public final class RespuestaPostgreSqlDAO extends SqlDAO<RespuestaEntity> implem
 	public RespuestaPostgreSqlDAO(final Connection connection) {
 		super(connection);
 	}
-	
+
 	@Override
 	public List<RespuestaEntity> read(RespuestaEntity entity) {
 		var sqlStatement = new StringBuilder();
@@ -41,15 +41,17 @@ public final class RespuestaPostgreSqlDAO extends SqlDAO<RespuestaEntity> implem
 		} catch (final TeqvimDataException exception) {
 			throw exception;
 		} catch (final SQLException exception) {
-			throw TeqvimDataException.create(RespuestaPostgresSqlDAOMessages.READ_TECHNICAL_SQL_EXCEPTION_MESSAGE, RespuestaPostgresSqlDAOMessages.READ_EXCEPTION_USER_MESSAGE,exception);
+			throw TeqvimDataException.create(RespuestaPostgresSqlDAOMessages.READ_TECHNICAL_SQL_EXCEPTION_MESSAGE,
+					RespuestaPostgresSqlDAOMessages.READ_EXCEPTION_USER_MESSAGE, exception);
 		} catch (final Exception exception) {
-			throw TeqvimDataException.create(RespuestaPostgresSqlDAOMessages.READ_TECHNICAL_EXCEPTION_MESSAGE, RespuestaPostgresSqlDAOMessages.READ_EXCEPTION_USER_MESSAGE,exception);
+			throw TeqvimDataException.create(RespuestaPostgresSqlDAOMessages.READ_TECHNICAL_EXCEPTION_MESSAGE,
+					RespuestaPostgresSqlDAOMessages.READ_EXCEPTION_USER_MESSAGE, exception);
 		}
 	}
 
 	@Override
 	protected String prepareSelect() {
-		return "SELECT identificador, nombre, descripcion";
+		return "SELECT identificador, nombre, descripcion ";
 	}
 
 	@Override
@@ -64,7 +66,7 @@ public final class RespuestaPostgreSqlDAO extends SqlDAO<RespuestaEntity> implem
 
 		var setWhere = true;
 
-		if (UtilObject.isNull(entity)) {
+		if (!UtilObject.isNull(entity)) {
 			if (!UtilUUID.isDefault(entity.getIdentificador())) {
 				parameters.add(entity.getIdentificador());
 				where.append("WHERE identificador=? ");
@@ -97,10 +99,13 @@ public final class RespuestaPostgreSqlDAO extends SqlDAO<RespuestaEntity> implem
 				}
 			}
 		} catch (final SQLException exception) {
-			throw TeqvimDataException.create(RespuestaPostgresSqlDAOMessages.SET_PARAMETERS_TECHNICAL_SQL_EXCEPTION_MESSAGE, RespuestaPostgresSqlDAOMessages.SET_PARAMETERS_EXCEPTION_USER_MESSAGE, exception);
+			throw TeqvimDataException.create(
+					RespuestaPostgresSqlDAOMessages.SET_PARAMETERS_TECHNICAL_SQL_EXCEPTION_MESSAGE,
+					RespuestaPostgresSqlDAOMessages.SET_PARAMETERS_EXCEPTION_USER_MESSAGE, exception);
 
 		} catch (final Exception exception) {
-			throw TeqvimDataException.create(RespuestaPostgresSqlDAOMessages.SET_PARAMETERS_TECHNICAL_EXCEPTION_MESSAGE, RespuestaPostgresSqlDAOMessages.SET_PARAMETERS_EXCEPTION_USER_MESSAGE, exception);
+			throw TeqvimDataException.create(RespuestaPostgresSqlDAOMessages.SET_PARAMETERS_TECHNICAL_EXCEPTION_MESSAGE,
+					RespuestaPostgresSqlDAOMessages.SET_PARAMETERS_EXCEPTION_USER_MESSAGE, exception);
 		}
 	}
 
@@ -113,15 +118,18 @@ public final class RespuestaPostgreSqlDAO extends SqlDAO<RespuestaEntity> implem
 
 			while (resultSet.next()) {
 
-				var entityTmp = new RespuestaEntity(resultSet.getObject("identificador", UUID.class),
-						resultSet.getString("nombre"), resultSet.getString("descripcion"));
+				var entityTmp = RespuestaEntity.create().setIdentificador(resultSet.getObject(1, UUID.class))
+						.setNombre(resultSet.getString(2)).setDescripcion(resultSet.getString(3));
 
 				result.add(entityTmp);
 			}
 		} catch (final SQLException exception) {
-			throw TeqvimDataException.create(RespuestaPostgresSqlDAOMessages.EXECUTE_QUERY_TECHNICAL_SQL_EXCEPTION_MESSAGE, RespuestaPostgresSqlDAOMessages.EXECUTE_QUERY_EXCEPTION_USER_MESSAGE, exception);
+			throw TeqvimDataException.create(
+					RespuestaPostgresSqlDAOMessages.EXECUTE_QUERY_TECHNICAL_SQL_EXCEPTION_MESSAGE,
+					RespuestaPostgresSqlDAOMessages.EXECUTE_QUERY_EXCEPTION_USER_MESSAGE, exception);
 		} catch (final Exception exception) {
-			throw TeqvimDataException.create(RespuestaPostgresSqlDAOMessages.EXECUTE_QUERY_TECHNICAL_EXCEPTION_MESSAGE, RespuestaPostgresSqlDAOMessages.EXECUTE_QUERY_EXCEPTION_USER_MESSAGE, exception);
+			throw TeqvimDataException.create(RespuestaPostgresSqlDAOMessages.EXECUTE_QUERY_TECHNICAL_EXCEPTION_MESSAGE,
+					RespuestaPostgresSqlDAOMessages.EXECUTE_QUERY_EXCEPTION_USER_MESSAGE, exception);
 		}
 		return result;
 	}

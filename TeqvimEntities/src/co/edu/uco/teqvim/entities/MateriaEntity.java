@@ -2,6 +2,7 @@ package co.edu.uco.teqvim.entities;
 
 import java.util.UUID;
 
+
 import co.edu.uco.teqvim.crosscutting.utils.UtilNumber;
 import co.edu.uco.teqvim.crosscutting.utils.UtilObject;
 import co.edu.uco.teqvim.crosscutting.utils.UtilText;
@@ -12,6 +13,7 @@ public final class MateriaEntity {
 	private UUID identificador;
 	private String nombre;
 	private int creditos;
+	private Double promedioMateria;
 	private PeriodoAcademicoEntity periodoAcademico;
 
 	private MateriaEntity() {
@@ -20,14 +22,16 @@ public final class MateriaEntity {
 		setNombre(UtilText.EMPTY);
 		setCreditos(UtilNumber.ZERO.intValue());
 		setPeriodoAcademico(PeriodoAcademicoEntity.create());
+		setPromedioMateria(UtilNumber.ZERO.doubleValue());
 	}
 
-	public MateriaEntity(UUID identificador, String nombre, int creditos, PeriodoAcademicoEntity periodoAcademico) {
+	public MateriaEntity(UUID identificador, String nombre, int creditos, PeriodoAcademicoEntity periodoAcademico, Double promedioMateria) {
 		super();
 		setIdentificador(identificador);
 		setNombre(nombre);
 		setCreditos(creditos);
 		setPeriodoAcademico(periodoAcademico);
+		setPromedioMateria(promedioMateria);
 
 	}
 
@@ -70,5 +74,12 @@ public final class MateriaEntity {
 		this.periodoAcademico = UtilObject.getDefault(periodoAcademico, PeriodoAcademicoEntity.create());
 		return this;
 	}
+	public final Double getPromedioMateria() {
+		return promedioMateria;
+	}
 
+	public final MateriaEntity setPromedioMateria(Double promedioMateria) {
+		this.promedioMateria = UtilNumber.getUtilNumber().getDefault(promedioMateria).doubleValue();
+		return this;
+	}
 }

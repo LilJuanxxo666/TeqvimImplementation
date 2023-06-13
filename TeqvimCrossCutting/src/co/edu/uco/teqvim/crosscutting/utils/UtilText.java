@@ -79,5 +79,4 @@ public final class UtilText {
 	public static final String getDefaultPassword(final String passwordValue) {
 		return UtilObject.isNull(passwordValue) ? DEFAULT_EMAIL : passwordValue;
 	}
-
 }

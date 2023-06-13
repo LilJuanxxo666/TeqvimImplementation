@@ -16,7 +16,8 @@ import co.edu.uco.teqvim.data.dao.TipoPeriodoAcademicoDAO;
 import co.edu.uco.teqvim.data.dao.relational.SqlDAO;
 import co.edu.uco.teqvim.entities.TipoPeriodoAcademicoEntity;
 
-public final class TipoPeriodoAcademicoPostgreSqlDAO extends SqlDAO<TipoPeriodoAcademicoEntity> implements TipoPeriodoAcademicoDAO {
+public final class TipoPeriodoAcademicoPostgreSqlDAO extends SqlDAO<TipoPeriodoAcademicoEntity>
+		implements TipoPeriodoAcademicoDAO {
 
 	public TipoPeriodoAcademicoPostgreSqlDAO(final Connection connection) {
 		super(connection);
@@ -41,9 +42,13 @@ public final class TipoPeriodoAcademicoPostgreSqlDAO extends SqlDAO<TipoPeriodoA
 		} catch (final TeqvimDataException exception) {
 			throw exception;
 		} catch (final SQLException exception) {
-			throw TeqvimDataException.create(TipoPeriodoAcademicoPostgresSqlDAOMessages.READ_TECHNICAL_SQL_EXCEPTION_MESSAGE, TipoPeriodoAcademicoPostgresSqlDAOMessages.READ_EXCEPTION_USER_MESSAGE,exception);
+			throw TeqvimDataException.create(
+					TipoPeriodoAcademicoPostgresSqlDAOMessages.READ_TECHNICAL_SQL_EXCEPTION_MESSAGE,
+					TipoPeriodoAcademicoPostgresSqlDAOMessages.READ_EXCEPTION_USER_MESSAGE, exception);
 		} catch (final Exception exception) {
-			throw TeqvimDataException.create(TipoPeriodoAcademicoPostgresSqlDAOMessages.READ_TECHNICAL_EXCEPTION_MESSAGE, TipoPeriodoAcademicoPostgresSqlDAOMessages.READ_EXCEPTION_USER_MESSAGE,exception);
+			throw TeqvimDataException.create(
+					TipoPeriodoAcademicoPostgresSqlDAOMessages.READ_TECHNICAL_EXCEPTION_MESSAGE,
+					TipoPeriodoAcademicoPostgresSqlDAOMessages.READ_EXCEPTION_USER_MESSAGE, exception);
 		}
 	}
 
@@ -64,7 +69,7 @@ public final class TipoPeriodoAcademicoPostgreSqlDAO extends SqlDAO<TipoPeriodoA
 
 		var setWhere = true;
 
-		if (UtilObject.isNull(entity)) {
+		if (!UtilObject.isNull(entity)) {
 			if (!UtilUUID.isDefault(entity.getIdentificador())) {
 				parameters.add(entity.getIdentificador());
 				where.append("WHERE identificador=? ");
@@ -97,10 +102,14 @@ public final class TipoPeriodoAcademicoPostgreSqlDAO extends SqlDAO<TipoPeriodoA
 				}
 			}
 		} catch (final SQLException exception) {
-			throw TeqvimDataException.create(TipoPeriodoAcademicoPostgresSqlDAOMessages.SET_PARAMETERS_TECHNICAL_SQL_EXCEPTION_MESSAGE, TipoPeriodoAcademicoPostgresSqlDAOMessages.SET_PARAMETERS_EXCEPTION_USER_MESSAGE, exception);
+			throw TeqvimDataException.create(
+					TipoPeriodoAcademicoPostgresSqlDAOMessages.SET_PARAMETERS_TECHNICAL_SQL_EXCEPTION_MESSAGE,
+					TipoPeriodoAcademicoPostgresSqlDAOMessages.SET_PARAMETERS_EXCEPTION_USER_MESSAGE, exception);
 
 		} catch (final Exception exception) {
-			throw TeqvimDataException.create(TipoPeriodoAcademicoPostgresSqlDAOMessages.SET_PARAMETERS_TECHNICAL_EXCEPTION_MESSAGE, TipoPeriodoAcademicoPostgresSqlDAOMessages.SET_PARAMETERS_EXCEPTION_USER_MESSAGE, exception);
+			throw TeqvimDataException.create(
+					TipoPeriodoAcademicoPostgresSqlDAOMessages.SET_PARAMETERS_TECHNICAL_EXCEPTION_MESSAGE,
+					TipoPeriodoAcademicoPostgresSqlDAOMessages.SET_PARAMETERS_EXCEPTION_USER_MESSAGE, exception);
 		}
 	}
 
@@ -113,15 +122,19 @@ public final class TipoPeriodoAcademicoPostgreSqlDAO extends SqlDAO<TipoPeriodoA
 
 			while (resultSet.next()) {
 
-				var entityTmp = new TipoPeriodoAcademicoEntity(resultSet.getObject("identificador", UUID.class),
-						resultSet.getString("nombre"), resultSet.getString("descripcion"));
+				var entityTmp = TipoPeriodoAcademicoEntity.create().setIdentificador(resultSet.getObject(1, UUID.class))
+						.setNombre(resultSet.getString(2)).setDescripcion(resultSet.getString(3));
 
 				result.add(entityTmp);
 			}
 		} catch (final SQLException exception) {
-			throw TeqvimDataException.create(TipoPeriodoAcademicoPostgresSqlDAOMessages.EXECUTE_QUERY_TECHNICAL_SQL_EXCEPTION_MESSAGE, TipoPeriodoAcademicoPostgresSqlDAOMessages.EXECUTE_QUERY_EXCEPTION_USER_MESSAGE, exception);
+			throw TeqvimDataException.create(
+					TipoPeriodoAcademicoPostgresSqlDAOMessages.EXECUTE_QUERY_TECHNICAL_SQL_EXCEPTION_MESSAGE,
+					TipoPeriodoAcademicoPostgresSqlDAOMessages.EXECUTE_QUERY_EXCEPTION_USER_MESSAGE, exception);
 		} catch (final Exception exception) {
-			throw TeqvimDataException.create(TipoPeriodoAcademicoPostgresSqlDAOMessages.EXECUTE_QUERY_TECHNICAL_EXCEPTION_MESSAGE, TipoPeriodoAcademicoPostgresSqlDAOMessages.EXECUTE_QUERY_EXCEPTION_USER_MESSAGE, exception);
+			throw TeqvimDataException.create(
+					TipoPeriodoAcademicoPostgresSqlDAOMessages.EXECUTE_QUERY_TECHNICAL_EXCEPTION_MESSAGE,
+					TipoPeriodoAcademicoPostgresSqlDAOMessages.EXECUTE_QUERY_EXCEPTION_USER_MESSAGE, exception);
 		}
 		return result;
 	}

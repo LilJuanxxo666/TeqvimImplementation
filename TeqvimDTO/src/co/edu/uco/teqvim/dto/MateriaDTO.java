@@ -12,6 +12,7 @@ public class MateriaDTO {
 	private UUID identificador;
 	private String nombre;
 	private int creditos;
+	private Double promedioMateria;
 	private PeriodoAcademicoDTO periodoAcademico;
 
 	public MateriaDTO() {
@@ -71,4 +72,12 @@ public class MateriaDTO {
 		return this;
 	}
 
+	public final Double getPromedioMateria() {
+		return promedioMateria;
+	}
+
+	public final MateriaDTO setPromedioMateria(Double promedioMateria) {
+		this.promedioMateria = UtilNumber.getUtilNumber().getDefault(promedioMateria).doubleValue();
+		return this;
+	}
 }

@@ -22,7 +22,7 @@ public class ContrasenaValidation implements Validation<String>{
 		if (UtilText.getUtilText().isNull(data)) {
 			result.addMessage(EstudianteValidatorMessage.CONTRASENA_EMPTY_MESSAGE);
 		}
-		else if (UtilText.passwordStringIsValid(data)){
+		else if (!UtilText.passwordStringIsValid(data)){
 			result.addMessage(EstudianteValidatorMessage.CONTRASENA_VALID_MESSAGE);
 		}
 		else if (UtilText.getUtilText().applyTrim(data).length() > 16) {

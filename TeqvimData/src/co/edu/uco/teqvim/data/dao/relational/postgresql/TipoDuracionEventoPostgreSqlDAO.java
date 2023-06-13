@@ -15,6 +15,7 @@ import co.edu.uco.teqvim.crosscutting.utils.Messages.TipoDuracionEventoPostgresS
 import co.edu.uco.teqvim.data.dao.TipoDuracionEventoDAO;
 import co.edu.uco.teqvim.data.dao.relational.SqlDAO;
 import co.edu.uco.teqvim.entities.TipoDuracionEventoEntity;
+import co.edu.uco.teqvim.entities.TipoEventoEntity;
 
 public final class TipoDuracionEventoPostgreSqlDAO extends SqlDAO<TipoDuracionEventoEntity> implements TipoDuracionEventoDAO {
 
@@ -64,7 +65,7 @@ public final class TipoDuracionEventoPostgreSqlDAO extends SqlDAO<TipoDuracionEv
 
 		var setWhere = true;
 
-		if (UtilObject.isNull(entity)) {
+		if (!UtilObject.isNull(entity)) {
 			if (!UtilUUID.isDefault(entity.getIdentificador())) {
 				parameters.add(entity.getIdentificador());
 				where.append("WHERE identificador=? ");
@@ -113,9 +114,8 @@ public final class TipoDuracionEventoPostgreSqlDAO extends SqlDAO<TipoDuracionEv
 
 			while (resultSet.next()) {
 
-				var entityTmp = new TipoDuracionEventoEntity(resultSet.getObject("identificador", UUID.class),
-						resultSet.getString("nombre"), resultSet.getString("descripcion"));
-
+				var entityTmp = TipoDuracionEventoEntity.create().setIdentificador(resultSet.getObject(1, UUID.class))
+						.setNombre(resultSet.getString(2)).setDescripcion(resultSet.getString(3));
 				result.add(entityTmp);
 			}
 		} catch (final SQLException exception) {

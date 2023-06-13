@@ -210,7 +210,7 @@ public final class EstudiantePostgreSqlDAO extends SqlDAO<EstudianteEntity> impl
 			}
 			if (!UtilText.getUtilText().isEmpty(entity.getTipoDocumento().getDescripcion())) {
 				parameters.add(entity.getTipoDocumento().getDescripcion());
-				where.append(setWhere ? "WHERE " : "AND ").append("TDO.descripcion=? ");
+				where.append(setWhere ? "WHERE " : "AND ").append("TDO.descripcion LIKE %?% ");
 				setWhere = false;
 			}
 			if (!UtilText.getUtilText().isEmpty(entity.getNumeroDocumento())) {
@@ -230,7 +230,7 @@ public final class EstudiantePostgreSqlDAO extends SqlDAO<EstudianteEntity> impl
 			}
 			if (!UtilText.getUtilText().isEmpty(entity.getConfirmacionCorreo().getDescripcion())) {
 				parameters.add(entity.getConfirmacionCorreo().getDescripcion());
-				where.append(setWhere ? "WHERE " : "AND ").append("CCO.descripcion=? ");
+				where.append(setWhere ? "WHERE " : "AND ").append("CCO.descripcion LIKE %?% ");
 				setWhere = false;
 			}
 			if (!UtilUUID.isDefault(entity.getPais().getIdentificador())) {
@@ -254,8 +254,8 @@ public final class EstudiantePostgreSqlDAO extends SqlDAO<EstudianteEntity> impl
 				setWhere = false;
 			}
 			if (!UtilText.getUtilText().isEmpty(entity.getEstado().getDescripcion())) {
-				parameters.add(entity.getPais().getNombre());
-				where.append(setWhere ? "WHERE " : "AND ").append("ES.descripcion=? ");
+				parameters.add(entity.getEstado().getDescripcion());
+				where.append(setWhere ? "WHERE " : "AND ").append("ES.descripcion LIKE %?% ");
 			}
 		}
 		return where.toString();
@@ -263,7 +263,7 @@ public final class EstudiantePostgreSqlDAO extends SqlDAO<EstudianteEntity> impl
 
 	@Override
 	protected final String prepareOrderBy() {
-		return "ORDER BY primer_nombre ASC";
+		return "ORDER BY EST.primer_nombre ASC";
 	}
 
 	@Override

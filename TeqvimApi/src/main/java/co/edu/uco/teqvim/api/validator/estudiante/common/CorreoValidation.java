@@ -22,7 +22,7 @@ public class CorreoValidation implements Validation<String>{
 		if (UtilText.getUtilText().isEmpty(data)) {
 			result.addMessage(EstudianteValidatorMessage.CORREO_EMPTY_MESSAGE);
 		}
-		else if (UtilText.emailStringIsValid(data)) {
+		else if (!UtilText.emailStringIsValid(data)) {
 			result.addMessage(EstudianteValidatorMessage.CORREO_VALID_MESSAGE);
 		}
 		return result;

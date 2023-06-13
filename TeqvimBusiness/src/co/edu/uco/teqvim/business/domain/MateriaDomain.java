@@ -1,7 +1,6 @@
 package co.edu.uco.teqvim.business.domain;
 
 import java.util.UUID;
-
 import co.edu.uco.teqvim.crosscutting.utils.UtilNumber;
 import co.edu.uco.teqvim.crosscutting.utils.UtilObject;
 import co.edu.uco.teqvim.crosscutting.utils.UtilText;
@@ -13,6 +12,7 @@ public class MateriaDomain {
 	private UUID identificador;
 	private String nombre;
 	private int creditos;
+	private Double promedioMateria;
 	private PeriodoAcademicoDomain periodoAcademico;
 
 	private MateriaDomain() {
@@ -21,15 +21,16 @@ public class MateriaDomain {
 		setNombre(UtilText.EMPTY);
 		setCreditos(UtilNumber.ZERO.intValue());
 		setPeriodoAcademico(PeriodoAcademicoDomain.getDefaultObject());
+		setPromedioMateria(UtilNumber.ZERO.doubleValue());
 	}
 
-	public MateriaDomain(UUID identificador, String nombre, int creditos, PeriodoAcademicoDomain periodoAcademico) {
+	public MateriaDomain(UUID identificador, String nombre, int creditos, PeriodoAcademicoDomain periodoAcademico, Double promedioMateria) {
 		super();
 		setIdentificador(identificador);
 		setNombre(nombre);
 		setCreditos(creditos);
 		setPeriodoAcademico(periodoAcademico);
-
+		setPromedioMateria(promedioMateria);
 	}
 
 	public static MateriaDomain getDefaultObject() {
@@ -68,5 +69,12 @@ public class MateriaDomain {
 	private final void setPeriodoAcademico(final PeriodoAcademicoDomain periodoAcademico) {
 		this.periodoAcademico = UtilObject.getDefault(periodoAcademico, PeriodoAcademicoDomain.getDefaultObject());
 	}
+	
+	public final Double getPromedioMateria() {
+		return promedioMateria;
+	}
 
+	private final void setPromedioMateria(Double promedioMateria) {
+		this.promedioMateria = UtilNumber.getUtilNumber().getDefault(promedioMateria).doubleValue();
+	}
 }

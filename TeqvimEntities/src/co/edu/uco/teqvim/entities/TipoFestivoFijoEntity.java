@@ -25,7 +25,7 @@ public final class TipoFestivoFijoEntity {
 		setDescripcion(descripcion);
 	}
 
-	public static TipoFestivoFijoEntity getDefaultObject() {
+	public static TipoFestivoFijoEntity create() {
 		return new TipoFestivoFijoEntity();
 	}
 

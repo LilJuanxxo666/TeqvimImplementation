@@ -15,6 +15,7 @@ import co.edu.uco.teqvim.crosscutting.utils.Messages.PaisPostgresSqlDAOMessages;
 import co.edu.uco.teqvim.data.dao.PaisDAO;
 import co.edu.uco.teqvim.data.dao.relational.SqlDAO;
 import co.edu.uco.teqvim.entities.PaisEntity;
+import co.edu.uco.teqvim.entities.RespuestaEntity;
 
 public final class PaisPostgreSqlDAO extends SqlDAO<PaisEntity> implements PaisDAO {
 
@@ -64,7 +65,7 @@ public final class PaisPostgreSqlDAO extends SqlDAO<PaisEntity> implements PaisD
 
 		var setWhere = true;
 
-		if (UtilObject.isNull(entity)) {
+		if (!UtilObject.isNull(entity)) {
 			if (!UtilUUID.isDefault(entity.getIdentificador())) {
 				parameters.add(entity.getIdentificador());
 				where.append("WHERE identificador=? ");
@@ -73,7 +74,6 @@ public final class PaisPostgreSqlDAO extends SqlDAO<PaisEntity> implements PaisD
 			if (!UtilText.getUtilText().isEmpty(entity.getNombre())) {
 				parameters.add(entity.getNombre());
 				where.append(setWhere ? "WHERE " : "AND ").append("nombre=? ");
-				setWhere = false;
 			}
 		}
 		return where.toString();
@@ -109,8 +109,8 @@ public final class PaisPostgreSqlDAO extends SqlDAO<PaisEntity> implements PaisD
 
 			while (resultSet.next()) {
 
-				var entityTmp = new PaisEntity(resultSet.getObject("identificador", UUID.class),
-						resultSet.getString("nombre"));
+				var entityTmp = PaisEntity.create().setIdentificador(resultSet.getObject(1, UUID.class))
+						.setNombre(resultSet.getString(2));
 
 				result.add(entityTmp);
 			}

@@ -15,6 +15,7 @@ import co.edu.uco.teqvim.crosscutting.utils.Messages.TipoDocumentoPostgresSqlDAO
 import co.edu.uco.teqvim.data.dao.TipoDocumentoDAO;
 import co.edu.uco.teqvim.data.dao.relational.SqlDAO;
 import co.edu.uco.teqvim.entities.TipoDocumentoEntity;
+import co.edu.uco.teqvim.entities.TipoDuracionEventoEntity;
 
 public final class TipoDocumentoPostgreSqlDAO extends SqlDAO<TipoDocumentoEntity> implements TipoDocumentoDAO {
 
@@ -63,7 +64,7 @@ public final class TipoDocumentoPostgreSqlDAO extends SqlDAO<TipoDocumentoEntity
 
 		var setWhere = true;
 
-		if (UtilObject.isNull(entity)) {
+		if (!UtilObject.isNull(entity)) {
 			if (!UtilUUID.isDefault(entity.getIdentificador())) {
 				parameters.add(entity.getIdentificador());
 				where.append("WHERE identificador=? ");
@@ -112,8 +113,8 @@ public final class TipoDocumentoPostgreSqlDAO extends SqlDAO<TipoDocumentoEntity
 
 			while (resultSet.next()) {
 
-				var entityTmp = new TipoDocumentoEntity(resultSet.getObject("identificador", UUID.class),
-						resultSet.getString("nombre"), resultSet.getString("descripcion"));
+				var entityTmp = TipoDocumentoEntity.create().setIdentificador(resultSet.getObject(1, UUID.class))
+						.setNombre(resultSet.getString(2)).setDescripcion(resultSet.getString(3));
 
 				result.add(entityTmp);
 			}

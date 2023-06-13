@@ -6,8 +6,8 @@ import co.edu.uco.teqvim.api.validator.Validation;
 import co.edu.uco.teqvim.api.validator.estudiante.common.ContrasenaValidation;
 import co.edu.uco.teqvim.api.validator.estudiante.common.CorreoValidation;
 import co.edu.uco.teqvim.api.validator.estudiante.common.FechaNacimientoValidation;
-import co.edu.uco.teqvim.api.validator.estudiante.common.NombresVaciosValidation;
-import co.edu.uco.teqvim.api.validator.estudiante.common.NombresValidation;
+import co.edu.uco.teqvim.api.validator.estudiante.common.NombresVaciosEstudianteValidation;
+import co.edu.uco.teqvim.api.validator.estudiante.common.NombresEstudianteValidation;
 import co.edu.uco.teqvim.api.validator.estudiante.common.NumeroDocumentoValidation;
 import co.edu.uco.teqvim.api.validator.estudiante.common.NumeroTelefonicoValidation;
 import co.edu.uco.teqvim.api.validator.general.common.IdentificadorValidation;
@@ -32,10 +32,10 @@ public class CrearEstudianteValidation implements Validation<EstudianteDTO> {
 		if (UtilObject.isNull(data)) {
 			result.addMessage(EstudianteValidatorMessage.CREATE_ESTUDIANTE_OBJECT_NULL_MESSAGE);
 		} else {
-			result.addMessages(NombresValidation.validate(data.getPrimerNombre()).getMessages());
-			result.addMessages(NombresVaciosValidation.validate(data.getSegundoNombre()).getMessages());
-			result.addMessages(NombresValidation.validate(data.getPrimerApellido()).getMessages());
-			result.addMessages(NombresVaciosValidation.validate(data.getSegudoApellido()).getMessages());
+			result.addMessages(NombresEstudianteValidation.validate(data.getPrimerNombre()).getMessages());
+			result.addMessages(NombresVaciosEstudianteValidation.validate(data.getSegundoNombre()).getMessages());
+			result.addMessages(NombresEstudianteValidation.validate(data.getPrimerApellido()).getMessages());
+			result.addMessages(NombresVaciosEstudianteValidation.validate(data.getSegudoApellido()).getMessages());
 			result.addMessages(NumeroTelefonicoValidation.validate(data.getNumeroTelefonico()).getMessages());
 			result.addMessages(CorreoValidation.validate(data.getCorreo()).getMessages());
 			result.addMessages(ContrasenaValidation.validate(data.getContrasena()).getMessages());

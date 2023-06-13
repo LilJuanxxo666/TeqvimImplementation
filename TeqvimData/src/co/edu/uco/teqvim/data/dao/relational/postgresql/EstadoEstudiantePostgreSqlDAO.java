@@ -15,6 +15,7 @@ import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
 import co.edu.uco.teqvim.data.dao.EstadoEstudianteDAO;
 import co.edu.uco.teqvim.data.dao.relational.SqlDAO;
 import co.edu.uco.teqvim.entities.EstadoEstudianteEntity;
+import co.edu.uco.teqvim.entities.EstadoEventoEntity;
 
 public final class EstadoEstudiantePostgreSqlDAO extends SqlDAO<EstadoEstudianteEntity> implements EstadoEstudianteDAO {
 
@@ -64,7 +65,7 @@ public final class EstadoEstudiantePostgreSqlDAO extends SqlDAO<EstadoEstudiante
 
 		var setWhere = true;
 
-		if (UtilObject.isNull(entity)) {
+		if (!UtilObject.isNull(entity)) {
 			if (!UtilUUID.isDefault(entity.getIdentificador())) {
 				parameters.add(entity.getIdentificador());
 				where.append("WHERE identificador=? ");
@@ -113,8 +114,8 @@ public final class EstadoEstudiantePostgreSqlDAO extends SqlDAO<EstadoEstudiante
 
 			while (resultSet.next()) {
 
-				var entityTmp = new EstadoEstudianteEntity(resultSet.getObject("identificador", UUID.class),
-						resultSet.getString("nombre"), resultSet.getString("descripcion"));
+				var entityTmp = EstadoEstudianteEntity.create().setIdentificador(resultSet.getObject(1, UUID.class))
+						.setNombre(resultSet.getString(2)).setDescripcion(resultSet.getString(3));
 
 				result.add(entityTmp);
 			}

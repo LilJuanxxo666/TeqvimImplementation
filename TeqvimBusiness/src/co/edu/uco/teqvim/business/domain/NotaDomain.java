@@ -12,7 +12,8 @@ public final class NotaDomain {
 	private static final NotaDomain DEFAULT_OBJECT = new NotaDomain();
 	private UUID identificador;
 	private TipoNotaDomain tipoNota;
-	private double calificacion;
+	private Double calificacion;
+	private Double porcentaje;
 	private String descripcion;
 	private MateriaDomain materia;
 
@@ -23,15 +24,17 @@ public final class NotaDomain {
 		setCalificacion(UtilNumber.ZERO.doubleValue());
 		setDescripcion(UtilText.EMPTY);
 		setMateria(MateriaDomain.getDefaultObject());
+		setPorcentaje(UtilNumber.ZERO.doubleValue());
 	}
 
-	public NotaDomain(UUID identificador, TipoNotaDomain tipoNota, double calificacion, String descripcion) {
+	public NotaDomain(UUID identificador, TipoNotaDomain tipoNota, Double calificacion, String descripcion, MateriaDomain materia, Double porcentaje) {
 		super();
 		setIdentificador(identificador);
 		setTipoNota(tipoNota);
 		setCalificacion(calificacion);
 		setDescripcion(descripcion);
 		setMateria(materia);
+		setPorcentaje(porcentaje);
 	}
 
 	public static NotaDomain getDefaultObject() {
@@ -54,11 +57,11 @@ public final class NotaDomain {
 		this.tipoNota = UtilObject.getDefault(tipoNota, TipoNotaDomain.getDefaultObject());
 	}
 
-	public final double getCalificacion() {
+	public final Double getCalificacion() {
 		return calificacion;
 	}
 
-	private final void setCalificacion(final double calificacion) {
+	private final void setCalificacion(final Double calificacion) {
 		this.calificacion = UtilNumber.getUtilNumber().getDefault(calificacion).doubleValue();
 	}
 
@@ -78,4 +81,11 @@ public final class NotaDomain {
 		this.materia = UtilObject.getDefault(materia, MateriaDomain.getDefaultObject());
 	}
 
+	public final Double getPorcentaje() {
+		return porcentaje;
+	}
+
+	public final void setPorcentaje(Double porcentaje) {
+		this.porcentaje = UtilNumber.getUtilNumber().getDefault(porcentaje).doubleValue();
+	}	
 }

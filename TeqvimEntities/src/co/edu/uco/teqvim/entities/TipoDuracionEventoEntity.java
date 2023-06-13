@@ -25,7 +25,7 @@ public final class TipoDuracionEventoEntity {
 		setDescripcion(descripcion);
 	}
 
-	public static TipoDuracionEventoEntity getDefaultObject() {
+	public static TipoDuracionEventoEntity create() {
 		return new TipoDuracionEventoEntity();
 	}
 

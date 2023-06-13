@@ -41,9 +41,11 @@ public final class UnidadTiempoPostgreSqlDAO extends SqlDAO<UnidadTiempoEntity> 
 		} catch (final TeqvimDataException exception) {
 			throw exception;
 		} catch (final SQLException exception) {
-			throw TeqvimDataException.create(UnidadTiempoPostgresSqlDAOMessages.READ_TECHNICAL_SQL_EXCEPTION_MESSAGE, UnidadTiempoPostgresSqlDAOMessages.READ_EXCEPTION_USER_MESSAGE,exception);
+			throw TeqvimDataException.create(UnidadTiempoPostgresSqlDAOMessages.READ_TECHNICAL_SQL_EXCEPTION_MESSAGE,
+					UnidadTiempoPostgresSqlDAOMessages.READ_EXCEPTION_USER_MESSAGE, exception);
 		} catch (final Exception exception) {
-			throw TeqvimDataException.create(UnidadTiempoPostgresSqlDAOMessages.READ_TECHNICAL_EXCEPTION_MESSAGE, UnidadTiempoPostgresSqlDAOMessages.READ_EXCEPTION_USER_MESSAGE,exception);
+			throw TeqvimDataException.create(UnidadTiempoPostgresSqlDAOMessages.READ_TECHNICAL_EXCEPTION_MESSAGE,
+					UnidadTiempoPostgresSqlDAOMessages.READ_EXCEPTION_USER_MESSAGE, exception);
 		}
 	}
 
@@ -64,7 +66,7 @@ public final class UnidadTiempoPostgreSqlDAO extends SqlDAO<UnidadTiempoEntity> 
 
 		var setWhere = true;
 
-		if (UtilObject.isNull(entity)) {
+		if (!UtilObject.isNull(entity)) {
 			if (!UtilUUID.isDefault(entity.getIdentificador())) {
 				parameters.add(entity.getIdentificador());
 				where.append("WHERE identificador=? ");
@@ -73,7 +75,6 @@ public final class UnidadTiempoPostgreSqlDAO extends SqlDAO<UnidadTiempoEntity> 
 			if (!UtilText.getUtilText().isEmpty(entity.getNombre())) {
 				parameters.add(entity.getNombre());
 				where.append(setWhere ? "WHERE " : "AND ").append("nombre=? ");
-				setWhere = false;
 			}
 		}
 		return where.toString();
@@ -93,10 +94,14 @@ public final class UnidadTiempoPostgreSqlDAO extends SqlDAO<UnidadTiempoEntity> 
 				}
 			}
 		} catch (final SQLException exception) {
-			throw TeqvimDataException.create(UnidadTiempoPostgresSqlDAOMessages.SET_PARAMETERS_TECHNICAL_SQL_EXCEPTION_MESSAGE, UnidadTiempoPostgresSqlDAOMessages.SET_PARAMETERS_EXCEPTION_USER_MESSAGE, exception);
+			throw TeqvimDataException.create(
+					UnidadTiempoPostgresSqlDAOMessages.SET_PARAMETERS_TECHNICAL_SQL_EXCEPTION_MESSAGE,
+					UnidadTiempoPostgresSqlDAOMessages.SET_PARAMETERS_EXCEPTION_USER_MESSAGE, exception);
 
 		} catch (final Exception exception) {
-			throw TeqvimDataException.create(UnidadTiempoPostgresSqlDAOMessages.SET_PARAMETERS_TECHNICAL_EXCEPTION_MESSAGE, UnidadTiempoPostgresSqlDAOMessages.SET_PARAMETERS_EXCEPTION_USER_MESSAGE, exception);
+			throw TeqvimDataException.create(
+					UnidadTiempoPostgresSqlDAOMessages.SET_PARAMETERS_TECHNICAL_EXCEPTION_MESSAGE,
+					UnidadTiempoPostgresSqlDAOMessages.SET_PARAMETERS_EXCEPTION_USER_MESSAGE, exception);
 		}
 	}
 
@@ -109,15 +114,19 @@ public final class UnidadTiempoPostgreSqlDAO extends SqlDAO<UnidadTiempoEntity> 
 
 			while (resultSet.next()) {
 
-				var entityTmp = new UnidadTiempoEntity(resultSet.getObject("identificador", UUID.class),
-						resultSet.getString("nombre"));
+				var entityTmp = UnidadTiempoEntity.create().setIdentificador(resultSet.getObject(1, UUID.class))
+						.setNombre(resultSet.getString(2));
 
 				result.add(entityTmp);
 			}
 		} catch (final SQLException exception) {
-			throw TeqvimDataException.create(UnidadTiempoPostgresSqlDAOMessages.EXECUTE_QUERY_TECHNICAL_SQL_EXCEPTION_MESSAGE, UnidadTiempoPostgresSqlDAOMessages.EXECUTE_QUERY_EXCEPTION_USER_MESSAGE, exception);
+			throw TeqvimDataException.create(
+					UnidadTiempoPostgresSqlDAOMessages.EXECUTE_QUERY_TECHNICAL_SQL_EXCEPTION_MESSAGE,
+					UnidadTiempoPostgresSqlDAOMessages.EXECUTE_QUERY_EXCEPTION_USER_MESSAGE, exception);
 		} catch (final Exception exception) {
-			throw TeqvimDataException.create(UnidadTiempoPostgresSqlDAOMessages.EXECUTE_QUERY_TECHNICAL_EXCEPTION_MESSAGE, UnidadTiempoPostgresSqlDAOMessages.EXECUTE_QUERY_EXCEPTION_USER_MESSAGE, exception);
+			throw TeqvimDataException.create(
+					UnidadTiempoPostgresSqlDAOMessages.EXECUTE_QUERY_TECHNICAL_EXCEPTION_MESSAGE,
+					UnidadTiempoPostgresSqlDAOMessages.EXECUTE_QUERY_EXCEPTION_USER_MESSAGE, exception);
 		}
 		return result;
 	}

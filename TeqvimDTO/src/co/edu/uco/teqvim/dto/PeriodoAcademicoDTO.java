@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 import co.edu.uco.teqvim.crosscutting.utils.UtilDate;
+import co.edu.uco.teqvim.crosscutting.utils.UtilNumber;
 import co.edu.uco.teqvim.crosscutting.utils.UtilObject;
 import co.edu.uco.teqvim.crosscutting.utils.UtilText;
 import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
@@ -15,6 +16,7 @@ public class PeriodoAcademicoDTO {
 	private LocalDate fechaInicio;
 	private LocalDate fechaFin;
 	private TipoPeriodoAcademicoDTO tipoPeriodo;
+	private Double promedioPeriodo;
 	private EstadoPeriodoAcademicoDTO estado;
 	private EstudianteDTO estudiante;
 
@@ -27,10 +29,11 @@ public class PeriodoAcademicoDTO {
 		setTipoPeriodo(TipoPeriodoAcademicoDTO.create());
 		setEstado(EstadoPeriodoAcademicoDTO.create());
 		setEstudiante(EstudianteDTO.create());
+		setPromedioPeriodo(UtilNumber.ZERO.doubleValue());
 	}
 
 	public PeriodoAcademicoDTO(UUID identificador, String nombre, LocalDate fechaInicio, LocalDate fechaFin,
-			TipoPeriodoAcademicoDTO tipoPeriodo, EstadoPeriodoAcademicoDTO estado, EstudianteDTO estudiante) {
+			TipoPeriodoAcademicoDTO tipoPeriodo, EstadoPeriodoAcademicoDTO estado, EstudianteDTO estudiante, Double promedioPeriodo) {
 		super();
 		setIdentificador(identificador);
 		setNombre(nombre);
@@ -39,6 +42,7 @@ public class PeriodoAcademicoDTO {
 		setTipoPeriodo(tipoPeriodo);
 		setEstado(estado);
 		setEstudiante(estudiante);
+		setPromedioPeriodo(promedioPeriodo);
 	}
 
 	public static PeriodoAcademicoDTO create() {
@@ -105,6 +109,15 @@ public class PeriodoAcademicoDTO {
 
 	public final PeriodoAcademicoDTO setEstudiante(EstudianteDTO estudiante) {
 		this.estudiante = UtilObject.getDefault(estudiante, EstudianteDTO.create());
+		return this;
+	}
+
+	public final Double getPromedioPeriodo() {
+		return promedioPeriodo;
+	}
+
+	public final PeriodoAcademicoDTO setPromedioPeriodo (final Double promedioPeriodo) {
+		this.promedioPeriodo = UtilNumber.getUtilNumber().getDefault(promedioPeriodo).doubleValue();
 		return this;
 	}
 }

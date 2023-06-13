@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import java.util.UUID;
 import co.edu.uco.teqvim.crosscutting.utils.UtilDate;
+import co.edu.uco.teqvim.crosscutting.utils.UtilNumber;
 import co.edu.uco.teqvim.crosscutting.utils.UtilObject;
 import co.edu.uco.teqvim.crosscutting.utils.UtilText;
 import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
@@ -15,6 +16,7 @@ public class PeriodoAcademicoDomain {
 	private String nombre;
 	private LocalDate fechaInicio;
 	private LocalDate fechaFin;
+	private Double promedioPeriodo;
 	private TipoPeriodoAcademicoDomain tipoPeriodo;
 	private EstadoPeriodoAcademicoDomain estado;
 	private EstudianteDomain estudiante;
@@ -28,10 +30,11 @@ public class PeriodoAcademicoDomain {
 		setTipoPeriodo(TipoPeriodoAcademicoDomain.getDefaultObject());
 		setEstado(EstadoPeriodoAcademicoDomain.getDefaultObject());
 		setEstudiante(EstudianteDomain.getDefaultObject());
+		setPromedioPeriodo(UtilNumber.ZERO.doubleValue());
 	}
 
 	public PeriodoAcademicoDomain(UUID identificador, String nombre, LocalDate fechaInicio, LocalDate fechaFin,
-			TipoPeriodoAcademicoDomain tipoPeriodo, EstadoPeriodoAcademicoDomain estado, EstudianteDomain estudiante) {
+			TipoPeriodoAcademicoDomain tipoPeriodo, EstadoPeriodoAcademicoDomain estado, EstudianteDomain estudiante, Double promedioPeriodo) {
 		super();
 		setIdentificador(identificador);
 		setNombre(nombre);
@@ -40,6 +43,7 @@ public class PeriodoAcademicoDomain {
 		setTipoPeriodo(tipoPeriodo);
 		setEstado(estado);
 		setEstudiante(estudiante);
+		setPromedioPeriodo(promedioPeriodo);
 	}
 
 	public static PeriodoAcademicoDomain getDefaultObject() {
@@ -98,7 +102,15 @@ public class PeriodoAcademicoDomain {
 		return estudiante;
 	}
 
-	public final void setEstudiante(EstudianteDomain estudiante) {
+	private final void setEstudiante(EstudianteDomain estudiante) {
 		this.estudiante = UtilObject.getDefault(estudiante, EstudianteDomain.getDefaultObject());
+	}
+
+	public final Double getPromedioPeriodo() {
+		return promedioPeriodo;
+	}
+
+	private final void setPromedioPeriodo(Double promedioPeriodo) {
+		this.promedioPeriodo = UtilNumber.getUtilNumber().getDefault(promedioPeriodo).doubleValue();
 	}
 }

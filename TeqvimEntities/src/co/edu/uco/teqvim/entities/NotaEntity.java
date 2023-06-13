@@ -11,7 +11,8 @@ public final class NotaEntity {
 
 	private UUID identificador;
 	private TipoNotaEntity tipoNota;
-	private double calificacion;
+	private Double calificacion;
+	private Double porcentaje; 
 	private String descripcion;
 	private MateriaEntity materia;
 
@@ -22,15 +23,17 @@ public final class NotaEntity {
 		setCalificacion(UtilNumber.ZERO.doubleValue());
 		setDescripcion(UtilText.EMPTY);
 		setMateria(MateriaEntity.create());
+		setPorcentaje(UtilNumber.ZERO.doubleValue());
 	}
 
-	public NotaEntity(UUID identificador, TipoNotaEntity tipoNota, double calificacion, String descripcion) {
+	public NotaEntity(UUID identificador, TipoNotaEntity tipoNota, Double calificacion, String descripcion, MateriaEntity materia, Double porcentaje) {
 		super();
 		setIdentificador(identificador);
 		setTipoNota(tipoNota);
 		setCalificacion(calificacion);
 		setDescripcion(descripcion);
 		setMateria(materia);
+		setPorcentaje(porcentaje);
 	}
 
 	public static NotaEntity create() {
@@ -55,11 +58,11 @@ public final class NotaEntity {
 		return this;
 	}
 
-	public final double getCalificacion() {
+	public final Double getCalificacion() {
 		return calificacion;
 	}
 
-	public final NotaEntity setCalificacion(final double calificacion) {
+	public final NotaEntity setCalificacion(final Double calificacion) {
 		this.calificacion = UtilNumber.getUtilNumber().getDefault(calificacion).doubleValue();
 		return this;
 	}
@@ -82,4 +85,13 @@ public final class NotaEntity {
 		return this;
 	}
 
+	public final Double getPorcentaje() {
+		return porcentaje;
+	}
+
+	public final NotaEntity setPorcentaje(final Double porcentaje) {
+		this.porcentaje = UtilNumber.getUtilNumber().getDefault(porcentaje).doubleValue();
+		return this;
+	}
+	
 }

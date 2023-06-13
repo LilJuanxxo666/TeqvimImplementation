@@ -15,6 +15,7 @@ import co.edu.uco.teqvim.crosscutting.utils.Messages.TipoEventoPostgresSqlDAOMes
 import co.edu.uco.teqvim.data.dao.TipoEventoDAO;
 import co.edu.uco.teqvim.data.dao.relational.SqlDAO;
 import co.edu.uco.teqvim.entities.TipoEventoEntity;
+import co.edu.uco.teqvim.entities.TipoFestivoFijoEntity;
 
 public final class TipoEventoPostgreSqlDAO extends SqlDAO<TipoEventoEntity> implements TipoEventoDAO {
 
@@ -64,7 +65,7 @@ public final class TipoEventoPostgreSqlDAO extends SqlDAO<TipoEventoEntity> impl
 
 		var setWhere = true;
 
-		if (UtilObject.isNull(entity)) {
+		if (!UtilObject.isNull(entity)) {
 			if (!UtilUUID.isDefault(entity.getIdentificador())) {
 				parameters.add(entity.getIdentificador());
 				where.append("WHERE identificador=? ");
@@ -113,8 +114,8 @@ public final class TipoEventoPostgreSqlDAO extends SqlDAO<TipoEventoEntity> impl
 
 			while (resultSet.next()) {
 
-				var entityTmp = new TipoEventoEntity(resultSet.getObject("identificador", UUID.class),
-						resultSet.getString("nombre"), resultSet.getString("descripcion"));
+				var entityTmp = TipoEventoEntity.create().setIdentificador(resultSet.getObject(1, UUID.class))
+						.setNombre(resultSet.getString(2)).setDescripcion(resultSet.getString(3));
 
 				result.add(entityTmp);
 			}

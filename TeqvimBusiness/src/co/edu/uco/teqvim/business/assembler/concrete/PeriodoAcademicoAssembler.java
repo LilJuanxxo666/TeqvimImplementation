@@ -26,7 +26,7 @@ public class PeriodoAcademicoAssembler
 				.setFechaInicio(domain.getFechaInicio()).setFechaFin(domain.getFechaFin())
 				.setTipoPeriodo(TipoPeriodoAcademicoAssembler.getInstance().toDtoFromDomain(domain.getTipoPeriodo()))
 				.setEstado(EstadoPeriodoAcademicoAssembler.getInstance().toDtoFromDomain(domain.getEstado()))
-				.setEstudiante(EstudianteAssembler.getInstance().toDtoFromDomain(domain.getEstudiante()));
+				.setEstudiante(EstudianteAssembler.getInstance().toDtoFromDomain(domain.getEstudiante())).setPromedioPeriodo(domain.getPromedioPeriodo());
 	}
 
 	@Override
@@ -34,7 +34,7 @@ public class PeriodoAcademicoAssembler
 		return new PeriodoAcademicoDomain(dto.getIdentificador(), dto.getNombre(), dto.getFechaInicio(),
 				dto.getFechaFin(), TipoPeriodoAcademicoAssembler.getInstance().toDomainFromDto(dto.getTipoPeriodo()),
 				EstadoPeriodoAcademicoAssembler.getInstance().toDomainFromDto(dto.getEstado()),
-				EstudianteAssembler.getInstance().toDomainFromDto(dto.getEstudiante()));
+				EstudianteAssembler.getInstance().toDomainFromDto(dto.getEstudiante()), dto.getPromedioPeriodo());
 	}
 
 	@Override
@@ -43,7 +43,7 @@ public class PeriodoAcademicoAssembler
 				domain.getFechaFin(),
 				TipoPeriodoAcademicoAssembler.getInstance().toEntityFromDomain(domain.getTipoPeriodo()),
 				EstadoPeriodoAcademicoAssembler.getInstance().toEntityFromDomain(domain.getEstado()),
-				EstudianteAssembler.getInstance().toEntityFromDomain(domain.getEstudiante()));
+				EstudianteAssembler.getInstance().toEntityFromDomain(domain.getEstudiante()), domain.getPromedioPeriodo());
 	}
 
 	@Override
@@ -52,7 +52,7 @@ public class PeriodoAcademicoAssembler
 				entity.getFechaFin(),
 				TipoPeriodoAcademicoAssembler.getInstance().toDomainFromEntity(entity.getTipoPeriodo()),
 				EstadoPeriodoAcademicoAssembler.getInstance().toDomainFromEntity(entity.getEstado()),
-				EstudianteAssembler.getInstance().toDomainFromEntity(entity.getEstudiante()));
+				EstudianteAssembler.getInstance().toDomainFromEntity(entity.getEstudiante()), entity.getPromedioPeriodo());
 	}
 
 	@Override

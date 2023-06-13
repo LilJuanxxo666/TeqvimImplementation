@@ -15,6 +15,7 @@ import co.edu.uco.teqvim.crosscutting.utils.Messages.EstadoNotificacionPostgresS
 import co.edu.uco.teqvim.data.dao.EstadoNotificacionDAO;
 import co.edu.uco.teqvim.data.dao.relational.SqlDAO;
 import co.edu.uco.teqvim.entities.EstadoNotificacionEntity;
+import co.edu.uco.teqvim.entities.EstadoPeriodoAcademicoEntity;
 
 public final class EstadoNotificacionPostgreSqlDAO extends SqlDAO<EstadoNotificacionEntity> implements EstadoNotificacionDAO {
 
@@ -64,7 +65,7 @@ public final class EstadoNotificacionPostgreSqlDAO extends SqlDAO<EstadoNotifica
 
 		var setWhere = true;
 
-		if (UtilObject.isNull(entity)) {
+		if (!UtilObject.isNull(entity)) {
 			if (!UtilUUID.isDefault(entity.getIdentificador())) {
 				parameters.add(entity.getIdentificador());
 				where.append("WHERE identificador=? ");
@@ -113,8 +114,8 @@ public final class EstadoNotificacionPostgreSqlDAO extends SqlDAO<EstadoNotifica
 
 			while (resultSet.next()) {
 
-				var entityTmp = new EstadoNotificacionEntity(resultSet.getObject("identificador", UUID.class),
-						resultSet.getString("nombre"), resultSet.getString("descripcion"));
+				var entityTmp = EstadoNotificacionEntity.create().setIdentificador(resultSet.getObject(1, UUID.class))
+						.setNombre(resultSet.getString(2)).setDescripcion(resultSet.getString(3));
 
 				result.add(entityTmp);
 			}

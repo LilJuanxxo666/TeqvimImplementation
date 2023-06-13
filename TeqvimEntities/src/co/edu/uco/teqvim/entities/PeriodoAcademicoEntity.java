@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 import co.edu.uco.teqvim.crosscutting.utils.UtilDate;
+import co.edu.uco.teqvim.crosscutting.utils.UtilNumber;
 import co.edu.uco.teqvim.crosscutting.utils.UtilObject;
 import co.edu.uco.teqvim.crosscutting.utils.UtilText;
 import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
@@ -14,6 +15,7 @@ public final class PeriodoAcademicoEntity {
 	private String nombre;
 	private LocalDate fechaInicio;
 	private LocalDate fechaFin;
+	private Double promedioPeriodo;
 	private TipoPeriodoAcademicoEntity tipoPeriodo;
 	private EstadoPeriodoAcademicoEntity estado;
 	private EstudianteEntity estudiante;
@@ -27,10 +29,11 @@ public final class PeriodoAcademicoEntity {
 		setTipoPeriodo(TipoPeriodoAcademicoEntity.create());
 		setEstado(EstadoPeriodoAcademicoEntity.create());
 		setEstudiante(EstudianteEntity.create());
+		setPromedioPeriodo(UtilNumber.ZERO.doubleValue());
 	}
 
 	public PeriodoAcademicoEntity(UUID identificador, String nombre, LocalDate fechaInicio, LocalDate fechaFin,
-			TipoPeriodoAcademicoEntity tipoPeriodo, EstadoPeriodoAcademicoEntity estado, EstudianteEntity estudiante) {
+			TipoPeriodoAcademicoEntity tipoPeriodo, EstadoPeriodoAcademicoEntity estado, EstudianteEntity estudiante, Double promedioPeriodo) {
 		super();
 		setIdentificador(identificador);
 		setNombre(nombre);
@@ -39,6 +42,7 @@ public final class PeriodoAcademicoEntity {
 		setTipoPeriodo(tipoPeriodo);
 		setEstado(estado);
 		setEstudiante(estudiante);
+		setPromedioPeriodo(promedioPeriodo);
 	}
 
 	public static PeriodoAcademicoEntity create() {
@@ -105,6 +109,15 @@ public final class PeriodoAcademicoEntity {
 
 	public final PeriodoAcademicoEntity setEstudiante(EstudianteEntity estudiante) {
 		this.estudiante = UtilObject.getDefault(estudiante, EstudianteEntity.create());
+		return this;
+	}
+
+	public final Double getPromedioPeriodo() {
+		return promedioPeriodo;
+	}
+
+	public final PeriodoAcademicoEntity setPromedioPeriodo(Double promedioPeriodo) {
+		this.promedioPeriodo = UtilNumber.getUtilNumber().getDefault(promedioPeriodo).doubleValue();
 		return this;
 	}
 }

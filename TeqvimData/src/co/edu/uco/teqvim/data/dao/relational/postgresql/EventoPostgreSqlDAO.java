@@ -13,6 +13,7 @@ import co.edu.uco.teqvim.crosscutting.utils.UtilText;
 import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
 import co.edu.uco.teqvim.crosscutting.utils.Messages.EstudiantePostgresSqlDAOMessages;
 import co.edu.uco.teqvim.crosscutting.utils.Messages.EventoPostgresSqlDAOMessages;
+import co.edu.uco.teqvim.crosscutting.utils.UtilDate;
 import co.edu.uco.teqvim.data.dao.EventoDAO;
 import co.edu.uco.teqvim.data.dao.relational.SqlDAO;
 import co.edu.uco.teqvim.entities.EstadoEstudianteEntity;
@@ -127,16 +128,12 @@ public class EventoPostgreSqlDAO extends SqlDAO<EventoEntity> implements EventoD
 
 	@Override
 	protected final String prepareSelect() {
-		return "SELECT EST.identificador, EST.primer_nombre, EST.segundo_nombre, EST.primer_apellido, EST.segundo_apellido, EST.numero_telefonico, EST.correo, \r\n"
-				+ "EST.fecha_nacimiento, EST.tipo_documento, TDO.nombre, TDO.descripcion, EST.numero_documento, EST.confirmacion_correo, CCO.nombre, CCO.descripcion, EST.pais, \r\n"
-				+ "PAI.nombre, EST.estado_estudiante, ES.nombre, ES.descripcion ";
+		return "SELECT EST.identificador, EST.primer_nombre, EST.segundo_nombre, EST.primer_apellido, EST.segundo_apellido, EST.numero_telefonico, EST.correo, EST.fecha_nacimiento, EST.tipo_documento, TDO.nombre, TDO.descripcion, EST.numero_documento, EST.confirmacion_correo, CCO.nombre, CCO.descripcion, EST.pais, PAI.nombre, EST.estado_estudiante, ES.nombre, ES.descripcion ";
 	}
 
 	@Override
 	protected final String prepareFrom() {
-		return "FROM estudiante EST JOIN tipo_documento TDO ON TDO.identificador = EST.tipo_documento JOIN respuesta CCO\r\n"
-				+ "ON EST.confirmacion_correo = CCO.identificador JOIN pais PAI ON PAI.identificador = EST.pais JOIN estado_estudiante ES ON\r\n"
-				+ "ES.identificador = EST.estado_estudiante ";
+		return "FROM estudiante EST JOIN tipo_documento TDO ON TDO.identificador = EST.tipo_documento JOIN respuesta CCO ON EST.confirmacion_correo = CCO.identificador JOIN pais PAI ON PAI.identificador = EST.pais JOIN estado_estudiante ES ON ES.identificador = EST.estado_estudiante ";
 	}
 
 	@Override
@@ -147,7 +144,7 @@ public class EventoPostgreSqlDAO extends SqlDAO<EventoEntity> implements EventoD
 
 		var setWhere = true;
 
-		if (UtilObject.isNull(entity)) {
+		if (!UtilObject.isNull(entity)) {
 			if (!UtilUUID.isDefault(entity.getIdentificador())) {
 				parameters.add(entity.getIdentificador());
 				where.append("WHERE identificador=? ");
@@ -161,20 +158,17 @@ public class EventoPostgreSqlDAO extends SqlDAO<EventoEntity> implements EventoD
 			if (!UtilText.getUtilText().isEmpty(entity.getDescripcion())) {
 				parameters.add(entity.getDescripcion());
 				where.append(setWhere ? "WHERE " : "AND ").append("descripcion=? ");
+				setWhere = false;
 			}
-			if (!UtilObject.isNull(entity.getFechaInicio())) {
+			if (!UtilDate.isDefaultDateOrNull(entity.getFechaInicio())) {
 				parameters.add(entity.getFechaInicio());
 				where.append(setWhere ? "WHERE " : "AND ").append("fecha_inicio=? ");
 				setWhere = false;
 			}
-			if (!UtilObject.isNull(entity.getFechaInicio())) {
-				parameters.add(entity.getFechaInicio());
-				where.append(setWhere ? "WHERE " : "AND ").append("fecha_inicio=? ");
-				setWhere = false;
-			}
-			if (!UtilObject.isNull(entity.getFechaFin())) {
+			if (!UtilDate.isDefaultDateOrNull(entity.getFechaFin())) {
 				parameters.add(entity.getFechaFin());
 				where.append(setWhere ? "WHERE " : "AND ").append("fecha_fin=? ");
+				setWhere = false;
 			}
 			if (!UtilUUID.isDefault(entity.getDuracionEvento().getIdentificador())) {
 				parameters.add(entity.getDuracionEvento().getIdentificador());
@@ -183,17 +177,17 @@ public class EventoPostgreSqlDAO extends SqlDAO<EventoEntity> implements EventoD
 			}
 			if (!UtilUUID.isDefault(entity.getEstado().getIdentificador())) {
 				parameters.add(entity.getEstado().getIdentificador());
-				where.append(setWhere ? "WHERE " : "AND").append("estado_estudiante=? ");
+				where.append(setWhere ? "WHERE " : "AND ").append("estado_estudiante=? ");
 				setWhere = false;
 			}
 			if (!UtilObject.isNull(entity.getTipoEvento().getIdentificador())) {
 				parameters.add(entity.getTipoEvento().getIdentificador());
-				where.append(setWhere ? "WHERE " : "AND").append("tipo_evento=? ");
+				where.append(setWhere ? "WHERE " : "AND ").append("tipo_evento=? ");
+				setWhere = false;
 			}
 			if (!UtilUUID.isDefault(entity.getEstudiante().getIdentificador())) {
 				parameters.add(entity.getEstudiante().getIdentificador());
-				where.append(setWhere ? "WHERE " : "AND").append("estudiante=? ");
-				setWhere = false;
+				where.append(setWhere ? "WHERE " : "AND ").append("estudiante=? ");
 			}
 		}
 		return where.toString();

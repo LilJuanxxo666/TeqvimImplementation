@@ -27,7 +27,7 @@ public final class EventoEntity {
 		setDescripcion(UtilText.EMPTY);
 		setFechaInicio(UtilDate.DEFAULT_DATE);
 		setFechaFin(UtilDate.DEFAULT_DATE);
-		setDuracionEvento(TipoDuracionEventoEntity.getDefaultObject());
+		setDuracionEvento(TipoDuracionEventoEntity.create());
 		setEstado(EstadoEventoEntity.create());
 		setTipoEvento(TipoEventoEntity.create());
 		setEstudiante(EstudianteEntity.create());
@@ -102,7 +102,7 @@ public final class EventoEntity {
 	}
 
 	public final EventoEntity setDuracionEvento(final TipoDuracionEventoEntity duracionEvento) {
-		this.duracionEvento = UtilObject.getDefault(duracionEvento, TipoDuracionEventoEntity.getDefaultObject());
+		this.duracionEvento = UtilObject.getDefault(duracionEvento, TipoDuracionEventoEntity.create());
 		return this;
 	}
 
