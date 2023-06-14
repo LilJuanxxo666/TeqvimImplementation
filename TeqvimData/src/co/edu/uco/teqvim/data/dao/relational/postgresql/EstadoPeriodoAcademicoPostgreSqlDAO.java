@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
 import co.edu.uco.teqvim.crosscutting.exception.TeqvimDataException;
 import co.edu.uco.teqvim.crosscutting.utils.UtilObject;
 import co.edu.uco.teqvim.crosscutting.utils.UtilText;
@@ -15,7 +14,6 @@ import co.edu.uco.teqvim.crosscutting.utils.Messages.EstadoPeriodoAcademicoPostg
 import co.edu.uco.teqvim.data.dao.EstadoPeriodoAcademicoDAO;
 import co.edu.uco.teqvim.data.dao.relational.SqlDAO;
 import co.edu.uco.teqvim.entities.EstadoPeriodoAcademicoEntity;
-import co.edu.uco.teqvim.entities.TipoDocumentoEntity;
 
 public final class EstadoPeriodoAcademicoPostgreSqlDAO extends SqlDAO<EstadoPeriodoAcademicoEntity> implements EstadoPeriodoAcademicoDAO {
 

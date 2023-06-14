@@ -1,12 +1,10 @@
 package co.edu.uco.teqvim.data.dao.relational.postgresql;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
 import co.edu.uco.teqvim.crosscutting.exception.TeqvimDataException;
 import co.edu.uco.teqvim.crosscutting.utils.Messages.EstadoEstudiantePostgresSqlDAOMessages;
 import co.edu.uco.teqvim.crosscutting.utils.UtilObject;
@@ -15,7 +13,6 @@ import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
 import co.edu.uco.teqvim.data.dao.EstadoEstudianteDAO;
 import co.edu.uco.teqvim.data.dao.relational.SqlDAO;
 import co.edu.uco.teqvim.entities.EstadoEstudianteEntity;
-import co.edu.uco.teqvim.entities.EstadoEventoEntity;
 
 public final class EstadoEstudiantePostgreSqlDAO extends SqlDAO<EstadoEstudianteEntity> implements EstadoEstudianteDAO {
 

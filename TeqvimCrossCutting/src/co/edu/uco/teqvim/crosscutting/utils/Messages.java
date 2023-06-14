@@ -754,6 +754,75 @@ public final class Messages {
 		public static final String ESTADO_NOTIFICACION_CONSULTED = "Estado notificación consultados correctamente";
 		public static final String ESTADO_EVENTO_CONSULTED = "Estado evento consultados correctamente";
 		public static final String ESTADO_ESTUDIANTE_CONSULTED = "Estado estudiante consultadas correctamente";
-		
+	}
+	public static final class MateriaPostgresSqlDAOMessages{
+		private MateriaPostgresSqlDAOMessages() {
+		}
+		public static final String READ_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de traer la informacion de la materia. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String READ_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase MateriaPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String READ_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase MateriaPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de asignar los datos de la materia. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String SET_PARAMETERS_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase MateriaPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase MateriaPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de ejecutar los datos de la materia. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String EXECUTE_QUERY_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase MateriaPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase MateriaPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String CREATE_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema tratando de registrar la informacion de la nueva materia. Por favor intente de nuevo y si el problema persiste contacte al administrador respectivo";
+		public static final String CREATE_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del método create de la clase MateriaPostgreSqlDAO de tipo Sqlexception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String CREATE_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema inesperado dentro del método create de la clase MateriaPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String UPDATE_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema tratando de modificar la informacion de la nueva materia. Por favor intente de nuevo y si el problema persiste contacte al administrador respectivo";
+		public static final String UPDATE_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del método update de la clase MateriaPostgreSqlDAO de tipo Sqlexception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String UPDATE_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema inesperado dentro del método update de la clase MateriaPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String DELETE_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema tratando de dar de baja la informacion de la materia. Por favor intente de nuevo y si el problema persiste contacte al administrador respectivo";
+		public static final String DELETE_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del método delete de la clase MateriaPostgreSqlDAO de tipo Sqlexception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String DELETE_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema inesperado dentro del método delete de la clase MateriaPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+	}
+	public static final class NotaPostgresSqlDAOMessages{
+		private NotaPostgresSqlDAOMessages() {
+		}
+		public static final String READ_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de traer la informacion de la nota. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String READ_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase NotaPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String READ_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo READ de la clase NotaPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de asignar los datos de la nota. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String SET_PARAMETERS_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase NotaPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String SET_PARAMETERS_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo setParameters de la clase NotaPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema trantando de ejecutar los datos de la nota. Por favor intente de nuevo y si el problema persiste, contacte al administrador de la aplicacion.";
+		public static final String EXECUTE_QUERY_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase NotaPostgreSqlDAO de tipo SqlException. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String EXECUTE_QUERY_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del metodo executeQuery de la clase NotaPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String CREATE_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema tratando de registrar la informacion de la nueva nota. Por favor intente de nuevo y si el problema persiste contacte al administrador respectivo";
+		public static final String CREATE_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del método create de la clase NotaPostgreSqlDAO de tipo Sqlexception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String CREATE_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema inesperado dentro del método create de la clase NotaPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String UPDATE_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema tratando de modificar la informacion de la nueva nota. Por favor intente de nuevo y si el problema persiste contacte al administrador respectivo";
+		public static final String UPDATE_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del método update de la clase NotaPostgreSqlDAO de tipo Sqlexception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String UPDATE_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema inesperado dentro del método update de la clase NotaPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String DELETE_EXCEPTION_USER_MESSAGE = "Se ha presentado un problema tratando de dar de baja la informacion de la nota. Por favor intente de nuevo y si el problema persiste contacte al administrador respectivo";
+		public static final String DELETE_TECHNICAL_SQL_EXCEPTION_MESSAGE = "Se ha presentado un problema dentro del método delete de la clase NotaPostgreSqlDAO de tipo Sqlexception. Por favor verifique la traza completa de la excepcion presentada";
+		public static final String DELETE_TECHNICAL_EXCEPTION_MESSAGE = "Se ha presentado un problema inesperado dentro del método delete de la clase NotaPostgreSqlDAO de tipo Exception. Por favor verifique la traza completa de la excepcion presentada";
+	}
+	public static final class MateriaControllerMessages{
+		private MateriaControllerMessages() {
+			
+		}
+		public static final String READ_ESTUDIANTE_RIGHT_MESSAGE = "Estudiante consultados correctamente";
+		public static final String CREATE_ESTUDIANTE_RIGHT_MESSAGE = "El estudiante se ha creado correctamente";
+		public static final String UPDATE_ESTUDIANTE_RIGHT_MESSAGE = "El estudiante se ha actualizado correctamente";
+		public static final String DELETE_ESTUDIANTE_RIGHT_MESSAGE = "El estudiante se ha elimidado correctamente";
+		public static final String UNEXPECTED_PROBLEM_MESSAGE = "Se ha presentado un problema inesperado. Por favor, intenta de nuevo y si el problema persiste, contacta al administrador de la aplicación";
+		public static final String UNEXPECTED_PROBLEM_CREATE_LOG_MESSAGE = "Se ha presentado un problema inesperado en el metodo create. Por favor validar la consola de errores...";
+		public static final String UNEXPECTED_PROBLEM_UPDATE_LOG_MESSAGE = "Se ha presentado un problema inesperado en el metodo update. Por favor validar la consola de errores...";
+		public static final String UNEXPECTED_PROBLEM_DELETE_LOG_MESSAGE = "Se ha presentado un problema inesperado en el metodo delete. Por favor validar la consola de errores...";
+	}
+	public static final class NotaControllerMessages{
+		private NotaControllerMessages() {
+			
+		}
+		public static final String READ_ESTUDIANTE_RIGHT_MESSAGE = "Estudiante consultados correctamente";
+		public static final String CREATE_ESTUDIANTE_RIGHT_MESSAGE = "El estudiante se ha creado correctamente";
+		public static final String UPDATE_ESTUDIANTE_RIGHT_MESSAGE = "El estudiante se ha actualizado correctamente";
+		public static final String DELETE_ESTUDIANTE_RIGHT_MESSAGE = "El estudiante se ha elimidado correctamente";
+		public static final String UNEXPECTED_PROBLEM_MESSAGE = "Se ha presentado un problema inesperado. Por favor, intenta de nuevo y si el problema persiste, contacta al administrador de la aplicación";
+		public static final String UNEXPECTED_PROBLEM_CREATE_LOG_MESSAGE = "Se ha presentado un problema inesperado en el metodo create. Por favor validar la consola de errores...";
+		public static final String UNEXPECTED_PROBLEM_UPDATE_LOG_MESSAGE = "Se ha presentado un problema inesperado en el metodo update. Por favor validar la consola de errores...";
+		public static final String UNEXPECTED_PROBLEM_DELETE_LOG_MESSAGE = "Se ha presentado un problema inesperado en el metodo delete. Por favor validar la consola de errores...";
 	}
 }

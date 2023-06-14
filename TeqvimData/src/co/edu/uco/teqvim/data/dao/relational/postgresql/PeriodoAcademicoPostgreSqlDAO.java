@@ -109,7 +109,6 @@ public final class PeriodoAcademicoPostgreSqlDAO extends SqlDAO<PeriodoAcademico
 			throw TeqvimDataException.create(PeriodoAcademicoPostgresSqlDAOMessages.UPDATE_TECHNICAL_EXCEPTION_MESSAGE,
 					PeriodoAcademicoPostgresSqlDAOMessages.UPDATE_EXCEPTION_USER_MESSAGE, exception);
 		}
-
 	}
 
 	@Override
@@ -360,5 +359,4 @@ public final class PeriodoAcademicoPostgreSqlDAO extends SqlDAO<PeriodoAcademico
 			throw TeqvimDataException.create(PeriodoAcademicoPostgresSqlDAOMessages.EXECUTE_QUERY_TECHNICAL_EXCEPTION_MESSAGE, PeriodoAcademicoPostgresSqlDAOMessages.EXECUTE_QUERY_EXCEPTION_USER_MESSAGE, exception);
 		}
 	}
-
 }

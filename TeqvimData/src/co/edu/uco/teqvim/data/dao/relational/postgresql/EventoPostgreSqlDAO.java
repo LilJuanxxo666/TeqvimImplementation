@@ -1,6 +1,7 @@
 package co.edu.uco.teqvim.data.dao.relational.postgresql;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -224,17 +225,18 @@ public class EventoPostgreSqlDAO extends SqlDAO<EventoEntity> implements EventoD
 		try (var resultSet = preparedStatement.executeQuery()) {
 
 			while (resultSet.next()) {
-				var tipoDocumento = new TipoDocumentoEntity(resultSet.getObject(9, UUID.class), resultSet.getString(10), resultSet.getString(11));
-				var confirmacionCorreo = new RespuestaEntity(resultSet.getObject(13, UUID.class), resultSet.getString(14), resultSet.getString(15));
-				var pais = new PaisEntity(resultSet.getObject(16, UUID.class), resultSet.getString(17));
-				var estadoEstudiante = new EstadoEstudianteEntity(resultSet.getObject(18, UUID.class), resultSet.getString(19), resultSet.getString(20));
-				var estudiante = new EstudianteEntity(null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-				var entityTmp = new EventoEntity(null, null, null, null, null, null, null, null, null);
+				
+				//var tipoDocumento = new TipoDocumentoEntity(resultSet.getObject(9, UUID.class), resultSet.getString(10), resultSet.getString(11));
+				//var confirmacionCorreo = new RespuestaEntity(resultSet.getObject(13, UUID.class), resultSet.getString(14), resultSet.getString(15));
+				//var pais = new PaisEntity(resultSet.getObject(16, UUID.class), resultSet.getString(17));
+				//var estadoEstudiante = new EstadoEstudianteEntity(resultSet.getObject(18, UUID.class), resultSet.getString(19), resultSet.getString(20));
+				//var estudiante = new EstudianteEntity(null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+				//var entityTmp = new EventoEntity(null, null, null, null, null, null, null, null, null);
 						//resultSet.getObject(1, UUID.class), resultSet.getString(2), resultSet.getString(3),
 						//resultSet.getString(4), resultSet.getString(5), resultSet.getString(6),
 						//resultSet.getString(7), "", resultSet.getObject(8, LocalDate.class), tipoDocumento, resultSet.getString(12), confirmacionCorreo, pais, estadoEstudiante);
 				
-				result.add(entityTmp);
+				//result.add(entityTmp);
 			}
 
 		} catch (final SQLException exception) {

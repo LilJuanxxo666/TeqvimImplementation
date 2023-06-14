@@ -1,12 +1,10 @@
 package co.edu.uco.teqvim.data.dao.relational.postgresql;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
 import co.edu.uco.teqvim.crosscutting.exception.TeqvimDataException;
 import co.edu.uco.teqvim.crosscutting.utils.UtilObject;
 import co.edu.uco.teqvim.crosscutting.utils.UtilText;
@@ -14,7 +12,6 @@ import co.edu.uco.teqvim.crosscutting.utils.UtilUUID;
 import co.edu.uco.teqvim.crosscutting.utils.Messages.TipoFestivoFijoPostgresSqlDAOMessages;
 import co.edu.uco.teqvim.data.dao.TipoFestivoFijoDAO;
 import co.edu.uco.teqvim.data.dao.relational.SqlDAO;
-import co.edu.uco.teqvim.entities.TipoFestivoEntity;
 import co.edu.uco.teqvim.entities.TipoFestivoFijoEntity;
 
 public final class TipoFestivoFijoPostgreSqlDAO extends SqlDAO<TipoFestivoFijoEntity> implements TipoFestivoFijoDAO {

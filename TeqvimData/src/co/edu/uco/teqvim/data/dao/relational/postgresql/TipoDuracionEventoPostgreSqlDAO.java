@@ -1,12 +1,10 @@
 package co.edu.uco.teqvim.data.dao.relational.postgresql;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
 import co.edu.uco.teqvim.crosscutting.exception.TeqvimDataException;
 import co.edu.uco.teqvim.crosscutting.utils.UtilObject;
 import co.edu.uco.teqvim.crosscutting.utils.UtilText;
@@ -15,7 +13,6 @@ import co.edu.uco.teqvim.crosscutting.utils.Messages.TipoDuracionEventoPostgresS
 import co.edu.uco.teqvim.data.dao.TipoDuracionEventoDAO;
 import co.edu.uco.teqvim.data.dao.relational.SqlDAO;
 import co.edu.uco.teqvim.entities.TipoDuracionEventoEntity;
-import co.edu.uco.teqvim.entities.TipoEventoEntity;
 
 public final class TipoDuracionEventoPostgreSqlDAO extends SqlDAO<TipoDuracionEventoEntity> implements TipoDuracionEventoDAO {
 
